@@ -1,0 +1,7 @@
+*
+
+!/build/**
+!/src/**
+
+!package.json
+!README.md

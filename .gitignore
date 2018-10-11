@@ -1,0 +1,12 @@
+.idea/
+
+/node_modules
+
+/build
+/demo
+/coverage
+
+.env.*
+.log*
+
+.DS_Store

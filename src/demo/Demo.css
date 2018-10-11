@@ -1,0 +1,125 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  line-height: 1.4;
+  color: #1b1b1b;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 0.75rem;
+  background-image: linear-gradient(120deg, hsl(210, 76%, 34%), hsl(150, 76%, 34%));
+  color: #fff;
+  font-size: 120%;
+  text-align: center;
+}
+
+header a {
+  color: inherit;
+  font-style: italic;
+}
+
+.container {
+  margin: 1.5rem auto;
+  padding: 0 16px;
+}
+
+h1, h2, header {
+  line-height: 1.2;
+}
+
+h1 {
+  margin: 0 0 1rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+h2 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+p {
+  margin: 0 0 0.75rem;
+}
+
+a {
+  color: hsl(210, 76%, 34%);
+  text-decoration: none;
+}
+
+pre, code {
+  border-radius: 0.2rem;
+  font-size: 84%;
+  font-family: "Roboto Mono", monospace;
+  background-color: hsl(209, 24%, 94%);
+}
+
+pre {
+  margin: 0 0 0.5rem;
+  padding: 0.6rem;
+  overflow-x: auto;
+}
+
+code {
+  padding: 0.2rem;
+}
+
+table {
+  width: 100%;
+  min-width: 540px;
+  margin: 1rem 0 3rem;
+  border-collapse: collapse;
+  font-size: 90%;
+}
+
+thead {
+  border-bottom: 2px solid hsl(216, 14%, 93%);
+}
+
+tr {
+  border-bottom: 1px solid hsl(216, 14%, 93%);
+}
+
+th {
+  font-weight: 600;
+  text-align: left;
+}
+
+th, td {
+  padding: 0.6rem 0;
+  vertical-align: top;
+}
+
+td:not(:last-of-type) {
+  padding-right: 1.2rem;
+}
+
+td:not(:last-of-type) {
+  font-family: "Roboto Mono", monospace;
+  font-size: 90%;
+}
+
+td code {
+  font-size: 90%;
+}
+
+
+.github-contributions-calendar {
+  margin: 1rem 0;
+}
+
+@media (min-width: 768px) {
+  header {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .container {
+    width: 720px;
+    margin: 2rem auto;
+  }
+}
