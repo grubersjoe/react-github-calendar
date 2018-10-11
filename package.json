@@ -1,6 +1,6 @@
 {
   "name": "@grubersjoe/github-contributions-calendar",
-  "version": "0.9.0",
+  "version": "0.9.2",
   "license": "MIT",
   "author": "Jonathan Gruber <gruberjonathan@gmail.com>",
   "description": "A React component to display a GitHub contributions graph",
@@ -30,7 +30,6 @@
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "styled-components": "^3.4.10",
     "tinycolor2": "^1.4.1"
   },
   "devDependencies": {

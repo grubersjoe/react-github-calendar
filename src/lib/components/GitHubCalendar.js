@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
 // Import modules separately to reduce bundle size
 import format from 'date-fns/format';
@@ -24,38 +23,6 @@ export const DEFAULT_THEME = {
 
 const LINE_HEIGHT = 1.5;
 const TITLE_SCALE_FACTOR = 1.25;
-
-const Wrapper = styled.article`
-  display: inline-block;
-`;
-
-const Chart = styled.div`
-  &:not(:last-of-type) {
-    margin-bottom: 1rem;
-  }
-`;
-
-const Title = styled.div`
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.25rem;
-  border-bottom: 2px solid ${props => props.theme.grade0};
-  font-size: ${props => Math.round(props.fontSize * TITLE_SCALE_FACTOR)}px;
-  
-  a {
-    color: inherit;
-  }
-`;
-
-const Calendar = styled.svg`
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 0.25rem;
-  background-color: ${props => props.theme.background};
-`;
-
-const Meta = styled.div`
-  font-size: ${props => props.fontSize}px;
-`;
 
 class GitHubCalendar extends Component {
   state = {
@@ -137,6 +104,32 @@ class GitHubCalendar extends Component {
       ));
   }
 
+  // Unfortunately there is no support for CSS modules right now...
+  getStyles() {
+    const { fontSize, theme } = this.props;
+
+    return {
+      wrapper: {
+        display: 'inline-block'
+      },
+      anchor: {
+        color: 'inherit',
+      },
+      chart: {
+        marginBottom: '1rem',
+      },
+      calendar: {
+        maxWidth: '100%',
+        height: 'auto',
+        marginBottom: '0.25rem',
+        backgroundColor: theme.background,
+      },
+      meta: {
+        fontSize,
+      }
+    }
+  }
+
   render() {
     const { error, graphs } = this.state;
 
@@ -153,6 +146,7 @@ class GitHubCalendar extends Component {
       ...otherProps
     } = this.props;
 
+    const styles = this.getStyles();
     const textHeight = Math.round(fontSize * LINE_HEIGHT);
 
     // Since weeks start on Sunday, there is a good chance that the graph starts
@@ -169,46 +163,60 @@ class GitHubCalendar extends Component {
     }
 
     return (
-      <Wrapper className={NAMESPACE}>
-        <Title
-          fontSize={fontSize}
-          theme={this.getTheme()}
+      <article className={NAMESPACE} style={styles.wrapper}>
+        <div
           className={`${NAMESPACE}__title`}
+          style={{
+            marginBottom: '0.5rem',
+            paddingBottom: '0.25rem',
+            borderBottom: `2px solid ${theme.grade0}`,
+            fontSize: `${Math.round(fontSize * TITLE_SCALE_FACTOR)}px`,
+          }}
         >
-          <a href={`https://github.com/${username}`} title="GitHub profile">@{username} on
-            GitHub</a>
-        </Title>
+          <a
+            href={`https://github.com/${username}`}
+            title="GitHub profile"
+            style={styles.anchor}
+          >
+            @{username} on GitHub
+          </a>
+        </div>
         {
           graphs.map((graph) => {
             const { year, blocks, monthLabels, totalCount } = graph;
             const isCurrentYear = getYear(new Date()) === year;
 
             return (
-              <Chart key={year} {...otherProps}>
-                <Calendar
+              <div
+                {...otherProps}
+                key={year}
+                className={`${NAMESPACE}--chart`}
+                style={styles.chart}
+              >
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width={width}
                   height={height}
                   viewBox={`0 0 ${width} ${height}`}
                   textRendering="optimizeLegibility"
-                  theme={this.getTheme()}
                   className={`${NAMESPACE}__calendar`}
+                  style={styles.calendar}
                 >
                   {this.renderBlocks(blocks)}
                   {this.renderMonthLabels(monthLabels)}
-                </Calendar>
+                </svg>
 
-                <Meta fontSize={fontSize} className={`${NAMESPACE}__meta`}>
+                <div className={`${NAMESPACE}__meta`} style={styles.meta}>
                   {isCurrentYear && fullYear ? 'Last year' : year}
                   {' – '}
                   {isCurrentYear && !fullYear ? 'So far ' : null}
                   {totalCount} contributions
-                </Meta>
-              </Chart>
+                </div>
+              </div>
             );
           })
         }
-      </Wrapper>
+      </article>
     );
   }
 }
