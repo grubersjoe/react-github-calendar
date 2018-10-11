@@ -12,7 +12,7 @@
     "calendar",
     "graph"
   ],
-  "main": "src/GitHubCalendar.js",
+  "main": "build/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/grubersjoe/github-contributions-calendar"
