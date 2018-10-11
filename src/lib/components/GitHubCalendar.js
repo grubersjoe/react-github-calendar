@@ -63,21 +63,16 @@ class GitHubCalendar extends Component {
     error: null,
   };
 
-  // noinspection JSCheckFunctionSignatures
   componentDidMount() {
     const { years, username, fullYear } = this.props;
 
-    try {
-      getGitHubGraphData({
-        years,
-        username,
-        fullYear,
-      }).then((graphs) => this.setState({ graphs }));
-
-      // this.setState({ graphs });
-    } catch (error) {
-      this.setState({ error });
-    }
+    getGitHubGraphData({
+      years,
+      username,
+      fullYear,
+    })
+      .then(graphs => this.setState({ graphs }))
+      .catch(error => this.setState({ error }));
   }
 
   getTheme() {
@@ -180,7 +175,8 @@ class GitHubCalendar extends Component {
           theme={this.getTheme()}
           className={`${NAMESPACE}__title`}
         >
-          <a href={`https://github.com/${username}`} title="GitHub profile">@{username} on GitHub</a>
+          <a href={`https://github.com/${username}`} title="GitHub profile">@{username} on
+            GitHub</a>
         </Title>
         {
           graphs.map((graph) => {
