@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 // Import modules separately to reduce bundle size
 import format from 'date-fns/format';
 import getYear from 'date-fns/get_year';
@@ -163,7 +162,11 @@ class GitHubCalendar extends Component {
     }
 
     return (
-      <article className={NAMESPACE} style={styles.wrapper}>
+      <article
+        {...otherProps}
+        className={NAMESPACE}
+        style={Object.assign({}, styles.wrapper, this.props.style)}
+      >
         <div
           className={`${NAMESPACE}__title`}
           style={{
@@ -173,11 +176,7 @@ class GitHubCalendar extends Component {
             fontSize: `${Math.round(fontSize * TITLE_SCALE_FACTOR)}px`,
           }}
         >
-          <a
-            href={`https://github.com/${username}`}
-            title="GitHub profile"
-            style={styles.anchor}
-          >
+          <a href={`https://github.com/${username}`} title="GitHub profile" style={styles.anchor}>
             @{username} on GitHub
           </a>
         </div>
@@ -187,12 +186,7 @@ class GitHubCalendar extends Component {
             const isCurrentYear = getYear(new Date()) === year;
 
             return (
-              <div
-                {...otherProps}
-                key={year}
-                className={`${NAMESPACE}--chart`}
-                style={styles.chart}
-              >
+              <div key={year} className={`${NAMESPACE}--chart`} style={styles.chart}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width={width}
