@@ -1,4 +1,4 @@
-import color from 'color';
+import color from 'tinycolor2';
 
 import { DEFAULT_THEME } from './components/GitHubCalendar';
 
@@ -11,20 +11,21 @@ import { DEFAULT_THEME } from './components/GitHubCalendar';
  * @return {object} - The color theme object
  */
 export function createCalendarTheme(baseColor, textColor = 'inherit', background = 'transparent') {
+  const base = color(baseColor);
 
-  try {
-    const base = color(baseColor);
-
-    return {
-      background: String(background),
-      text: String(textColor),
-      grade4: String(base.fade(0.08)),
-      grade3: String(base.fade(0.24)),
-      grade2: String(base.fade(0.40)),
-      grade1: String(base.fade(0.56)),
-      grade0: String(color('#fff').darken(0.1)),
-    };
-  } catch (error) {
+  if (!base.isValid()) {
     return DEFAULT_THEME;
   }
+
+  const text = color(textColor).isValid() ? color(textColor) : DEFAULT_THEME.text;
+
+  return {
+    background,
+    text,
+    grade4: base.setAlpha(0.92).toHslString(),
+    grade3: base.setAlpha(0.76).toHslString(),
+    grade2: base.setAlpha(0.60).toHslString(),
+    grade1: base.setAlpha(0.44).toHslString(),
+    grade0: color('white').darken(8).toHslString(),
+  };
 }

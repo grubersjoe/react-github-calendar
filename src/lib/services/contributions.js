@@ -1,14 +1,13 @@
-import {
-  format,
-  getDay,
-  getMonth,
-  isAfter,
-  isSameYear,
-  parse,
-  setDay,
-  subDays,
-  subYears,
-} from 'date-fns';
+// Import modules separately to reduce bundle size
+import format from 'date-fns/format';
+import getDay from 'date-fns/get_day';
+import getMonth from 'date-fns/get_month';
+import isAfter from 'date-fns/is_after';
+import isSameYear from 'date-fns/is_same_year';
+import parse from 'date-fns/parse';
+import setDay from 'date-fns/set_day';
+import subDays from 'date-fns/sub_days';
+import subYears from 'date-fns/sub_years';
 
 const API_URL = 'https://github-contributions-api.now.sh/v1/';
 const DATE_FORMAT = 'YYYY-MM-DD';

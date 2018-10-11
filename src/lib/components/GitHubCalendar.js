@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { format, getYear } from 'date-fns';
+
+// Import modules separately to reduce bundle size
+import format from 'date-fns/format';
+import getYear from 'date-fns/get_year';
 
 import { getGitHubGraphData } from '../services/contributions';
 import { createCalendarTheme } from '../utils';

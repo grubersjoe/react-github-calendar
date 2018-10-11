@@ -22,15 +22,16 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "demo": "node scripts/demo.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "bundle-size": "node scripts/bundle-size"
   },
   "dependencies": {
-    "color": "^3.1.0",
     "date-fns": "^1.29.0",
     "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "styled-components": "^3.4.10"
+    "styled-components": "^3.4.10",
+    "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
     "autoprefixer": "7.1.6",
@@ -69,6 +70,7 @@
     "typeface-roboto-mono": "^0.0.54",
     "url-loader": "0.6.2",
     "webpack": "3.8.1",
+    "webpack-bundle-analyzer": "^3.0.2",
     "webpack-dev-server": "2.9.4",
     "webpack-manifest-plugin": "1.3.2",
     "whatwg-fetch": "2.0.3"
