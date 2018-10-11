@@ -181,12 +181,16 @@ class GitHubCalendar extends Component {
           </a>
         </div>
         {
-          graphs.map((graph) => {
+          graphs.map((graph, i) => {
             const { year, blocks, monthLabels, totalCount } = graph;
             const isCurrentYear = getYear(new Date()) === year;
 
             return (
-              <div key={year} className={`${NAMESPACE}--chart`} style={styles.chart}>
+              <div
+                key={year}
+                className={`${NAMESPACE}--chart`}
+                style={i < (graphs.length - 1) ? styles.chart : null}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width={width}
