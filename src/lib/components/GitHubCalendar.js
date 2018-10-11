@@ -188,7 +188,7 @@ class GitHubCalendar extends Component {
             return (
               <div
                 key={year}
-                className={`${NAMESPACE}--chart`}
+                className={`${NAMESPACE}__chart`}
                 style={i < (graphs.length - 1) ? styles.chart : null}
               >
                 <svg
