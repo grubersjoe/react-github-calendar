@@ -185,6 +185,11 @@ const Demo = () => (
   </GitHubCalendar>
 </div>`}
       </pre>
+      <div>
+        <GitHubCalendar username={username}>
+          <ReactTooltip delayShow={50} html />
+        </GitHubCalendar>
+      </div>
 
       <h2>Different block size</h2>
       <p>The block size (10 per default) is configurable:</p>
@@ -192,12 +197,6 @@ const Demo = () => (
         {`<GitHubCalendar username="{username}" blockSize="{8}" />`}
     </pre>
       <GitHubCalendar username={username} blockSize={8} />
-
-      <div>
-        <GitHubCalendar username={username}>
-          <ReactTooltip delayShow={50} html />
-        </GitHubCalendar>
-      </div>
 
       <h2>Different block margin (and size)</h2>
       <p>Analogously the block margin can be adjusted.</p>
