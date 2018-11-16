@@ -1,6 +1,6 @@
 import color from 'tinycolor2';
 
-import { DEFAULT_THEME } from './components/GitHubCalendar';
+import { DEFAULT_THEME } from './constants';
 
 /**
  * Create a calendar color theme based on one color

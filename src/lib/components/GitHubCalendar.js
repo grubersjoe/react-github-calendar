@@ -237,4 +237,3 @@ GitHubCalendar.defaultProps = {
 };
 
 export default GitHubCalendar;
-export { DEFAULT_THEME };
