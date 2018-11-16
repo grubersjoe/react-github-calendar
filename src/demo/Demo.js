@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
 import { format } from "date-fns";
 
 import 'typeface-roboto';
@@ -36,9 +37,9 @@ const Demo = () => (
       </p>
       <p>
         Unlike @sallar's canvas based chart, this component uses SVG to render the graph, so it
-        scales automatically. However, the meta information above and below the chart is ordinary
-        text with a font size relative to the component's <code>fontSize</code> property. Therefore,
-        this text won't resize in smaller viewports. Use media queries to adjust the font size it if
+        scales automatically. The meta information above and below the chart is ordinary text with a
+        font size relative to the component's <code>fontSize</code> property. So, this text won't
+        resize in smaller viewports. Use media queries to adjust the font size it if
         required.
       </p>
 
@@ -60,11 +61,36 @@ const Demo = () => (
               <td>A GitHub username (<em>required, obviously</em>)</td>
             </tr>
             <tr>
-              <td>years</td>
-              <td>Number[]</td>
-              <td>[{format(new Date(), 'YYYY')}]</td>
-              <td>List of to be rendered years. If no data is available the chart for this year will
-                be ommited.
+              <td>blockMargin</td>
+              <td>Number</td>
+              <td>2</td>
+              <td>Margin between blocks</td>
+            </tr>
+            <tr>
+              <td>blockSize</td>
+              <td>Number</td>
+              <td>10</td>
+              <td>Size of one block (one day)</td>
+            </tr>
+            <tr>
+              <td>color</td>
+              <td>String|<a href="https://www.npmjs.com/package/color">Color</a></td>
+              <td>null</td>
+              <td>Base color to compute graph intensity colors (see below)</td>
+            </tr>
+            <tr>
+              <td>dateFormat</td>
+              <td>String</td>
+              <td>'MMM D, YYYY'</td>
+              <td>A <code><a href="https://date-fns.org/v1.29.0/docs/format">date-fns/format</a></code> compatible
+                date string
+              </td>
+            </tr>
+            <tr>
+              <td>fontSize</td>
+              <td>Number</td>
+              <td>12</td>
+              <td>Base font size for text in chart. The title above (@user) is 25% larger, however.
               </td>
             </tr>
             <tr>
@@ -82,28 +108,20 @@ const Demo = () => (
               <td>A object specifying all theme colors explicitly (see below)</td>
             </tr>
             <tr>
-              <td>color</td>
-              <td>String|<a href="https://www.npmjs.com/package/color">Color</a></td>
-              <td>null</td>
-              <td>Base color to compute graph intensity colors (see below)</td>
+              <td>tooltips</td>
+              <td>Boolean</td>
+              <td>true</td>
+              <td>Whether to add <code>data-tip</code> attributes to the blocks.
+                Add <code>react-tooltip</code> and use it as child of this component. See below example.
+              </td>
             </tr>
             <tr>
-              <td>blockSize</td>
-              <td>Number</td>
-              <td>10</td>
-              <td>Size of one block (one day)</td>
-            </tr>
-            <tr>
-              <td>blockMargin</td>
-              <td>Number</td>
-              <td>2</td>
-              <td>Margin between blocks</td>
-            </tr>
-            <tr>
-              <td>fontSize</td>
-              <td>Number</td>
-              <td>12</td>
-              <td>Base font size for text in chart. The title above (@user) is 25% larger, however.
+              <td>years</td>
+              <td>Number[]</td>
+              <td>[{format(new Date(), 'YYYY')}]</td>
+              <td>List of to be rendered years. Defaults to the current year. If no data is
+                available the chart for this year will
+                be ommited.
               </td>
             </tr>
           </tbody>
@@ -122,7 +140,7 @@ const Demo = () => (
         showing the last twelve months).</p>
       <pre>
         {`<GitHubCalendar username="grubersjoe" fullYear="{false}" />`}
-    </pre>
+      </pre>
       <GitHubCalendar username={username} fullYear={false} />
 
       <h2>Show several years</h2>
@@ -156,6 +174,18 @@ const Demo = () => (
     </pre>
       <GitHubCalendar username={username} />
 
+      <h2>Add tooltips</h2>
+      <p>In order to show tooltips on hover, you need to add another dependency <code>react-tooltip</code>. Add
+        this component then as child of the calendar. Make sure to enable the `html` property in
+        the <code>ReactTooltip</code> component to display the message correctly.</p>
+      <pre>
+{`<div>
+  <GitHubCalendar username="{grubersjoe}">
+    <ReactTooltip delayShow="{50}" html />
+  </GitHubCalendar>
+</div>`}
+      </pre>
+
       <h2>Different block size</h2>
       <p>The block size (10 per default) is configurable:</p>
       <pre>
@@ -163,10 +193,16 @@ const Demo = () => (
     </pre>
       <GitHubCalendar username={username} blockSize={8} />
 
+      <div>
+        <GitHubCalendar username={username}>
+          <ReactTooltip delayShow={50} html />
+        </GitHubCalendar>
+      </div>
+
       <h2>Different block margin (and size)</h2>
       <p>Analogously the block margin can be adjusted.</p>
       <pre>
-        {`<GitHubCalendar username="{username}" blockSize="{8}" blockMargin="{4}" />`}
+        {`<GitHubCalendar username="{grubersjoe}" blockSize="{8}" blockMargin="{4}" />`}
       </pre>
       <GitHubCalendar username={username} blockSize={8} blockMargin={4} />
 
@@ -174,7 +210,7 @@ const Demo = () => (
       <p>Finally, there is a property to set the fontsize of the text inside the chart. This comes
         in handy, if a large block size or margin is set. The default base font size is 12px.</p>
       <pre>
-        {`<GitHubCalendar username="{username}" fontSize="{14}" blockSize="{12}" />`}
+        {`<GitHubCalendar username="{grubersjoe}" fontSize="{14}" blockSize="{12}" />`}
       </pre>
       <GitHubCalendar username={username} fontSize={14} blockSize={12} />
     </main>

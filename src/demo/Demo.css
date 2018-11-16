@@ -102,6 +102,7 @@ td:not(:last-of-type) {
 td:not(:last-of-type) {
   font-family: "Roboto Mono", monospace;
   font-size: 90%;
+  white-space: nowrap;
 }
 
 td code {
