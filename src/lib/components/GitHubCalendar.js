@@ -111,7 +111,7 @@ class GitHubCalendar extends Component {
       <text
         x={(blockSize + blockMargin) * month.x}
         y={fontSize}
-        key={month.label}
+        key={month.x}
         style={{
           fill: this.getTheme().text,
           fontSize,
