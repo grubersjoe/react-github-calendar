@@ -6,7 +6,7 @@ import isAfter from 'date-fns/is_after';
 import isSameYear from 'date-fns/is_same_year';
 import parse from 'date-fns/parse';
 import setDay from 'date-fns/set_day';
-import subDays from 'date-fns/sub_days';
+import addDays from 'date-fns/add_days';
 import subYears from 'date-fns/sub_years';
 
 const API_URL = 'https://github-contributions-api.now.sh/v1/';
@@ -45,10 +45,11 @@ function getBlocksForYear(year, data, fullYear) {
   const firstDate = fullYear ? subYears(now, 1) : parse(`${year}-01-01`);
   const lastDate = fullYear ? now : parse(`${year}-12-31`);
 
-  // The week starts on Sunday (day = 6)
-  let weekStart;
-  if (getDay(firstDate) !== 6) {
-    weekStart = subDays(firstDate, getDay(firstDate));
+  let weekStart = firstDate;
+
+  // The week starts on Sunday - add days to get to next sunday if neccessary
+  if (getDay(firstDate) !== 0) {
+    weekStart = addDays(firstDate, getDay(firstDate));
   }
 
   // Fetch graph data for first row (Sundays)
