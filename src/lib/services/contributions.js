@@ -9,7 +9,7 @@ import setDay from 'date-fns/set_day';
 import addDays from 'date-fns/add_days';
 import subYears from 'date-fns/sub_years';
 
-const API_URL = 'https://github-contributions-api.now.sh/v1/';
+const API_URL = 'https://grubersjoe-github-contributions-api.now.sh/v1/';
 const DATE_FORMAT = 'YYYY-MM-DD';
 
 function getContributionsForDate(data, date) {
