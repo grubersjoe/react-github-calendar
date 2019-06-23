@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.4;
   color: #1b1b1b;
 }
@@ -27,7 +27,9 @@ header a {
   padding: 0 16px;
 }
 
-h1, h2, header {
+h1,
+h2,
+header {
   line-height: 1.2;
 }
 
@@ -52,10 +54,11 @@ a {
   text-decoration: none;
 }
 
-pre, code {
+pre,
+code {
   border-radius: 0.2rem;
   font-size: 84%;
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Roboto Mono', monospace;
   background-color: hsl(209, 24%, 94%);
 }
 
@@ -90,7 +93,8 @@ th {
   text-align: left;
 }
 
-th, td {
+th,
+td {
   padding: 0.6rem 0;
   vertical-align: top;
 }
@@ -100,7 +104,7 @@ td:not(:last-of-type) {
 }
 
 td:not(:last-of-type) {
-  font-family: "Roboto Mono", monospace;
+  font-family: 'Roboto Mono', monospace;
   font-size: 90%;
   white-space: nowrap;
 }
@@ -108,7 +112,6 @@ td:not(:last-of-type) {
 td code {
   font-size: 90%;
 }
-
 
 .react-github-calendar {
   margin: 1rem 0;

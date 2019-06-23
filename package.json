@@ -20,11 +20,12 @@
   },
   "bugs": "https://github.com/grubersjoe/react-github-calendar/issues",
   "scripts": {
-    "start": "node scripts/start.js",
     "build": "node scripts/build.js",
+    "bundle-size": "node scripts/bundle-size",
     "demo": "node scripts/demo.js",
-    "test": "node scripts/test.js --env=jsdom",
-    "bundle-size": "node scripts/bundle-size"
+    "format": "prettier --write 'src/**/*'",
+    "start": "node scripts/start.js",
+    "test": "node scripts/test.js --env=jsdom"
   },
   "dependencies": {
     "date-fns": "^1.29.0",
@@ -62,6 +63,7 @@
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
+    "prettier": "^1.18.2",
     "promise": "8.0.1",
     "raf": "3.4.0",
     "react-dev-utils": "^4.2.1",

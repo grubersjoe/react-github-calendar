@@ -65,9 +65,9 @@ class GitHubCalendar extends Component {
         fontSize: `${Math.round(fontSize * TITLE_SCALE_FACTOR)}px`,
       },
       wrapper: {
-        display: 'inline-block'
+        display: 'inline-block',
       },
-    }
+    };
   }
 
   // noinspection JSMethodCanBeStatic
@@ -89,7 +89,10 @@ class GitHubCalendar extends Component {
   }
 
   getTooltipMessage(day) {
-    return `<strong>${day.info.count} contributions</strong> on ${format(day.date, this.props.dateFormat)}`;
+    return `<strong>${day.info.count} contributions</strong> on ${format(
+      day.date,
+      this.props.dateFormat,
+    )}`;
   }
 
   renderTitle() {
@@ -97,7 +100,11 @@ class GitHubCalendar extends Component {
 
     return (
       <div className={this.getClassNameFor('title')} style={this.getStyles().title}>
-        <a href={`https://github.com/${username}`} title="GitHub profile" style={this.getStyles().anchor}>
+        <a
+          href={`https://github.com/${username}`}
+          title="GitHub profile"
+          style={this.getStyles().anchor}
+        >
           @{username} on GitHub
         </a>
       </div>
@@ -129,19 +136,23 @@ class GitHubCalendar extends Component {
     const textHeight = Math.round(fontSize * LINE_HEIGHT);
 
     return blocks
-      .map(week => week.map((day, y) => (
-        <rect
-          x="0"
-          y={textHeight + (blockSize + blockMargin) * y}
-          width={blockSize}
-          height={blockSize}
-          fill={theme[`grade${day.info.intensity}`]}
-          data-tip={day.info.count ? this.getTooltipMessage(day) : null}
-          key={day.date}
-        />
-      )))
+      .map(week =>
+        week.map((day, y) => (
+          <rect
+            x="0"
+            y={textHeight + (blockSize + blockMargin) * y}
+            width={blockSize}
+            height={blockSize}
+            fill={theme[`grade${day.info.intensity}`]}
+            data-tip={day.info.count ? this.getTooltipMessage(day) : null}
+            key={day.date}
+          />
+        )),
+      )
       .map((week, x) => (
-        <g key={x} transform={`translate(${(blockSize + blockMargin) * x}, 0)`}>{week}</g>
+        <g key={x} transform={`translate(${(blockSize + blockMargin) * x}, 0)`}>
+          {week}
+        </g>
       ));
   }
 
@@ -177,35 +188,33 @@ class GitHubCalendar extends Component {
     return (
       <article className={NAMESPACE} style={Object.assign({}, styles.wrapper, this.props.style)}>
         {this.renderTitle()}
-        {
-          graphs.map((graph, i) => {
-            const { year, blocks, monthLabels, totalCount } = graph;
+        {graphs.map((graph, i) => {
+          const { year, blocks, monthLabels, totalCount } = graph;
 
-            return (
-              <div
-                key={year}
-                className={this.getClassNameFor('chart')}
-                style={i < (graphs.length - 1) ? styles.chart : null}
+          return (
+            <div
+              key={year}
+              className={this.getClassNameFor('chart')}
+              style={i < graphs.length - 1 ? styles.chart : null}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={width}
+                height={height}
+                viewBox={`0 0 ${width} ${height}`}
+                textRendering="optimizeLegibility"
+                className={this.getClassNameFor('calendar')}
+                style={styles.calendar}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={width}
-                  height={height}
-                  viewBox={`0 0 ${width} ${height}`}
-                  textRendering="optimizeLegibility"
-                  className={this.getClassNameFor('calendar')}
-                  style={styles.calendar}
-                >
-                  {this.renderMonthLabels(monthLabels)}
-                  {this.renderBlocks(blocks)}
-                </svg>
+                {this.renderMonthLabels(monthLabels)}
+                {this.renderBlocks(blocks)}
+              </svg>
 
-                {this.renderMeta(year, totalCount)}
-                {children}
-              </div>
-            );
-          })
-        }
+              {this.renderMeta(year, totalCount)}
+              {children}
+            </div>
+          );
+        })}
       </article>
     );
   }
