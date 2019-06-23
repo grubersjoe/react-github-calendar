@@ -70,9 +70,6 @@ class GitHubCalendar extends Component {
         borderBottom: `2px solid ${this.getTheme().grade0}`,
         fontSize: `${Math.round(fontSize * TITLE_SCALE_FACTOR)}px`,
       },
-      wrapper: {
-        display: 'inline-block',
-      },
     };
   }
 
@@ -181,10 +178,10 @@ class GitHubCalendar extends Component {
   }
 
   render() {
+    const { children, style } = this.props;
     const { error, graphs } = this.state;
 
     const styles = this.getStyles();
-    const wrapperStyle = Object.assign({}, styles.wrapper, this.props.style);
 
     const { width, height } = this.getDimensions();
 
@@ -197,7 +194,7 @@ class GitHubCalendar extends Component {
     }
 
     return (
-      <article className={NAMESPACE} style={wrapperStyle}>
+      <article className={NAMESPACE} style={style}>
         {this.renderTitle()}
         {graphs.map((graph, i) => {
           const { year, blocks, monthLabels, totalCount } = graph;
@@ -222,7 +219,7 @@ class GitHubCalendar extends Component {
               </svg>
 
               {this.renderMeta(year, totalCount)}
-              {this.props.children}
+              {children}
             </div>
           );
         })}
@@ -245,11 +242,11 @@ GitHubCalendar.propTypes = {
 };
 
 GitHubCalendar.defaultProps = {
-  blockSize: 10,
+  blockSize: 12,
   blockMargin: 2,
   color: null,
   dateFormat: 'MMM D, YYYY',
-  fontSize: 12,
+  fontSize: 14,
   fullYear: true,
   theme: DEFAULT_THEME,
   tooltips: true,

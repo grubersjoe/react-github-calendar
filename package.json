@@ -1,6 +1,6 @@
 {
   "name": "react-github-calendar",
-  "version": "0.13.1",
+  "version": "0.14.0",
   "license": "MIT",
   "author": "Jonathan Gruber <gruberjonathan@gmail.com>",
   "description": "A React component to display a GitHub contributions graph",
@@ -69,8 +69,7 @@
     "react-dev-utils": "^4.2.1",
     "style-loader": "0.19.0",
     "sw-precache-webpack-plugin": "0.11.4",
-    "typeface-roboto": "^0.0.54",
-    "typeface-roboto-mono": "^0.0.54",
+    "typeface-public-sans": "^1.0.0",
     "url-loader": "0.6.2",
     "webpack": "3.8.1",
     "webpack-bundle-analyzer": "^3.0.2",

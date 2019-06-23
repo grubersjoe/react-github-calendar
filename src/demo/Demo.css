@@ -1,9 +1,13 @@
+html {
+  font-family: 'Public Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1b1b1b;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.4;
-  color: #1b1b1b;
 }
 
 header {
@@ -11,20 +15,14 @@ header {
   align-items: center;
   justify-content: center;
   padding: 1.5rem 0.75rem;
-  background-image: linear-gradient(120deg, hsl(210, 76%, 34%), hsl(150, 76%, 34%));
+  background-image: linear-gradient(120deg, hsl(313, 49%, 18%), hsl(313, 78%, 20%));
   color: #fff;
-  font-size: 120%;
+  font-size: 110%;
   text-align: center;
 }
 
 header a {
   color: inherit;
-  font-style: italic;
-}
-
-.container {
-  margin: 1.5rem auto;
-  padding: 0 16px;
 }
 
 h1,
@@ -34,58 +32,86 @@ header {
 }
 
 h1 {
-  margin: 0 0 1rem;
-  font-size: 1.75rem;
-  font-weight: 600;
+  margin: 0 0 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
 }
 
 h2 {
-  margin: 1rem 0 0.5rem;
-  font-size: 1.1rem;
-  font-weight: 600;
+  margin: 3rem 0 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+h3 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.25rem;
 }
 
 p {
-  margin: 0 0 0.75rem;
+  margin: 0 0 1.5rem;
 }
 
 a {
-  color: hsl(210, 76%, 34%);
+  color: hsl(313, 78%, 25%);
   text-decoration: none;
 }
 
-pre,
-code {
-  border-radius: 0.2rem;
-  font-size: 84%;
-  font-family: 'Roboto Mono', monospace;
-  background-color: hsl(209, 24%, 94%);
+a:hover {
+  text-decoration: underline;
+}
+
+main {
+  hyphens: auto;
+}
+
+section :last-child {
+  margin-bottom: 0;
+}
+
+hr {
+  margin: 2.5rem 0;
+  height: 3px;
+  background-color: #ebedf0;
+  border: 0;
+}
+
+code,
+pre {
+  background: #ebedf0;
+  border-radius: 0.25em;
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+  font-size: 16px;
 }
 
 pre {
-  margin: 0 0 0.5rem;
-  padding: 0.6rem;
+  margin: 0 0 1.5rem;
+  padding: 1em 1.25em;
   overflow-x: auto;
 }
 
-code {
-  padding: 0.2rem;
+p code,
+li code,
+td code {
+  margin: 0 0.3em;
+  padding: 0.3em 0.4em;
+  line-height: 1.2;
 }
 
 table {
   width: 100%;
   min-width: 540px;
-  margin: 1rem 0 3rem;
+  margin: 0;
   border-collapse: collapse;
   font-size: 90%;
 }
 
 thead {
-  border-bottom: 2px solid hsl(216, 14%, 93%);
+  border-bottom: 2px solid hsl(216, 14%, 80%);
 }
 
 tr {
-  border-bottom: 1px solid hsl(216, 14%, 93%);
+  border-bottom: 1px solid hsl(216, 14%, 80%);
 }
 
 th {
@@ -104,7 +130,7 @@ td:not(:last-of-type) {
 }
 
 td:not(:last-of-type) {
-  font-family: 'Roboto Mono', monospace;
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
   font-size: 90%;
   white-space: nowrap;
 }
@@ -113,17 +139,65 @@ td code {
   font-size: 90%;
 }
 
+.container {
+  margin: 1.5rem auto;
+  padding: 0 16px;
+}
+
 .react-github-calendar {
-  margin: 1rem 0;
+  margin: 0 0 1.5rem;
 }
 
 @media (min-width: 768px) {
+  html {
+    font-size: 18px;
+  }
+
   header {
-    padding: 2.5rem 1.5rem;
+    padding: 2rem 1.5rem;
+  }
+
+  h1 {
+    font-size: 38px;
+  }
+
+  pre {
+    display: inline-block;
   }
 
   .container {
-    width: 46rem;
-    margin: 2rem auto;
+    width: 740px;
+    margin: 3rem auto;
+  }
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
+
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none;
+  }
+
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
   }
 }

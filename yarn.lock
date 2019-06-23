@@ -7874,15 +7874,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typeface-roboto-mono@^0.0.54:
-  version "0.0.54"
-  resolved "https://registry.yarnpkg.com/typeface-roboto-mono/-/typeface-roboto-mono-0.0.54.tgz#78e706e0a4158b2b670ed3cdf2269e7a54e671cd"
-  integrity sha512-UjE3Y4Bk7DRA3m9aCN4pp8OOGFEYbJH2wK1Qj3Xv2TjEqEJo+oEmQcXwnt1/DKSYAWdKxSL3D/4ida7OoBFkwQ==
-
-typeface-roboto@^0.0.54:
-  version "0.0.54"
-  resolved "https://registry.yarnpkg.com/typeface-roboto/-/typeface-roboto-0.0.54.tgz#8f02c9a18d1cfa7f49381a6ff0d21ff061f38ad2"
-  integrity sha512-sOFA1FXgP0gOgBYlS6irwq6hHYA370KE3dPlgYEJHL3PJd5X8gQE0RmL79ONif6fL5JZuGDj+rtOrFeOqz5IZQ==
+typeface-public-sans@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/typeface-public-sans/-/typeface-public-sans-1.0.0.tgz#e8ed502d1ed4ff5b35acf5daeae97d737ede8ca5"
+  integrity sha512-d5aSOYBSqxK5+iTGI0FSnDYgRzFspThh1HrCgg9UaiQsL70G5wMyODiR3t/FB3SnEC9AY857UkJxs3mYEKe8VA==
 
 uglify-js@3.4.x:
   version "3.4.10"
