@@ -5,7 +5,13 @@ import PropTypes from 'prop-types';
 import format from 'date-fns/format';
 import getYear from 'date-fns/get_year';
 
-import { DEFAULT_THEME, LINE_HEIGHT, NAMESPACE, TITLE_SCALE_FACTOR } from '../utils/constants';
+import {
+  DEFAULT_THEME,
+  LINE_HEIGHT,
+  MIN_DISTANCE_MONTH_LABELS,
+  NAMESPACE,
+  TITLE_SCALE_FACTOR,
+} from '../utils/constants';
 import { getGitHubGraphData } from '../services/contributions';
 import { createCalendarTheme } from '../utils';
 
@@ -70,7 +76,6 @@ class GitHubCalendar extends Component {
     };
   }
 
-  // noinspection JSMethodCanBeStatic
   getClassNameFor(object) {
     return `${NAMESPACE}__${object}`;
   }
@@ -89,10 +94,9 @@ class GitHubCalendar extends Component {
   }
 
   getTooltipMessage(day) {
-    return `<strong>${day.info.count} contributions</strong> on ${format(
-      day.date,
-      this.props.dateFormat,
-    )}`;
+    const { dateFormat } = this.props;
+
+    return `<strong>${day.info.count} contributions</strong> on ${format(day.date, dateFormat)}`;
   }
 
   renderTitle() {
@@ -113,6 +117,12 @@ class GitHubCalendar extends Component {
 
   renderMonthLabels(monthLabels) {
     const { blockSize, blockMargin, fontSize } = this.props;
+
+    // Remove the first month label if there's not enough space to the next one
+    // (end of previous month)
+    if (monthLabels[1].x - monthLabels[0].x <= MIN_DISTANCE_MONTH_LABELS) {
+      monthLabels.shift();
+    }
 
     return monthLabels.map(month => (
       <text
@@ -172,9 +182,10 @@ class GitHubCalendar extends Component {
 
   render() {
     const { error, graphs } = this.state;
-    const { children } = this.props;
 
     const styles = this.getStyles();
+    const wrapperStyle = Object.assign({}, styles.wrapper, this.props.style);
+
     const { width, height } = this.getDimensions();
 
     if (error) {
@@ -186,7 +197,7 @@ class GitHubCalendar extends Component {
     }
 
     return (
-      <article className={NAMESPACE} style={Object.assign({}, styles.wrapper, this.props.style)}>
+      <article className={NAMESPACE} style={wrapperStyle}>
         {this.renderTitle()}
         {graphs.map((graph, i) => {
           const { year, blocks, monthLabels, totalCount } = graph;
@@ -211,7 +222,7 @@ class GitHubCalendar extends Component {
               </svg>
 
               {this.renderMeta(year, totalCount)}
-              {children}
+              {this.props.children}
             </div>
           );
         })}

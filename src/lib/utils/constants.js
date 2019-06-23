@@ -12,4 +12,5 @@ export const DEFAULT_THEME = {
 export const NAMESPACE = 'react-github-calendar';
 
 export const LINE_HEIGHT = 1.5;
+export const MIN_DISTANCE_MONTH_LABELS = 2;
 export const TITLE_SCALE_FACTOR = 1.25;
