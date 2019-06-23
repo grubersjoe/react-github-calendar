@@ -1,4 +1,4 @@
-# GitHub Contributions Calendar
+# React GitHub Contributions Calendar
 
 A React component to display a GitHub contributions graph.
 

@@ -9,7 +9,7 @@ export const DEFAULT_THEME = {
   grade0: '#ebedf0',
 };
 
-export const NAMESPACE = 'github-contributions-calendar';
+export const NAMESPACE = 'react-github-calendar';
 
 export const LINE_HEIGHT = 1.5;
 export const TITLE_SCALE_FACTOR = 1.25;
