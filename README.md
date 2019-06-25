@@ -2,7 +2,7 @@
 
 A React component to display a GitHub contributions graph.
 
-<!-- TODO: image -->
+![Screenshot](preview.png#1)
 
 [Demo and documentation](https://grubersjoe.github.io/react-github-calendar/)
 
