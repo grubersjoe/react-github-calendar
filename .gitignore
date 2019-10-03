@@ -1,12 +1,11 @@
-.idea/
+node_modules/
 
-/node_modules
-
-/build
-/demo
-/coverage
+build/
+demo/
+coverage/
 
 .env.*
 .log*
 
+.vscode/
 .DS_Store

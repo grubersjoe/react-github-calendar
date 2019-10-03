@@ -16,17 +16,26 @@ function getContributionsForDate(data, date) {
   return data.contributions.find(contrib => contrib.date === date);
 }
 
-function getContributionCountForFullYear(data) {
+function getContributionCountForLastYear(data) {
   const { contributions } = data;
   const now = new Date();
 
+  // Start date for accumulating the values
   const begin = contributions.findIndex(contrib => contrib.date === format(now, DATE_FORMAT));
-  const end = contributions.findIndex(
-    contrib => contrib.date === format(subYears(now, 1), DATE_FORMAT),
-  );
 
-  if (begin < 0 || end < 0) {
+  // No data for today given
+  if (begin === -1) {
     return 0;
+  }
+
+  // Check if there is data for the day one year past
+  let end = contributions.findIndex(contrib => {
+    return contrib.date === format(subYears(now, 1), DATE_FORMAT);
+  });
+
+  // Take the oldest contribution otherwise, if not enough data exists
+  if (end === -1) {
+    end = contributions.length - 1;
   }
 
   return contributions.slice(begin, end).reduce((acc, contrib) => acc + contrib.count, 0);
@@ -109,7 +118,7 @@ function getGraphDataForYear(year, data, fullYear) {
   const blocks = getBlocksForYear(year, data, fullYear);
   const monthLabels = getMonthLabels(blocks, fullYear);
   const totalCount = fullYear
-    ? getContributionCountForFullYear(data)
+    ? getContributionCountForLastYear(data)
     : getContributionCountForYear(data, year);
 
   return {

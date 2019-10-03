@@ -150,8 +150,8 @@ class GitHubCalendar extends Component {
             y={textHeight + (blockSize + blockMargin) * y}
             width={blockSize}
             height={blockSize}
-            fill={theme[`grade${day.info.intensity}`]}
-            data-tip={day.info.count ? this.getTooltipMessage(day) : null}
+            fill={theme[`grade${day.info ? day.info.intensity : 0}`]}
+            data-tip={day.info && day.info.count ? this.getTooltipMessage(day) : null}
             key={day.date}
           />
         )),
