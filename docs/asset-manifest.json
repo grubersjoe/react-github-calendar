@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/react-github-calendar/static/css/main.6ce9a62f.chunk.css",
+    "main.js": "/react-github-calendar/static/js/main.3e628b17.chunk.js",
+    "main.js.map": "/react-github-calendar/static/js/main.3e628b17.chunk.js.map",
+    "runtime-main.js": "/react-github-calendar/static/js/runtime-main.d100f5e6.js",
+    "runtime-main.js.map": "/react-github-calendar/static/js/runtime-main.d100f5e6.js.map",
+    "static/css/2.21590139.chunk.css": "/react-github-calendar/static/css/2.21590139.chunk.css",
+    "static/js/2.e9bbbe5a.chunk.js": "/react-github-calendar/static/js/2.e9bbbe5a.chunk.js",
+    "static/js/2.e9bbbe5a.chunk.js.map": "/react-github-calendar/static/js/2.e9bbbe5a.chunk.js.map",
+    "index.html": "/react-github-calendar/index.html",
+    "precache-manifest.6c62f81537dd3d93b3da5d809b2f2c58.js": "/react-github-calendar/precache-manifest.6c62f81537dd3d93b3da5d809b2f2c58.js",
+    "service-worker.js": "/react-github-calendar/service-worker.js",
+    "static/css/2.21590139.chunk.css.map": "/react-github-calendar/static/css/2.21590139.chunk.css.map",
+    "static/css/main.6ce9a62f.chunk.css.map": "/react-github-calendar/static/css/main.6ce9a62f.chunk.css.map",
+    "static/media/index.css": "/react-github-calendar/static/media/public-sans-900italic.d41d8cd9.woff"
+  }
+}
