@@ -28,7 +28,11 @@ const Demo = () => (
         <h2>Installation</h2>
         <CodeBlock style={{ marginTop: '0.5rem' }}>yarn install react-github-calendar</CodeBlock>
         <p>Then in your code:</p>
-        <CodeBlock>import GitHubCalendar from 'react-github-calendar'</CodeBlock>
+        <CodeBlock>
+          {`import GitHubCalendar from 'react-github-calendar';
+
+<GitHubCalendar username="grubersjoe" />`}
+        </CodeBlock>
       </section>
 
       <section>
@@ -165,7 +169,7 @@ const Demo = () => (
 
         <h3 id="show-contributions-of-last-year">Show contributions of last year</h3>
         <p>By default the last whole year is shown.</p>
-        <CodeBlock>{`<GitHubCalendar username=${username} />`}</CodeBlock>
+        <CodeBlock>{`<GitHubCalendar username="${username}" />`}</CodeBlock>
         <GitHubCalendar username={username} />
 
         <hr />
@@ -175,7 +179,7 @@ const Demo = () => (
           You might prefer the calendar for the current year to start in January (instead of showing
           the last twelve months).
         </p>
-        <CodeBlock>{`<GitHubCalendar username=${username} fullYear={false} />`}</CodeBlock>
+        <CodeBlock>{`<GitHubCalendar username="${username}" fullYear={false} />`}</CodeBlock>
         <GitHubCalendar username={username} fullYear={false} />
 
         <hr />
@@ -183,7 +187,7 @@ const Demo = () => (
         <h3 id="show-several-years">Show several years</h3>
         <p>To display multiple years, pass an array into the component:</p>
         <CodeBlock>
-          {`<GitHubCalendar username=${username} years={[2018, 2017]} fullYear={false}/>`}
+          {`<GitHubCalendar username="${username}" years={[2018, 2017]} fullYear={false}/>`}
         </CodeBlock>
         <GitHubCalendar username={username} years={[2018, 2017]} fullYear={false} />
 
@@ -196,7 +200,7 @@ const Demo = () => (
           a color is set, the theme will be ignored. If neither color or theme is set, the standard
           GitHub colors will be used (as in these examples).
         </p>
-        <CodeBlock>{`<GitHubCalendar username=${username} color="hsl(203, 82%, 33%)" />`}</CodeBlock>
+        <CodeBlock>{`<GitHubCalendar username="${username}" color="hsl(203, 82%, 33%)" />`}</CodeBlock>
         <GitHubCalendar username={username} color="hsl(203, 82%, 33%)" />
         <p>Set the colors explicitly like this:</p>
         <CodeBlock>
@@ -210,7 +214,7 @@ const Demo = () => (
   grade0: '#ebedf0',
 };
 
-<GitHubCalendar username=${username} theme={defaultTheme} />`}
+<GitHubCalendar username="${username}" theme={defaultTheme} />`}
         </CodeBlock>
         <GitHubCalendar username={username} />
 
@@ -225,7 +229,7 @@ const Demo = () => (
         </p>
         <CodeBlock>
           {`<div>
-  <GitHubCalendar username=${username}>
+  <GitHubCalendar username="${username}">
     <ReactTooltip delayShow={50} html />
   </GitHubCalendar>
 </div>`}
@@ -240,14 +244,14 @@ const Demo = () => (
 
         <h3 id="different-block-size">Different block size</h3>
         <p>The block size (12 per default) is configurable:</p>
-        <CodeBlock>{`<GitHubCalendar username=${username} blockSize={10} />`}</CodeBlock>
+        <CodeBlock>{`<GitHubCalendar username="${username}" blockSize={10} />`}</CodeBlock>
         <GitHubCalendar username={username} blockSize={10} />
 
         <hr />
 
         <h3 id="different-block-margin">Different block margin (and size)</h3>
         <p>Analogously the block margin can be adjusted.</p>
-        <CodeBlock>{`<GitHubCalendar username=${username} blockSize={10} blockMargin={4} />`}</CodeBlock>
+        <CodeBlock>{`<GitHubCalendar username="${username}" blockSize={10} blockMargin={4} />`}</CodeBlock>
         <GitHubCalendar username={username} blockSize={10} blockMargin={4} />
 
         <hr />
@@ -257,7 +261,7 @@ const Demo = () => (
           Finally, there is a property to set the fontsize of the text inside the chart. This comes
           in handy, if a large block size or margin is set. The default base font size is 14px.
         </p>
-        <CodeBlock>{`<GitHubCalendar username=${username} fontSize={14} blockSize={12} />`}</CodeBlock>
+        <CodeBlock>{`<GitHubCalendar username="${username}" fontSize={14} blockSize={12} />`}</CodeBlock>
         <GitHubCalendar username={username} fontSize={14} blockSize={12} />
       </section>
     </main>
