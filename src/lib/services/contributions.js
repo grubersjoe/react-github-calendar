@@ -9,7 +9,7 @@ import parse from 'date-fns/parse';
 import setDay from 'date-fns/set_day';
 import subYears from 'date-fns/sub_years';
 
-const API_URL = 'https://grubersjoe-github-contributions-api.now.sh/v1/';
+const API_URL = 'https://github-calendar.now.sh/v1/';
 const DATE_FORMAT = 'YYYY-MM-DD';
 
 function getContributionsForDate(data, date) {
