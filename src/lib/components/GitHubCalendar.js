@@ -22,8 +22,20 @@ class GitHubCalendar extends Component {
   };
 
   componentDidMount() {
-    const { years, username, fullYear } = this.props;
+    this.fetchData(this.props);
+  }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.username !== prevProps.username) {
+      this.setState({
+        graphs: null,
+        error: false,
+      });
+      this.fetchData(this.props);
+    }
+  }
+
+  fetchData({ years, username, fullYear }) {
     getGitHubGraphData({
       years,
       username,
@@ -60,6 +72,9 @@ class GitHubCalendar extends Component {
         marginBottom: '0.25rem',
         backgroundColor: theme.background,
         overflow: 'visible',
+      },
+      loading: {
+        fontSize: '90%',
       },
       meta: {
         fontSize,
@@ -190,7 +205,11 @@ class GitHubCalendar extends Component {
     }
 
     if (!graphs) {
-      return <div className={this.getClassNameFor('loading')}>Loading …</div>;
+      return (
+        <div className={this.getClassNameFor('loading')} style={this.getStyles().loading}>
+          Loading …
+        </div>
+      );
     }
 
     return (

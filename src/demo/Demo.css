@@ -1,3 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
 html {
   font-family: 'Public Sans', sans-serif;
   font-size: 16px;
@@ -79,7 +87,7 @@ hr {
 code,
 pre {
   background: #ebedf0;
-  border-radius: 0.25em;
+  border-radius: 0.2em;
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
   font-size: 14px;
 }
@@ -139,6 +147,48 @@ td code {
   font-size: 90%;
 }
 
+form {
+  margin: 2.5rem 0 0;
+}
+
+input,
+button {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-radius: 0.2em;
+  font-size: 90%;
+  transition: all 200ms ease-in-out;
+}
+
+input {
+  margin-right: 0.5em;
+  padding: calc(0.5em + 2px) 0.75em;
+  background-color: #fff;
+  border: none;
+}
+
+input:focus {
+  background-color: #eee;
+}
+
+input:invalid {
+  box-shadow: none;
+}
+
+button {
+  padding: 0.5em 1em;
+  background-color: transparent;
+  border: 2px solid #eee;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:focus,
+button:hover {
+  background: #eee;
+  color: #1b1b1b;
+}
+
 .container {
   margin: 1.5rem auto;
   padding: 0 16px;
@@ -153,16 +203,18 @@ td code {
     font-size: 18px;
   }
 
-  header {
-    padding: 2rem 1.5rem;
-  }
-
   h1 {
-    font-size: 38px;
+    font-size: 40px;
   }
 
   pre {
     display: inline-block;
+  }
+
+  input,
+  button {
+    width: auto;
+    margin-bottom: 0;
   }
 
   .container {
