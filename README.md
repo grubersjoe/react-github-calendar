@@ -1,4 +1,4 @@
-# React GitHub Contributions Calendar
+# React GitHub Calendar
 
 A React component to display a GitHub contributions graph.
 
@@ -6,4 +6,4 @@ A React component to display a GitHub contributions graph.
 
 [Demo and documentation](https://grubersjoe.github.io/react-github-calendar/)
 
-Library size: 13.5 KB (after gzip)
+Library size: 3.6 KB (after gzip)

@@ -250,12 +250,12 @@ class GitHubCalendar extends Component {
 GitHubCalendar.propTypes = {
   blockSize: PropTypes.number,
   blockMargin: PropTypes.number,
+  children: PropTypes.node,
   color: PropTypes.string,
   dateFormat: PropTypes.string,
   fontSize: PropTypes.number,
   fullYear: PropTypes.bool,
   theme: PropTypes.objectOf(PropTypes.string),
-  tooltips: PropTypes.bool,
   username: PropTypes.string.isRequired,
   years: PropTypes.arrayOf(PropTypes.number),
 };
@@ -268,7 +268,6 @@ GitHubCalendar.defaultProps = {
   fontSize: 14,
   fullYear: true,
   theme: DEFAULT_THEME,
-  tooltips: true,
   years: [Number(format(new Date(), 'YYYY'))],
 };
 

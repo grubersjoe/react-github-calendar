@@ -1,0 +1,21 @@
+{
+  "extends": ["standard", "standard-react"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "browser": true
+  },
+  "ignorePatterns": ["*.lock", "node_modules/", "build/", "public/"],
+  "plugins": ["react"],
+  "rules": {
+    "react/jsx-boolean-value": 0,
+    "react/no-did-update-set-state": 0,
+    "comma-dangle": 0,
+    "jsx-quotes": 0,
+    "semi": 0,
+    "space-before-function-paren": 0
+  }
+}

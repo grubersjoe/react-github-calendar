@@ -1,8 +1,8 @@
 node_modules/
 
 build/
-demo/
-coverage/
+dist/
+example/
 
 .env.*
 .log*
