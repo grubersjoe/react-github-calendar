@@ -6,4 +6,4 @@ A React component to display a GitHub contributions graph.
 
 [Demo and documentation](https://grubersjoe.github.io/react-github-calendar/)
 
-Library size: 3.6 KB (after gzip)
+Library size: 11 KB (minified and gzipped)
