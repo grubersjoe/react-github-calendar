@@ -4,6 +4,7 @@
 
 LICENSE
 
+*.directory
 *.lock
 *.ico
 *.png

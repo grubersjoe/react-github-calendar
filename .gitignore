@@ -2,7 +2,6 @@ node_modules/
 
 build/
 dist/
-example/
 
 .env.*
 .log*
