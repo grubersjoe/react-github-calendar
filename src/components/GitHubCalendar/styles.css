@@ -1,0 +1,15 @@
+.chart {
+  margin-bottom: 1rem;
+}
+
+.calendar {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 0.25rem;
+  overflow: visible;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
+}

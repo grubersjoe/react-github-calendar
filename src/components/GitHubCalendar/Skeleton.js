@@ -8,7 +8,7 @@ function injectCSSAnimation() {
 
   const styleSheet = elem.sheet;
 
-  let keyframes = `
+  const keyframes = `
     @keyframes ${animationName} {
       100% {
         transform: translateX(100%);
@@ -24,7 +24,7 @@ function getWrapperStyles({ width, height, background }) {
     position: 'relative',
     overflow: 'hidden',
     width: `${width}px`,
-    height: `190px`,
+    height: '190px',
     borderRadiu: '0.3em',
     background,
   };

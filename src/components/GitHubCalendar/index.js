@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-// Import modules separately to reduce bundle size
 import format from 'date-fns/format';
 import getYear from 'date-fns/get_year';
+
+import styles from './styles.css';
 
 import {
   DEFAULT_THEME,
@@ -11,9 +11,9 @@ import {
   MIN_DISTANCE_MONTH_LABELS,
   NAMESPACE,
   TITLE_SCALE_FACTOR,
-} from '../utils/constants';
-import { getGitHubGraphData } from '../services/contributions';
-import { createCalendarTheme } from '../utils';
+} from '../../utils/constants';
+import { getGitHubGraphData } from '../../services/contributions';
+import { createCalendarTheme } from '../../utils';
 
 class GitHubCalendar extends Component {
   state = {
@@ -55,41 +55,12 @@ class GitHubCalendar extends Component {
     return theme ? Object.assign({}, DEFAULT_THEME, theme) : DEFAULT_THEME;
   }
 
-  // Unfortunately there is no support for CSS modules right now...
-  getStyles() {
-    const { fontSize, theme } = this.props;
+  getClassName(name, extra) {
+    if (extra) {
+      return `${NAMESPACE}__${name} ${extra}`;
+    }
 
-    return {
-      anchor: {
-        color: 'inherit',
-      },
-      chart: {
-        marginBottom: '1rem',
-      },
-      calendar: {
-        maxWidth: '100%',
-        height: 'auto',
-        marginBottom: '0.25rem',
-        backgroundColor: theme.background,
-        overflow: 'visible',
-      },
-      loading: {
-        fontSize: '90%',
-      },
-      meta: {
-        fontSize,
-      },
-      title: {
-        marginBottom: '0.5rem',
-        paddingBottom: '0.25rem',
-        borderBottom: `2px solid ${this.getTheme().grade0}`,
-        fontSize: `${Math.round(fontSize * TITLE_SCALE_FACTOR)}px`,
-      },
-    };
-  }
-
-  getClassNameFor(object) {
-    return `${NAMESPACE}__${object}`;
+    return `${NAMESPACE}__${name}`;
   }
 
   getDimensions() {
@@ -112,14 +83,18 @@ class GitHubCalendar extends Component {
   }
 
   renderTitle() {
-    const { username } = this.props;
+    const { username, fontSize } = this.props;
+    const style = {
+      borderBottom: `2px solid ${this.getTheme().grade0}`,
+      fontSize: `${Math.round(fontSize * TITLE_SCALE_FACTOR)}px`,
+    };
 
     return (
-      <div className={this.getClassNameFor('title')} style={this.getStyles().title}>
+      <div className={this.getClassName('title', styles.title)} style={style}>
         <a
           href={`https://github.com/${username}`}
           title="GitHub profile"
-          style={this.getStyles().anchor}
+          style={{ color: 'inherit' }}
         >
           @{username} on GitHub
         </a>
@@ -129,6 +104,10 @@ class GitHubCalendar extends Component {
 
   renderMonthLabels(monthLabels) {
     const { blockSize, blockMargin, fontSize } = this.props;
+    const style = {
+      fill: this.getTheme().text,
+      fontSize,
+    };
 
     // Remove the first month label if there's not enough space to the next one
     // (end of previous month)
@@ -137,15 +116,7 @@ class GitHubCalendar extends Component {
     }
 
     return monthLabels.map(month => (
-      <text
-        x={(blockSize + blockMargin) * month.x}
-        y={fontSize}
-        key={month.x}
-        style={{
-          fill: this.getTheme().text,
-          fontSize,
-        }}
-      >
+      <text x={(blockSize + blockMargin) * month.x} y={fontSize} key={month.x} style={style}>
         {month.label}
       </text>
     ));
@@ -179,11 +150,11 @@ class GitHubCalendar extends Component {
   }
 
   renderMeta(year, totalCount) {
-    const { fullYear } = this.props;
+    const { fullYear, fontSize } = this.props;
     const isCurrentYear = getYear(new Date()) === year;
 
     return (
-      <div className={this.getClassNameFor('meta')} style={this.getStyles().meta}>
+      <div className={this.getClassName('meta')} style={{ fontSize }}>
         {isCurrentYear && fullYear ? 'Last year' : year}
         {' – '}
         {isCurrentYear && !fullYear ? 'So far ' : null}
@@ -193,10 +164,8 @@ class GitHubCalendar extends Component {
   }
 
   render() {
-    const { children, style } = this.props;
+    const { children, style, theme } = this.props;
     const { error, graphs } = this.state;
-
-    const styles = this.getStyles();
 
     const { width, height } = this.getDimensions();
 
@@ -205,11 +174,7 @@ class GitHubCalendar extends Component {
     }
 
     if (!graphs) {
-      return (
-        <div className={this.getClassNameFor('loading')} style={this.getStyles().loading}>
-          Loading …
-        </div>
-      );
+      return <div className={this.getClassName('loading', styles.loading)}>Loading …</div>;
     }
 
     return (
@@ -219,19 +184,14 @@ class GitHubCalendar extends Component {
           const { year, blocks, monthLabels, totalCount } = graph;
 
           return (
-            <div
-              key={year}
-              className={this.getClassNameFor('chart')}
-              style={i < graphs.length - 1 ? styles.chart : null}
-            >
+            <div key={year} className={this.getClassName('chart', styles.chart)}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width={width}
                 height={height}
                 viewBox={`0 0 ${width} ${height}`}
-                textRendering="optimizeLegibility"
-                className={this.getClassNameFor('calendar')}
-                style={styles.calendar}
+                className={this.getClassName('calendar', styles.calendar)}
+                style={{ backgroundColor: theme.background }}
               >
                 {this.renderMonthLabels(monthLabels)}
                 {this.renderBlocks(blocks)}
