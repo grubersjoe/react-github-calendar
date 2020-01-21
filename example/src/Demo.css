@@ -161,7 +161,8 @@ button {
 }
 
 input {
-  margin-right: 0.5em;
+  min-width: 15em;
+  margin-right: 0.75em;
   padding: calc(0.5em + 2px) 0.75em;
   background-color: #fff;
   border: none;

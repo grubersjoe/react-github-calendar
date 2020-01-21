@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, FormEventHandler } from 'react';
 import GitHubCalendar from 'react-github-calendar';
 import ReactTooltip from 'react-tooltip';
 import { format } from 'date-fns';
@@ -9,13 +9,15 @@ import './Demo.css';
 import CodeBlock from './CodeBlock';
 import ForkMe from './ForkMe';
 
-const Demo = () => {
+const Demo: React.FC = () => {
   const [username, setUsername] = useState('grubersjoe');
-  const input = React.createRef();
+  const input = React.createRef<HTMLInputElement>();
 
-  const updateUsername = event => {
+  const updateUsername: FormEventHandler = event => {
     event.preventDefault();
-    setUsername(String(input.current.value).toLowerCase());
+    if (input.current) {
+      setUsername(String(input.current.value).toLowerCase());
+    }
   };
 
   return (
@@ -33,7 +35,7 @@ const Demo = () => {
       </header>
 
       <main className="container">
-        <GitHubCalendar username={username} />
+        <GitHubCalendar username={username} fullYear={false} />
 
         <section>
           <h2>Installation</h2>
@@ -61,7 +63,7 @@ const Demo = () => {
               <tbody>
                 <tr>
                   <td>username</td>
-                  <td>String</td>
+                  <td>string</td>
                   <td>-</td>
                   <td>
                     A GitHub username (<em>required, obviously</em>)
@@ -69,45 +71,45 @@ const Demo = () => {
                 </tr>
                 <tr>
                   <td>blockMargin</td>
-                  <td>Number</td>
+                  <td>number</td>
                   <td>2</td>
                   <td>Margin between blocks</td>
                 </tr>
                 <tr>
                   <td>blockSize</td>
-                  <td>Number</td>
+                  <td>number</td>
                   <td>12</td>
                   <td>Size of one block (one day)</td>
                 </tr>
                 <tr>
                   <td>color</td>
                   <td>
-                    String|<a href="https://www.npmjs.com/package/color">Color</a>
+                    string|<a href="https://www.npmjs.com/package/tinycolor2">Color</a>
                   </td>
-                  <td>null</td>
+                  <td>undefined</td>
                   <td>Base color to compute graph intensity colors (see below)</td>
                 </tr>
                 <tr>
                   <td>dateFormat</td>
-                  <td>String</td>
-                  <td>'MMM D, YYYY'</td>
+                  <td>string</td>
+                  <td>'MMM d, yyyy'</td>
                   <td>
                     A{' '}
                     <code>
-                      <a href="https://date-fns.org/v1.29.0/docs/format">date-fns/format</a>
+                      <a href="https://date-fns.org/v2.9.0/docs/format">date-fns/format</a>
                     </code>{' '}
                     compatible date string
                   </td>
                 </tr>
                 <tr>
                   <td>fontSize</td>
-                  <td>Number</td>
+                  <td>number</td>
                   <td>14</td>
                   <td>Base font size for text in chart. The title above (@user) is 25% larger.</td>
                 </tr>
                 <tr>
                   <td>fullYear</td>
-                  <td>Boolean</td>
+                  <td>boolean</td>
                   <td>true</td>
                   <td>
                     Whether to show the whole last year starting now or this year only (starting in
@@ -116,7 +118,7 @@ const Demo = () => {
                 </tr>
                 <tr>
                   <td>theme</td>
-                  <td>Object</td>
+                  <td>Theme</td>
                   <td>
                     <em>GitHub theme</em>
                   </td>
@@ -124,7 +126,7 @@ const Demo = () => {
                 </tr>
                 <tr>
                   <td>tooltips</td>
-                  <td>Boolean</td>
+                  <td>boolean</td>
                   <td>true</td>
                   <td>
                     Whether to add <code>data-tip</code> attributes to the blocks. Add{' '}
@@ -134,8 +136,8 @@ const Demo = () => {
                 </tr>
                 <tr>
                   <td>years</td>
-                  <td>Number[]</td>
-                  <td>[{format(new Date(), 'YYYY')}]</td>
+                  <td>number[]</td>
+                  <td>[{format(new Date(), 'yyyy')}]</td>
                   <td>
                     List of to be rendered years. Defaults to the current year. If no data is
                     available the chart for this year will be ommited.
@@ -216,16 +218,16 @@ const Demo = () => {
           <p>Set the colors explicitly like this:</p>
           <CodeBlock>
             {`const defaultTheme = {
-    background: 'transparent',
-    text: '#000',
-    grade4: '#196127',
-    grade3: '#239a3b',
-    grade2: '#7bc96f',
-    grade1: '#c6e48b',
-    grade0: '#ebedf0',
-  };
+  background: 'transparent',
+  text: '#000',
+  grade4: '#196127',
+  grade3: '#239a3b',
+  grade2: '#7bc96f',
+  grade1: '#c6e48b',
+  grade0: '#ebedf0',
+};
 
-  <GitHubCalendar username="${username}" theme={defaultTheme} />`}
+<GitHubCalendar username="${username}" theme={defaultTheme} />`}
           </CodeBlock>
           <GitHubCalendar username={username} />
 

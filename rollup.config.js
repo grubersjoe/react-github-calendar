@@ -1,5 +1,6 @@
 import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
+import copy from 'rollup-plugin-copy';
 import external from 'rollup-plugin-peer-deps-external';
 import filesize from 'rollup-plugin-filesize';
 import postcss from 'rollup-plugin-postcss';
@@ -8,8 +9,10 @@ import url from 'rollup-plugin-url';
 
 import pkg from './package.json';
 
+const extensions = ['.js', '.jsx', '.ts', '.tsx'];
+
 export default {
-  input: 'src/index.js',
+  input: 'src/index.ts',
   output: [
     {
       file: pkg.main,
@@ -31,10 +34,16 @@ export default {
     }),
     url(),
     babel({
+      extensions,
       exclude: 'node_modules/**',
     }),
-    resolve(),
+    resolve({
+      extensions,
+    }),
     commonjs(),
+    copy({
+      targets: [{ src: 'src/*.d.ts', dest: 'dist/' }],
+    }),
     filesize(),
   ],
 };

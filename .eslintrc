@@ -1,21 +1,27 @@
 {
-  "extends": ["standard", "standard-react"],
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module"
-  },
   "env": {
     "es6": true,
     "browser": true
   },
-  "ignorePatterns": ["*.lock", "node_modules/", "build/", "public/"],
-  "plugins": ["react"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react-hooks"],
+  "ignorePatterns": ["*.css", "*.lock", "node_modules/", "build/", "public/"],
   "rules": {
-    "react/jsx-boolean-value": 0,
-    "react/no-did-update-set-state": 0,
-    "comma-dangle": 0,
-    "jsx-quotes": 0,
-    "semi": 0,
-    "space-before-function-paren": 0
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/indent": 0,
+    "react-hooks/rules-of-hooks": 2,
+    "react-hooks/exhaustive-deps": 1,
+    "react/no-unescaped-entities": 0,
+    "react/prop-types": 0
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

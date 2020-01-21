@@ -6,7 +6,7 @@ function injectCSSAnimation() {
   const elem = document.createElement('style');
   document.head.appendChild(elem);
 
-  const styleSheet = elem.sheet;
+  const styleSheet = elem.sheet as CSSStyleSheet;
 
   const keyframes = `
     @keyframes ${animationName} {

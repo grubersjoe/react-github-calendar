@@ -1,4 +1,15 @@
 // GitHub theme
+export type Theme = {
+  [key: string]: string;
+  background: string;
+  text: string;
+  grade4: string;
+  grade3: string;
+  grade2: string;
+  grade1: string;
+  grade0: string;
+};
+
 export const DEFAULT_THEME = {
   background: 'transparent',
   text: '#000',
