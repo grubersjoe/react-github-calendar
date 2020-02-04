@@ -35,7 +35,7 @@ const Demo: React.FC = () => {
       </header>
 
       <main className="container">
-        <GitHubCalendar username={username} fullYear={false} />
+        <GitHubCalendar username={username} />
 
         <section>
           <h2>Installation</h2>

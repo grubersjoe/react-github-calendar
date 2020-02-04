@@ -45,20 +45,21 @@ const GitHubCalendar: React.FC<Props> = ({
   years = [Number(format(new Date(), 'yyyy'))],
 }) => {
   const [graphs, setGraphs] = useState<GraphData[] | null>(null);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<Error | null>(null);
 
   const prevYears = usePrevious(years);
   const prevUsername = usePrevious(username);
   const prevFullYear = usePrevious(fullYear);
 
   const fetchData = useCallback(() => {
+    setError(null);
     getGitHubGraphData({
       years,
       username,
       fullYear,
     })
       .then(graphs => setGraphs(graphs))
-      .catch(error => setError(error));
+      .catch((error: Error) => setError(error));
   }, [years, username, fullYear]);
 
   // Fetch data on mount
