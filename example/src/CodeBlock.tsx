@@ -5,7 +5,7 @@ type Props = HTMLAttributes<HTMLPreElement> & {
 };
 
 const CodeBlock: React.FC<Props> = ({ children, ...props }) => (
-  <pre className="code-block" {...props}>
+  <pre {...props}>
     <code>{children}</code>
   </pre>
 );

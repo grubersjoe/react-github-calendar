@@ -40,8 +40,8 @@ header {
 }
 
 h1 {
-  margin: 0 0 1.5rem;
-  font-size: 1.25rem;
+  margin: 0 0 2rem;
+  font-size: 2rem;
   font-weight: 700;
 }
 
@@ -61,7 +61,7 @@ p {
 }
 
 a {
-  color: hsl(313, 78%, 25%);
+  color: inherit;
   text-decoration: none;
 }
 
@@ -86,24 +86,17 @@ hr {
 
 code,
 pre {
-  background: #ebedf0;
-  border-radius: 0.2em;
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 pre {
   margin: 0 0 1.5rem;
-  padding: 1em 1.25em;
+  padding: 0.75em 1em;
   overflow-x: auto;
-}
-
-p code,
-li code,
-td code {
-  margin: 0 0.3em;
-  padding: 0.3em 0.4em;
-  line-height: 1.2;
+  background: #440637;
+  border-radius: 0.2em;
+  color: #fff;
 }
 
 table {
@@ -186,8 +179,7 @@ button {
 
 button:focus,
 button:hover {
-  background: #eee;
-  color: #1b1b1b;
+  background: rgba(0, 0, 0, 0.15);
 }
 
 .container {
