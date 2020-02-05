@@ -1,6 +1,6 @@
 {
   "name": "react-github-calendar",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": " A flexible React component to display a GitHub contributions graph",
   "author": "Jonathan Gruber <gruberjonathan@gmail.com>",
   "license": "MIT",
@@ -63,5 +63,10 @@
   },
   "files": [
     "dist"
+  ],
+  "browserslist": [
+    "last 2 chrome version",
+    "last 2 firefox version",
+    "last 2 safari version"
   ]
 }
