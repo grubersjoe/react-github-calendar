@@ -24,6 +24,14 @@ export type Theme = {
   grade0: string;
 };
 
+declare function createCalendarTheme(
+  baseColor: ColorInput,
+  textColor?: string,
+  emptyCellColor?: string,
+  background?: string,
+): Theme;
+
 declare const GitHubCalendar: React.FC<Props>;
 
+export { createCalendarTheme };
 export default GitHubCalendar;
