@@ -1,6 +1,6 @@
 # React GitHub Calendar
 
-A React component to display a GitHub contributions graph.
+A React component to display a GitHub contributions graph based on SVG.
 
 ![Screenshot](preview.png#1)
 
