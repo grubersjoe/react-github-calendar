@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/react-github-calendar/static/css/main.4ab63a8d.chunk.css",
-    "main.js": "/react-github-calendar/static/js/main.27b54e77.chunk.js",
-    "main.js.map": "/react-github-calendar/static/js/main.27b54e77.chunk.js.map",
+    "main.js": "/react-github-calendar/static/js/main.0c37a02b.chunk.js",
+    "main.js.map": "/react-github-calendar/static/js/main.0c37a02b.chunk.js.map",
     "runtime-main.js": "/react-github-calendar/static/js/runtime-main.d8f4f617.js",
     "runtime-main.js.map": "/react-github-calendar/static/js/runtime-main.d8f4f617.js.map",
     "static/css/2.00098ede.chunk.css": "/react-github-calendar/static/css/2.00098ede.chunk.css",
-    "static/js/2.a1f766ba.chunk.js": "/react-github-calendar/static/js/2.a1f766ba.chunk.js",
-    "static/js/2.a1f766ba.chunk.js.map": "/react-github-calendar/static/js/2.a1f766ba.chunk.js.map",
+    "static/js/2.2e4c19da.chunk.js": "/react-github-calendar/static/js/2.2e4c19da.chunk.js",
+    "static/js/2.2e4c19da.chunk.js.map": "/react-github-calendar/static/js/2.2e4c19da.chunk.js.map",
     "index.html": "/react-github-calendar/index.html",
-    "precache-manifest.4a99842714672e23d4c29549f6acbf74.js": "/react-github-calendar/precache-manifest.4a99842714672e23d4c29549f6acbf74.js",
+    "precache-manifest.fb6eb37588f6ddf18357463728378f64.js": "/react-github-calendar/precache-manifest.fb6eb37588f6ddf18357463728378f64.js",
     "service-worker.js": "/react-github-calendar/service-worker.js",
     "static/css/2.00098ede.chunk.css.map": "/react-github-calendar/static/css/2.00098ede.chunk.css.map",
     "static/css/main.4ab63a8d.chunk.css.map": "/react-github-calendar/static/css/main.4ab63a8d.chunk.css.map",
-    "static/js/2.a1f766ba.chunk.js.LICENSE.txt": "/react-github-calendar/static/js/2.a1f766ba.chunk.js.LICENSE.txt",
+    "static/js/2.2e4c19da.chunk.js.LICENSE.txt": "/react-github-calendar/static/js/2.2e4c19da.chunk.js.LICENSE.txt",
     "static/media/index.css": "/react-github-calendar/static/media/public-sans-latin-900italic.f2ebdaa3.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.d8f4f617.js",
     "static/css/2.00098ede.chunk.css",
-    "static/js/2.a1f766ba.chunk.js",
+    "static/js/2.2e4c19da.chunk.js",
     "static/css/main.4ab63a8d.chunk.css",
-    "static/js/main.27b54e77.chunk.js"
+    "static/js/main.0c37a02b.chunk.js"
   ]
 }
