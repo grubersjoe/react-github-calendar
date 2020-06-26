@@ -2,7 +2,7 @@
 
 A React component to display a GitHub contributions graph based on SVG.
 
-![Screenshot](preview.png#1)
+![Screenshot](preview.png#2)
 
 [Demo and documentation](https://grubersjoe.github.io/react-github-calendar/)
 
