@@ -40,19 +40,19 @@ header {
 }
 
 h1 {
-  margin: 0 0 2rem;
-  font-size: 2rem;
+  margin: 0 0 0.5em;
+  font-size: 2.441rem;
   font-weight: 700;
 }
 
 h2 {
-  margin: 3rem 0 1.25rem;
-  font-size: 1.5rem;
+  margin: 3rem 0 1em;
+  font-size: 1.563rem;
   font-weight: 700;
 }
 
 h3 {
-  margin: 1.5rem 0 0.5rem;
+  margin: 1.5rem 0 0.5em;
   font-size: 1.25rem;
 }
 
@@ -94,9 +94,8 @@ pre {
   margin: 0 0 1.5rem;
   padding: 0.75em 1em;
   overflow-x: auto;
-  background: #440637;
+  background: #ebedf0;
   border-radius: 0.2em;
-  color: #fff;
 }
 
 table {
@@ -122,8 +121,9 @@ th {
 
 th,
 td {
-  padding: 0.6rem 0;
+  padding: 0.6rem 0.4rem;
   vertical-align: top;
+  line-height: 1.4;
 }
 
 td:not(:last-of-type) {
@@ -196,14 +196,6 @@ button:hover {
     font-size: 18px;
   }
 
-  h1 {
-    font-size: 40px;
-  }
-
-  pre {
-    display: inline-block;
-  }
-
   input,
   button {
     width: auto;
@@ -211,7 +203,7 @@ button:hover {
   }
 
   .container {
-    width: 740px;
+    width: 800px;
     margin: 3rem auto;
   }
 }

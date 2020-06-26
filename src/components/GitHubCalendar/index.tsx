@@ -11,7 +11,6 @@ import {
   LINE_HEIGHT,
   MIN_DISTANCE_MONTH_LABELS,
   NAMESPACE,
-  TITLE_SCALE_FACTOR,
   Theme,
 } from '../../utils/constants';
 import { usePrevious } from '../../hooks/usePrevious';
@@ -20,28 +19,30 @@ import { createCalendarTheme, getClassName } from '../../utils';
 
 export type Props = {
   username: string;
-  blockSize?: number;
   blockMargin?: number;
+  blockSize?: number;
   color?: ColorInput;
   dateFormat?: string;
   fontSize?: number;
   fullYear?: boolean;
+  showTotalCount?: boolean;
   style?: CSSProperties;
   theme?: Theme;
   years?: number[];
 };
 
 const GitHubCalendar: React.FC<Props> = ({
-  blockSize = 12,
+  username,
   blockMargin = 2,
+  blockSize = 12,
   children,
   color = undefined,
   dateFormat = 'MMM d, yyyy',
   fontSize = 14,
   fullYear = true,
-  theme = undefined,
-  username,
+  showTotalCount = true,
   style = {},
+  theme = undefined,
   years = [Number(format(new Date(), 'yyyy'))],
 }) => {
   const [graphs, setGraphs] = useState<GraphData[] | null>(null);
@@ -58,8 +59,8 @@ const GitHubCalendar: React.FC<Props> = ({
       username,
       fullYear,
     })
-      .then(graphs => setGraphs(graphs))
-      .catch((error: Error) => setError(error));
+      .then(setGraphs)
+      .catch(setError);
   }, [years, username, fullYear]);
 
   // Fetch data on mount
@@ -106,25 +107,6 @@ const GitHubCalendar: React.FC<Props> = ({
     return `<strong>${day.info.count} contributions</strong> on ${format(date, dateFormat)}`;
   }
 
-  function renderTitle() {
-    const style = {
-      borderBottom: `2px solid ${getTheme().grade0}`,
-      fontSize: `${Math.round(fontSize * TITLE_SCALE_FACTOR)}px`,
-    };
-
-    return (
-      <div className={getClassName('title', styles.title)} style={style}>
-        <a
-          href={`https://github.com/${username}`}
-          title="GitHub profile"
-          style={{ color: 'inherit' }}
-        >
-          @{username} on GitHub
-        </a>
-      </div>
-    );
-  }
-
   function renderMonthLabels(monthLabels: GraphData['monthLabels']) {
     const style = {
       fill: getTheme().text,
@@ -169,7 +151,7 @@ const GitHubCalendar: React.FC<Props> = ({
       ));
   }
 
-  function renderMeta(year: number, totalCount: number) {
+  function renderTotalCount(year: number, totalCount: number) {
     const isCurrentYear = getYear(new Date()) === year;
 
     return (
@@ -195,7 +177,6 @@ const GitHubCalendar: React.FC<Props> = ({
 
   return (
     <article className={NAMESPACE} style={style}>
-      {renderTitle()}
       {graphs.map(graph => {
         const { year, blocks, monthLabels, totalCount } = graph;
 
@@ -213,7 +194,7 @@ const GitHubCalendar: React.FC<Props> = ({
               {renderBlocks(blocks)}
             </svg>
 
-            {renderMeta(year, totalCount)}
+            {showTotalCount && renderTotalCount(year, totalCount)}
             {children}
           </div>
         );

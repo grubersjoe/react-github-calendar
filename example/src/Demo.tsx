@@ -35,7 +35,22 @@ const Demo: React.FC = () => {
       </header>
 
       <main className="container">
-        <GitHubCalendar username={username} />
+        <h4 style={{ fontWeight: 'normal', margin: '1em 0 0.5em' }}>
+          <a href="https://github.com/grubersjoe">@grubersjoe</a> on GitHub
+        </h4>
+        <GitHubCalendar username={username}>
+          <ReactTooltip delayShow={50} html />
+        </GitHubCalendar>
+
+        <section>
+          <h2>Breaking changes</h2>
+          <p>
+            Starting with v2 the title bar (<em>@&lt;username&gt; on GitHub</em>) is no longer shown
+            to improve reusability of this component. Also the total contribution count below each
+            graph can be hidden by setting the <code>showTotalCount</code> property to{' '}
+            <code>false</code>.
+          </p>
+        </section>
 
         <section>
           <h2>Installation</h2>
@@ -117,6 +132,12 @@ const Demo: React.FC = () => {
                   </td>
                 </tr>
                 <tr>
+                  <td>showTotalCount</td>
+                  <td>boolean</td>
+                  <td>true</td>
+                  <td>Whether to show number of total contributions below each graph.</td>
+                </tr>
+                <tr>
                   <td>theme</td>
                   <td>Theme</td>
                   <td>
@@ -175,6 +196,9 @@ const Demo: React.FC = () => {
             </li>
             <li>
               <a href="#chart-font-size">Chart font size</a>
+            </li>
+            <li>
+              <a href="#hide-total-count">Hide total count</a>
             </li>
           </ol>
 
@@ -242,10 +266,10 @@ const Demo: React.FC = () => {
           </p>
           <CodeBlock>
             {`<div>
-    <GitHubCalendar username="${username}">
-      <ReactTooltip delayShow={50} html />
-    </GitHubCalendar>
-  </div>`}
+  <GitHubCalendar username="${username}">
+    <ReactTooltip delayShow={50} html />
+  </GitHubCalendar>
+</div>`}
           </CodeBlock>
           <div>
             <GitHubCalendar username={username}>
