@@ -5,9 +5,7 @@ import { DEFAULT_THEME, NAMESPACE, Theme } from './constants';
 export function createCalendarTheme(
   baseColor: ColorInput,
   textColor = 'inherit',
-  emptyCellColor = color('white')
-    .darken(8)
-    .toHslString(),
+  emptyCellColor = color('white').darken(8).toHslString(),
   background = 'transparent',
 ): Theme {
   const base = color(baseColor);
@@ -29,7 +27,7 @@ export function createCalendarTheme(
   };
 }
 
-export function getClassName(name: string, extra?: string) {
+export function getClassName(name: string, extra?: string): string {
   if (extra) {
     return `${NAMESPACE}__${name} ${extra}`;
   }

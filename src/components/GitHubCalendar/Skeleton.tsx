@@ -1,3 +1,4 @@
+/* eslint-ignore */
 import React, { Component } from 'react';
 
 const animationName = 'react-github-calendar-loading';

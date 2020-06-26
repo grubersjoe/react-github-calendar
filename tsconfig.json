@@ -12,5 +12,5 @@
     "strict": true,
     "target": "ESNext"
   },
-  "include": ["example/**/*", "src/**/*"]
+  "include": ["src/**/*"]
 }
