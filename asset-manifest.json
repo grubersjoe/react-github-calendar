@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/react-github-calendar/static/css/main.4ab63a8d.chunk.css",
-    "main.js": "/react-github-calendar/static/js/main.0c37a02b.chunk.js",
-    "main.js.map": "/react-github-calendar/static/js/main.0c37a02b.chunk.js.map",
-    "runtime-main.js": "/react-github-calendar/static/js/runtime-main.d8f4f617.js",
-    "runtime-main.js.map": "/react-github-calendar/static/js/runtime-main.d8f4f617.js.map",
-    "static/css/2.00098ede.chunk.css": "/react-github-calendar/static/css/2.00098ede.chunk.css",
-    "static/js/2.2e4c19da.chunk.js": "/react-github-calendar/static/js/2.2e4c19da.chunk.js",
-    "static/js/2.2e4c19da.chunk.js.map": "/react-github-calendar/static/js/2.2e4c19da.chunk.js.map",
+    "main.css": "/react-github-calendar/static/css/main.627365ab.chunk.css",
+    "main.js": "/react-github-calendar/static/js/main.44abfa64.chunk.js",
+    "main.js.map": "/react-github-calendar/static/js/main.44abfa64.chunk.js.map",
+    "runtime-main.js": "/react-github-calendar/static/js/runtime-main.ffd85c2a.js",
+    "runtime-main.js.map": "/react-github-calendar/static/js/runtime-main.ffd85c2a.js.map",
+    "static/css/2.c8c4127b.chunk.css": "/react-github-calendar/static/css/2.c8c4127b.chunk.css",
+    "static/js/2.73f09fab.chunk.js": "/react-github-calendar/static/js/2.73f09fab.chunk.js",
+    "static/js/2.73f09fab.chunk.js.map": "/react-github-calendar/static/js/2.73f09fab.chunk.js.map",
     "index.html": "/react-github-calendar/index.html",
-    "precache-manifest.fb6eb37588f6ddf18357463728378f64.js": "/react-github-calendar/precache-manifest.fb6eb37588f6ddf18357463728378f64.js",
+    "precache-manifest.cccb5b02a4339d64e3d73c96fc487ac9.js": "/react-github-calendar/precache-manifest.cccb5b02a4339d64e3d73c96fc487ac9.js",
     "service-worker.js": "/react-github-calendar/service-worker.js",
-    "static/css/2.00098ede.chunk.css.map": "/react-github-calendar/static/css/2.00098ede.chunk.css.map",
-    "static/css/main.4ab63a8d.chunk.css.map": "/react-github-calendar/static/css/main.4ab63a8d.chunk.css.map",
-    "static/js/2.2e4c19da.chunk.js.LICENSE.txt": "/react-github-calendar/static/js/2.2e4c19da.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/react-github-calendar/static/media/public-sans-latin-900italic.f2ebdaa3.woff"
+    "static/css/2.c8c4127b.chunk.css.map": "/react-github-calendar/static/css/2.c8c4127b.chunk.css.map",
+    "static/css/main.627365ab.chunk.css.map": "/react-github-calendar/static/css/main.627365ab.chunk.css.map",
+    "static/js/2.73f09fab.chunk.js.LICENSE.txt": "/react-github-calendar/static/js/2.73f09fab.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/react-github-calendar/static/media/public-sans-latin-900italic.b23d0f27.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.d8f4f617.js",
-    "static/css/2.00098ede.chunk.css",
-    "static/js/2.2e4c19da.chunk.js",
-    "static/css/main.4ab63a8d.chunk.css",
-    "static/js/main.0c37a02b.chunk.js"
+    "static/js/runtime-main.ffd85c2a.js",
+    "static/css/2.c8c4127b.chunk.css",
+    "static/js/2.73f09fab.chunk.js",
+    "static/css/main.627365ab.chunk.css",
+    "static/js/main.44abfa64.chunk.js"
   ]
 }
