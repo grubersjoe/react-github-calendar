@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "68e33e6eb7b45413ae4a49289379cb6a",
+    "revision": "aa0519dc60ea6dd6445ffaa0230987a5",
     "url": "/react-github-calendar/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-github-calendar/static/css/2.c8c4127b.chunk.css"
   },
   {
-    "revision": "b28562635d19a4fce5fc",
-    "url": "/react-github-calendar/static/css/main.fd9182b6.chunk.css"
+    "revision": "f11fac9450239a39252a",
+    "url": "/react-github-calendar/static/css/main.fb46501c.chunk.css"
   },
   {
     "revision": "1fbb8fd8b07947082711",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-github-calendar/static/js/2.7b86959b.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b28562635d19a4fce5fc",
-    "url": "/react-github-calendar/static/js/main.1abeb5ba.chunk.js"
+    "revision": "f11fac9450239a39252a",
+    "url": "/react-github-calendar/static/js/main.d7153a44.chunk.js"
   },
   {
     "revision": "6f2a5f2cefaa9ece6b91",
