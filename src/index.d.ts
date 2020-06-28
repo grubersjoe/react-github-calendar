@@ -3,12 +3,13 @@ import { ColorInput } from 'tinycolor2';
 
 export type Props = {
   username: string;
-  blockSize?: number;
   blockMargin?: number;
+  blockSize?: number;
   color?: ColorInput;
   dateFormat?: string;
   fontSize?: number;
   fullYear?: boolean;
+  showTotalCount?: boolean;
   style?: CSSProperties;
   theme?: Theme;
   years?: number[];
