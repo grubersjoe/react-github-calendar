@@ -9,7 +9,7 @@ button::-moz-focus-inner {
 html {
   font-family: 'Public Sans', sans-serif;
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.5;
   color: #1b1b1b;
 }
 
@@ -23,7 +23,7 @@ header {
   align-items: center;
   justify-content: center;
   padding: 1.5rem 0.75rem;
-  background-image: linear-gradient(120deg, hsl(313, 49%, 18%), hsl(313, 78%, 20%));
+  background-image: linear-gradient(120deg, hsl(155, 80%, 20%), hsl(155, 80%, 15%));
   color: #fff;
   font-size: 110%;
   text-align: center;
@@ -69,10 +69,6 @@ a:hover {
   text-decoration: underline;
 }
 
-main {
-  hyphens: auto;
-}
-
 section :last-child {
   margin-bottom: 0;
 }
@@ -87,7 +83,7 @@ hr {
 code,
 pre {
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 pre {
@@ -96,6 +92,7 @@ pre {
   overflow-x: auto;
   background: #ebedf0;
   border-radius: 0.2em;
+  line-height: 1.4;
 }
 
 table {
@@ -148,9 +145,8 @@ input,
 button {
   width: 100%;
   margin-bottom: 1rem;
-  border-radius: 0.2em;
   font-size: 90%;
-  transition: all 200ms ease-in-out;
+  transition: all 150ms ease-in-out;
 }
 
 input {
@@ -175,11 +171,7 @@ button {
   border: 2px solid #eee;
   color: #fff;
   cursor: pointer;
-}
-
-button:focus,
-button:hover {
-  background: rgba(0, 0, 0, 0.15);
+  font-weight: 500;
 }
 
 .container {

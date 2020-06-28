@@ -137,7 +137,6 @@ function getBlocksForYear(year: number, data: ApiResult, fullYear: boolean) {
   });
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function getMonthLabels(blocks: GraphData['blocks'], fullYear: boolean): MonthLabels {
   const weeks = blocks.slice(0, fullYear ? blocks.length - 1 : blocks.length);
   let previousMonth = 0; // January
