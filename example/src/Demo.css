@@ -147,6 +147,7 @@ button {
   margin-bottom: 1rem;
   font-size: 90%;
   transition: all 150ms ease-in-out;
+  border-radius: 4px;
 }
 
 input {
@@ -157,8 +158,10 @@ input {
   border: none;
 }
 
-input:focus {
+button:focus,
+button:hover {
   background-color: #eee;
+  color: #1b1b1b;
 }
 
 input:invalid {
@@ -196,7 +199,7 @@ button {
 
   .container {
     width: 800px;
-    margin: 3rem auto;
+    margin: 2rem auto;
   }
 }
 

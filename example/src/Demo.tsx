@@ -35,8 +35,8 @@ const Demo: React.FC = () => {
       <header>
         <ForkMe />
         <div className="container">
-          <h1>GitHub Contributions Calendar</h1>
-          <div>A React component to display a GitHub contributions graph</div>
+          <h1>GitHub Contributions Calendar </h1>
+          <div>A React component to display a GitHub contributions graph </div>
           <form onSubmit={updateUsername}>
             <input type="text" placeholder="Enter your GitHub username" ref={input} required />
             <button type="submit">Show calendar</button>
@@ -45,12 +45,22 @@ const Demo: React.FC = () => {
       </header>
 
       <main className="container">
-        <h4 style={{ fontWeight: 'normal', margin: '1em 0 0.5em' }}>
-          <a href="https://github.com/grubersjoe">@grubersjoe</a> on GitHub
-        </h4>
-        <GitHubCalendar username={username}>
-          <ReactTooltip delayShow={50} html />
-        </GitHubCalendar>
+        <section>
+          <iframe
+            src="https://ghbtns.com/github-btn.html?user=grubersjoe&repo=react-github-calendar&type=star&count=true&size=large"
+            frameBorder="0"
+            scrolling="0"
+            width="170"
+            height="30"
+            title="GitHub"
+          />
+          <h4 style={{ fontWeight: 'normal', margin: '1em 0 0.5em' }}>
+            <a href="https://github.com/grubersjoe">@grubersjoe</a> on GitHub
+          </h4>
+          <GitHubCalendar username={username}>
+            <ReactTooltip delayShow={50} html />
+          </GitHubCalendar>
+        </section>
 
         <section>
           <h2>Breaking changes</h2>
