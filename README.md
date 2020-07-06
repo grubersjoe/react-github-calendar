@@ -12,14 +12,14 @@ Supported browsers: Chrome, Firefox and Safari.
 
 ## Development
 
-Watch mode for library:
+Start watch mode for library first:
 
 ```
 yarn
 yarn start
 ```
 
-Watch mode for demo page:
+Then start watch mode of example page:
 
 ```
 cd example
@@ -38,7 +38,7 @@ npm publish --dry-run
 npm publish --access=public
 ```
 
-Update demo page:
+### Update demo page
 
 ```
 yarn deploy

@@ -22,8 +22,8 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 0.75rem;
-  background-image: linear-gradient(120deg, hsl(155, 80%, 20%), hsl(155, 80%, 15%));
+  padding: 1.5rem 0 1.25rem;
+  background-image: linear-gradient(120deg, hsl(172, 66%, 22%), hsl(172, 66%, 14%));
   color: #fff;
   font-size: 110%;
   text-align: center;
@@ -160,7 +160,7 @@ input {
 
 button:focus,
 button:hover {
-  background-color: #eee;
+  background-color: #fff;
   color: #1b1b1b;
 }
 
