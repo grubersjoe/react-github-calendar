@@ -8,7 +8,13 @@ A React component to display a GitHub contributions graph based on SVG.
 
 Library size: 3 KB (minified and gzipped)
 
-Supported browsers: Chrome, Firefox and Safari.
+Supported browsers: Chrome, Firefox, Safari and Edge.
+
+## Installation
+
+```
+yarn add react-github-calendar
+```
 
 ## Development
 
