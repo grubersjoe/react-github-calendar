@@ -12,7 +12,7 @@ export type Props = {
   showTotalCount?: boolean;
   style?: CSSProperties;
   theme?: Theme;
-  years?: number[];
+  years?: Array<number>;
 };
 
 export type Theme = {

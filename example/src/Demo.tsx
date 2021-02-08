@@ -26,7 +26,7 @@ const Demo: React.FC = () => {
   const updateUsername: FormEventHandler = event => {
     event.preventDefault();
     if (input.current) {
-      setUsername(String(input.current.value).toLowerCase());
+      setUsername(String(input.current.value).trim().toLowerCase());
     }
   };
 
@@ -55,7 +55,7 @@ const Demo: React.FC = () => {
             title="GitHub"
           />
           <h4 style={{ fontWeight: 'normal', margin: '1em 0 0.5em' }}>
-            <a href="https://github.com/grubersjoe">@grubersjoe</a> on GitHub
+            <a href={`https://github.com/${username}`}>@{username}</a> on GitHub
           </h4>
           <GitHubCalendar username={username}>
             <ReactTooltip delayShow={50} html />
@@ -243,8 +243,8 @@ const Demo: React.FC = () => {
 
           <h3 id="show-several-years">Show several years</h3>
           <p>To display multiple years, pass an array into the component:</p>
-          <CodeBlock>{`<GitHubCalendar username="${username}" years={[2018, 2017]} />`}</CodeBlock>
-          <GitHubCalendar username={username} years={[2018, 2017]} />
+          <CodeBlock>{`<GitHubCalendar username="${username}" years={[2020, 2019]} />`}</CodeBlock>
+          <GitHubCalendar username={username} years={[2020, 2019]} />
 
           <hr />
 

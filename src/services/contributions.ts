@@ -9,93 +9,56 @@ import parseISO from 'date-fns/parseISO';
 import setDay from 'date-fns/setDay';
 import subYears from 'date-fns/subYears';
 
-const API_URL = 'https://github-calendar.now.sh/v1/';
+const API_URL = 'https://ancient-butterfly.herokuapp.com/v3/';
 const DATE_FORMAT = 'yyyy-MM-dd';
-
-export type GraphData = {
-  year: number;
-  blocks: Block[][];
-  monthLabels: { x: number; label: string }[];
-  totalCount: number;
-};
 
 export type Block = {
   date: string;
   info?: {
     date: string;
     count: number;
-    color: string;
-    intensity: number;
+    level: number;
   };
 };
 
-export type MonthLabels = {
+interface MonthLabel {
   x: number;
   label: string;
-}[];
+}
 
-export type RequestOptions = {
-  fullYear: boolean;
+export interface GraphData {
+  year: number;
+  blocks: Array<Array<Block>>;
+  monthLabels: Array<MonthLabel>;
+  totalCount: number;
+}
+
+export interface RequestOptions {
   username: string;
-  years: number[];
-};
+  years: Array<number>;
+  lastYear: boolean;
+}
 
-type ApiResult = {
+interface ApiResult {
   years: {
-    year: string;
-    total: number;
-    range: {
-      start: string;
-      end: string;
-    };
-  }[];
-  contributions: {
+    [year: number]: number;
+    [year: string]: number; // lastYear
+  };
+  contributions: Array<{
     date: string;
     count: number;
-    color: string;
-    intensity: number;
-  }[];
-};
+    level: number;
+  }>;
+}
 
 function getContributionsForDate(data: ApiResult, date: string) {
   return data.contributions.find(contrib => contrib.date === date);
 }
 
-function getContributionCountForLastYear(data: ApiResult) {
-  const { contributions } = data;
+function getBlocksForYear(year: number, data: ApiResult, lastYear: boolean) {
   const now = new Date();
-
-  // Start date for accumulating the values
-  const begin = contributions.findIndex(contrib => contrib.date === format(now, DATE_FORMAT));
-
-  // No data for today given
-  if (begin === -1) {
-    return 0;
-  }
-
-  // Check if there is data for the day one year past
-  let end = contributions.findIndex(contrib => {
-    return contrib.date === format(subYears(now, 1), DATE_FORMAT);
-  });
-
-  // Take the oldest contribution otherwise, if not enough data exists
-  if (end === -1) {
-    end = contributions.length - 1;
-  }
-
-  return contributions.slice(begin, end).reduce((acc, contrib) => acc + contrib.count, 0);
-}
-
-function getContributionCountForYear(data: ApiResult, year: number) {
-  const yearEntry = data.years.find(entry => entry.year === String(year));
-
-  return yearEntry ? yearEntry.total : 0;
-}
-
-function getBlocksForYear(year: number, data: ApiResult, fullYear: boolean) {
-  const now = new Date();
-  const firstDate = fullYear ? subYears(now, 1) : parseISO(`${year}-01-01`);
-  const lastDate = fullYear ? now : parseISO(`${year}-12-31`);
+  const firstDate = lastYear ? subYears(now, 1) : parseISO(`${year}-01-01`);
+  const lastDate = lastYear ? now : parseISO(`${year}-12-31`);
 
   let weekStart = firstDate;
 
@@ -137,11 +100,11 @@ function getBlocksForYear(year: number, data: ApiResult, fullYear: boolean) {
   });
 }
 
-function getMonthLabels(blocks: GraphData['blocks'], fullYear: boolean): MonthLabels {
-  const weeks = blocks.slice(0, fullYear ? blocks.length - 1 : blocks.length);
+function getMonthLabels(blocks: GraphData['blocks'], lastYear: boolean): Array<MonthLabel> {
+  const weeks = blocks.slice(0, lastYear ? blocks.length - 1 : blocks.length);
   let previousMonth = 0; // January
 
-  return weeks.reduce<MonthLabels>((labels, week, x) => {
+  return weeks.reduce<Array<MonthLabel>>((labels, week, x) => {
     const firstWeekDay = parseISO(week[0].date);
     const month = getMonth(firstWeekDay) + 1;
     const monthChanged = month !== previousMonth;
@@ -159,12 +122,10 @@ function getMonthLabels(blocks: GraphData['blocks'], fullYear: boolean): MonthLa
   }, []);
 }
 
-function getGraphDataForYear(year: number, data: ApiResult, fullYear: boolean): GraphData {
-  const blocks = getBlocksForYear(year, data, fullYear);
-  const monthLabels = getMonthLabels(blocks, fullYear);
-  const totalCount = fullYear
-    ? getContributionCountForLastYear(data)
-    : getContributionCountForYear(data, year);
+function getGraphDataForYear(year: number, data: ApiResult, lastYear: boolean): GraphData {
+  const blocks = getBlocksForYear(year, data, lastYear);
+  const monthLabels = getMonthLabels(blocks, lastYear);
+  const totalCount = data.years[lastYear ? 'lastYear' : year] ?? 0;
 
   return {
     year,
@@ -174,17 +135,17 @@ function getGraphDataForYear(year: number, data: ApiResult, fullYear: boolean): 
   };
 }
 
-export async function getGitHubGraphData(options: RequestOptions): Promise<GraphData[]> {
-  const { fullYear, username, years } = options;
-  const data: ApiResult = await (await fetch(API_URL + username)).json();
+export async function getGitHubGraphData(options: RequestOptions): Promise<Array<GraphData>> {
+  const { username, years, lastYear } = options;
+  const data: ApiResult = await (await fetch(`${API_URL}${username}?y=all&y=lastYear`)).json();
 
-  if (!data.years.length) {
+  if (!Object.keys(data.years).length) {
     throw Error('No data available');
   }
 
   return years.map(year => {
     const isCurrentYear = isSameYear(parseISO(String(year)), new Date());
 
-    return getGraphDataForYear(year, data, isCurrentYear && fullYear);
+    return getGraphDataForYear(year, data, isCurrentYear && lastYear);
   });
 }

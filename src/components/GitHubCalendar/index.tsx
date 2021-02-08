@@ -28,7 +28,7 @@ export type Props = {
   showTotalCount?: boolean;
   style?: CSSProperties;
   theme?: Theme;
-  years?: number[];
+  years?: Array<number>;
 };
 
 const GitHubCalendar: React.FC<Props> = ({
@@ -45,7 +45,7 @@ const GitHubCalendar: React.FC<Props> = ({
   theme = undefined,
   years = [Number(format(new Date(), 'yyyy'))],
 }) => {
-  const [graphs, setGraphs] = useState<GraphData[] | null>(null);
+  const [graphs, setGraphs] = useState<Array<GraphData> | null>(null);
   const [error, setError] = useState<Error | null>(null);
 
   const prevYears = usePrevious(years);
@@ -57,7 +57,7 @@ const GitHubCalendar: React.FC<Props> = ({
     getGitHubGraphData({
       years,
       username,
-      fullYear,
+      lastYear: fullYear,
     })
       .then(setGraphs)
       .catch(setError);
@@ -138,7 +138,7 @@ const GitHubCalendar: React.FC<Props> = ({
             y={textHeight + (blockSize + blockMargin) * y}
             width={blockSize}
             height={blockSize}
-            fill={theme[`grade${day.info ? day.info.intensity : 0}`]}
+            fill={theme[`grade${day.info ? day.info.level : 0}`]}
             data-tip={day.info ? getTooltipMessage(day as Required<Block>) : null}
             key={day.date}
           />
