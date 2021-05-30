@@ -16,9 +16,7 @@
     "lint": "eslint 'src/**/*' 'example/**/*'",
     "predeploy": "cd example && yarn install && yarn run build",
     "prepare": "yarn run build",
-    "start": "rollup -c -w",
-    "test:watch": "react-scripts test --env=jsdom",
-    "test": "cross-env CI=1 react-scripts test --env=jsdom"
+    "start": "rollup -c -w"
   },
   "dependencies": {
     "date-fns": "^2.14.0",

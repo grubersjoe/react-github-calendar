@@ -9,8 +9,10 @@
     "noEmit": true,
     "noImplicitReturns": true,
     "resolveJsonModule": true,
+    "skipLibCheck": true,
     "strict": true,
     "target": "ESNext"
   },
+  "exclude": ["src/components/GitHubCalendar/Skeleton.tsx"],
   "include": ["src/**/*"]
 }

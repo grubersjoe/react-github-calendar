@@ -1,5 +1,7 @@
 # React GitHub Calendar
 
+[![CI](https://github.com/grubersjoe/react-github-calendar/actions/workflows/test.yml/badge.svg)](https://github.com/grubersjoe/react-github-calendar/actions/workflows/test.yml)
+
 A React component to display a GitHub contributions graph based on SVG.
 
 ![Screenshot](preview.png#2)

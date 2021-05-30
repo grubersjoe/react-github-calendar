@@ -64,9 +64,7 @@ const GitHubCalendar: React.FC<Props> = ({
   }, [years, username, fullYear]);
 
   // Fetch data on mount
-  useEffect(() => {
-    fetchData();
-  }, []); // eslint-disable-line
+  useEffect(fetchData, []); // eslint-disable-line
 
   // Refetch if relevant props change
   useEffect(() => {
