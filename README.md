@@ -2,15 +2,12 @@
 
 [![CI](https://github.com/grubersjoe/react-github-calendar/actions/workflows/test.yml/badge.svg)](https://github.com/grubersjoe/react-github-calendar/actions/workflows/test.yml)
 
-A React component to display a GitHub contributions graph based on SVG.
+A React component to display a GitHub contributions graph based on
+[react-activity-calendar](`https://github.com/grubersjoe/react-activity-calendar`).
 
-![Screenshot](preview.png#2)
+![Screenshot](preview.png)
 
 [Demo and documentation](https://grubersjoe.github.io/react-github-calendar/)
-
-Library size: 3 KB (minified and gzipped)
-
-Supported browsers: Chrome, Firefox, Safari and Edge.
 
 ## Installation
 
@@ -42,7 +39,7 @@ Open http://localhost:3000.
 ```
 npm publish --dry-run
 
-# When happy
+# When you're happy
 npm publish --access=public
 ```
 
