@@ -78,7 +78,7 @@ const Demo: FunctionComponent = () => {
           </CodeBlock>
         </section>
 
-        <section>
+        <section id="upgrade">
           <h2>Upgrading from v2 to v3</h2>
           <p>
             With Version 3 lots of code has been rewritten and the contribution data is fetched more
