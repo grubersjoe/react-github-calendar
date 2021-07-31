@@ -5,7 +5,7 @@
 A React component to display a GitHub contributions graph based on
 [react-activity-calendar](`https://github.com/grubersjoe/react-activity-calendar`).
 
-![Screenshot](preview.png)
+![Screenshot](preview.png?v3)
 
 [Demo and documentation](https://grubersjoe.github.io/react-github-calendar/)
 
