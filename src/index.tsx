@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback, FunctionComponent } from 'react';
 import Calendar, {
-  Skeleton as CalendarSkeleton,
   Props as CalendarProps,
   CalendarData,
   Theme,
+  Skeleton,
+  createCalendarTheme,
 } from 'react-activity-calendar';
 
 import { Year, ApiResponse } from './types';
@@ -17,12 +18,7 @@ async function fetchCalendarData(username: string, year: Year): Promise<ApiRespo
   return (await fetch(`${API_URL}${username}?y=${year}`)).json();
 }
 
-const GitHubCalendar: FunctionComponent<Props> = ({
-  username,
-  year = 'last',
-  theme = DEFAULT_THEME,
-  ...calendarProps
-}) => {
+const GitHubCalendar: FunctionComponent<Props> = ({ username, year = 'last', ...props }) => {
   const [data, setData] = useState<CalendarData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
@@ -44,14 +40,16 @@ const GitHubCalendar: FunctionComponent<Props> = ({
   }
 
   if (loading || !data) {
-    return <CalendarSkeleton loading />;
+    return <Skeleton loading />;
   }
+
+  const theme = props.color ? undefined : props.theme ?? DEFAULT_THEME;
 
   const labels = {
     totalCount: `{{count}} contributions in ${year === 'last' ? 'the last year' : '{{year}}'}`,
   };
 
-  return <Calendar data={data} theme={theme} labels={labels} {...calendarProps} />;
+  return <Calendar data={data} theme={theme} labels={labels} {...props} />;
 };
 
 // GitHub theme
@@ -65,4 +63,5 @@ const DEFAULT_THEME: Theme = {
 
 const API_URL = 'https://github-contributions-api.jogruber.de/v4/';
 
+export { createCalendarTheme };
 export default GitHubCalendar;
