@@ -9,6 +9,12 @@ A React component to display a GitHub contributions graph based on
 
 [Demo and documentation](https://grubersjoe.github.io/react-github-calendar/)
 
+## Upgrade to v3
+
+Please read the following how to upgrade from v2 to v3 and a list of breaking changes:
+
+https://grubersjoe.github.io/react-github-calendar/#upgrade
+
 ## Installation
 
 ```
