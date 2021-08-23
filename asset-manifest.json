@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/react-github-calendar/static/css/main.a23601ac.chunk.css",
-    "main.js": "/react-github-calendar/static/js/main.2f96619b.chunk.js",
-    "main.js.map": "/react-github-calendar/static/js/main.2f96619b.chunk.js.map",
+    "main.js": "/react-github-calendar/static/js/main.4e5ba4c7.chunk.js",
+    "main.js.map": "/react-github-calendar/static/js/main.4e5ba4c7.chunk.js.map",
     "runtime-main.js": "/react-github-calendar/static/js/runtime-main.42838e3a.js",
     "runtime-main.js.map": "/react-github-calendar/static/js/runtime-main.42838e3a.js.map",
     "static/css/2.dbd8f607.chunk.css": "/react-github-calendar/static/css/2.dbd8f607.chunk.css",
-    "static/js/2.74431349.chunk.js": "/react-github-calendar/static/js/2.74431349.chunk.js",
-    "static/js/2.74431349.chunk.js.map": "/react-github-calendar/static/js/2.74431349.chunk.js.map",
+    "static/js/2.6c64c664.chunk.js": "/react-github-calendar/static/js/2.6c64c664.chunk.js",
+    "static/js/2.6c64c664.chunk.js.map": "/react-github-calendar/static/js/2.6c64c664.chunk.js.map",
     "index.html": "/react-github-calendar/index.html",
     "static/css/2.dbd8f607.chunk.css.map": "/react-github-calendar/static/css/2.dbd8f607.chunk.css.map",
     "static/css/main.a23601ac.chunk.css.map": "/react-github-calendar/static/css/main.a23601ac.chunk.css.map",
-    "static/js/2.74431349.chunk.js.LICENSE.txt": "/react-github-calendar/static/js/2.74431349.chunk.js.LICENSE.txt",
+    "static/js/2.6c64c664.chunk.js.LICENSE.txt": "/react-github-calendar/static/js/2.6c64c664.chunk.js.LICENSE.txt",
     "static/media/index.css": "/react-github-calendar/static/media/public-sans-latin-900italic.cf33a699.woff2"
   },
   "entrypoints": [
     "static/js/runtime-main.42838e3a.js",
     "static/css/2.dbd8f607.chunk.css",
-    "static/js/2.74431349.chunk.js",
+    "static/js/2.6c64c664.chunk.js",
     "static/css/main.a23601ac.chunk.css",
-    "static/js/main.2f96619b.chunk.js"
+    "static/js/main.4e5ba4c7.chunk.js"
   ]
 }
