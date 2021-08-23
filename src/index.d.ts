@@ -1,5 +1,9 @@
 import { FunctionComponent } from 'react';
-import { Props as ActivityCalendarProps, Theme as CalendarTheme } from 'react-activity-calendar';
+import {
+  Props as ActivityCalendarProps,
+  Theme,
+  createCalendarTheme,
+} from 'react-activity-calendar';
 
 import { Year } from './types';
 
@@ -8,9 +12,7 @@ export interface Props extends Omit<ActivityCalendarProps, 'data'> {
   year?: Year;
 }
 
-export type Theme = CalendarTheme;
-
 declare const GitHubCalendar: FunctionComponent<Props>;
 
-export { createCalendarTheme };
+export { createCalendarTheme, Theme };
 export default GitHubCalendar;
