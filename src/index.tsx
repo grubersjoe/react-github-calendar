@@ -7,7 +7,7 @@ import Calendar, {
   createCalendarTheme,
 } from 'react-activity-calendar';
 
-import { Year, ApiResponse } from './types';
+import { Year, ApiResponse, ApiErrorResponse } from './types';
 
 interface Props extends Omit<CalendarProps, 'data'> {
   username: string;
@@ -15,7 +15,14 @@ interface Props extends Omit<CalendarProps, 'data'> {
 }
 
 async function fetchCalendarData(username: string, year: Year): Promise<ApiResponse> {
-  return (await fetch(`${API_URL}${username}?y=${year}`)).json();
+  const response = await fetch(`${API_URL}${username}?y=${year}`);
+  const data: ApiResponse | ApiErrorResponse = await response.json();
+
+  if (!response.ok) {
+    throw new Error((data as ApiErrorResponse).error);
+  }
+
+  return data as ApiResponse;
 }
 
 const GitHubCalendar: FunctionComponent<Props> = ({ username, year = 'last', ...props }) => {
@@ -36,7 +43,11 @@ const GitHubCalendar: FunctionComponent<Props> = ({ username, year = 'last', ...
   useEffect(fetchData, [username, year]);
 
   if (error) {
-    return <p>Error :(</p>;
+    return (
+      <div>
+        <i>Unable to fetch contribution data. See console.</i>
+      </div>
+    );
   }
 
   if (loading || !data) {

@@ -9,3 +9,7 @@ export interface ApiResponse {
   };
   contributions: Array<Day>;
 }
+
+export interface ApiErrorResponse {
+  error: string;
+}

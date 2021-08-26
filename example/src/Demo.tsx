@@ -14,7 +14,7 @@ const Demo: FunctionComponent = () => {
 
   const updateUsername: FormEventHandler = event => {
     event.preventDefault();
-    if (input.current) {
+    if (input.current && String(input.current.value).trim()) {
       setUsername(String(input.current.value).trim().toLowerCase());
     }
   };
