@@ -29,24 +29,28 @@ async function fetchCalendarData(username: string, year: Year): Promise<ApiRespo
 const GitHubCalendar: FunctionComponent<Props> = ({
   username,
   year = 'last',
-  transformData: transformFn,
+  transformData: transformDataProp,
   ...props
 }) => {
   const [data, setData] = useState<CalendarData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
+  const transformDataCallback = useCallback(
+    (contributions: CalendarData) => transformData(contributions, transformDataProp),
+    [transformDataProp],
+  );
+
   const fetchData = useCallback(() => {
     setLoading(true);
     setError(null);
     fetchCalendarData(username, year)
-      .then(({ contributions }) => setData(transformData(contributions, transformFn)))
+      .then(({ contributions }) => setData(transformDataCallback(contributions)))
       .catch(setError)
       .finally(() => setLoading(false));
-  }, [username, year]);
+  }, [username, year, transformDataCallback]);
 
-  useEffect(fetchData, []); // on mount
-  useEffect(fetchData, [username, year]);
+  useEffect(fetchData, [fetchData]);
 
   if (error) {
     return (
@@ -97,7 +101,7 @@ const transformData = (data: CalendarData, transformFn?: Props['transformData'])
 
     if (typeof testObj.level !== 'number' || testObj.level < 0 || testObj.level > 4) {
       throw new Error(
-        `Required property "level: 0|1|2|3|4" missing or invalid: Got: ${testObj.level}.`,
+        `Required property "level: 0 | 1 | 2 | 3 | 4" missing or invalid: Got: ${testObj.level}.`,
       );
     }
   }
