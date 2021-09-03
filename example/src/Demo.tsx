@@ -1,12 +1,30 @@
-import React, { useState, FunctionComponent, FormEventHandler } from 'react';
-import GitHubCalendar from 'react-github-calendar';
+import React, { FormEventHandler, FunctionComponent, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
-
+import GitHubCalendar, { Props } from 'react-github-calendar';
 import 'typeface-public-sans';
+
 import './Demo.css';
+import pkg from '../package.json';
 
 import CodeBlock from './CodeBlock';
 import ForkMe from './ForkMe';
+
+const selectLastHalfYear: Props['transformData'] = contributions => {
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth();
+  const shownMonths = 6;
+
+  return contributions.filter(day => {
+    const date = new Date(day.date);
+    const monthOfDay = date.getMonth();
+
+    return (
+      date.getFullYear() === currentYear &&
+      monthOfDay > currentMonth - shownMonths &&
+      monthOfDay <= currentMonth
+    );
+  });
+};
 
 const Demo: FunctionComponent = () => {
   const [username, setUsername] = useState('grubersjoe');
@@ -63,7 +81,10 @@ const Demo: FunctionComponent = () => {
           </GitHubCalendar>
 
           <p>
-            Made with love by <a href="https://jogruber.de">@grubersjoe</a>
+            Made with love by <a href="https://jogruber.de">@grubersjoe</a>, current version:{' '}
+            <a href="https://www.npmjs.com/package/react-github-calendar">
+              <code>v{pkg.version}</code>
+            </a>
           </p>
         </section>
 
@@ -83,9 +104,9 @@ const Demo: FunctionComponent = () => {
           <p>
             With Version 3 lots of code has been rewritten and the contribution data is fetched more
             efficiently. The calendar itself has been extracted to an agnostic React component that
-            can be used to show all kinds of calendar intensity data:{' '}
+            you can use to show all kinds of calendar intensity data:{' '}
             <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/docs/activity-calendar--default">
-              <em>React Activity Calendar</em>
+              <strong>React Activity Calendar</strong>
             </a>
             .
           </p>
@@ -103,6 +124,13 @@ const Demo: FunctionComponent = () => {
               There is a new <code>weekStart</code> property that allows you to specify what day
               should be taken as start of a week. By default Sunday is used like on GitHub. Note
               that days are zero indexed (0 represents Sunday).
+            </li>
+            <li>
+              A new <code>transformData</code> property has been added. It allows you to manipulate
+              the array with contribution data after it has been fetched from the API. This way, you
+              can, e.g., show a specific date range like the last two months in the calendar. See
+              can, e.g., show a specific date range like the last two months in the calendar. See
+              below for an <a href="#example-transform-data">example</a>.
             </li>
             <li>
               Weekday labels can be displayed left of the calendar. This legend is{' '}
@@ -304,6 +332,20 @@ const Demo: FunctionComponent = () => {
                   <td>An object specifying all theme colors explicitly.</td>
                 </tr>
                 <tr>
+                  <td>transformData</td>
+                  <td>
+                    (data: Day[])
+                    <br />
+                    &nbsp;&nbsp;{'=>'} Day[]
+                  </td>
+                  <td />
+                  <td>
+                    A function that receives the array of contribution data and that has to return
+                    an array with the same data type. See{' '}
+                    <a href="#example-transform-data">example</a>.
+                  </td>
+                </tr>
+                <tr>
                   <td>weekStart</td>
                   <td>number</td>
                   <td>0 (Sunday)</td>
@@ -320,6 +362,65 @@ const Demo: FunctionComponent = () => {
             Please refer to the Storybook of the calendar component for{' '}
             <a href="https://grubersjoe.github.io/react-activity-calendar">interactive examples</a>.
           </p>
+
+          <h3 id="example-transform-data">
+            Usage of the <code>transformData</code> property
+          </h3>
+          <p>
+            You can pass a function as <code>transformData</code> property that receives the array
+            of contribution data as argument and that has to return an array with the same data
+            type. So the following interface must be met:
+          </p>
+          <CodeBlock>
+            {`interface Day {
+  date: string;
+  count: number;
+  level: 0 | 1 | 2 | 3 | 4;
+}
+
+function transformData(data: Array<Day>): Array<Day>;`}
+          </CodeBlock>
+          <p>
+            For example, in order to show the last six months of contribution data you can use a
+            function like the following:
+          </p>
+          <CodeBlock>
+            {`const selectLastHalfYear = contributions => {
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth();
+  const shownMonths = 6;
+
+  return contributions.filter(day => {
+    const date = new Date(day.date);
+    const monthOfDay = date.getMonth();
+
+    return (
+      date.getFullYear() === currentYear &&
+      monthOfDay > currentMonth - shownMonths &&
+      monthOfDay <= currentMonth
+    );
+  });
+};
+
+// ...
+  
+<GitHubCalendar 
+  username="${username}" 
+  transformData={selectLastHalfYear} 
+  hideTotalCount 
+  hideColorLegend
+/>
+`}
+          </CodeBlock>
+
+          <GitHubCalendar
+            username={username}
+            transformData={selectLastHalfYear}
+            hideTotalCount
+            hideColorLegend
+          >
+            <ReactTooltip html />
+          </GitHubCalendar>
         </section>
 
         <p style={{ marginTop: '4rem' }}>

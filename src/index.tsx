@@ -1,17 +1,18 @@
-import React, { useState, useEffect, useCallback, FunctionComponent } from 'react';
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
 import Calendar, {
-  Props as CalendarProps,
   CalendarData,
-  Theme,
-  Skeleton,
   createCalendarTheme,
+  Props as CalendarProps,
+  Skeleton,
 } from 'react-activity-calendar';
 
-import { Year, ApiResponse, ApiErrorResponse } from './types';
+import { API_URL, DEFAULT_THEME } from './constants';
+import { ApiErrorResponse, ApiResponse, Year } from './types';
 
 interface Props extends Omit<CalendarProps, 'data'> {
   username: string;
   year?: Year;
+  transformData?: (data: CalendarData) => CalendarData;
 }
 
 async function fetchCalendarData(username: string, year: Year): Promise<ApiResponse> {
@@ -25,7 +26,12 @@ async function fetchCalendarData(username: string, year: Year): Promise<ApiRespo
   return data as ApiResponse;
 }
 
-const GitHubCalendar: FunctionComponent<Props> = ({ username, year = 'last', ...props }) => {
+const GitHubCalendar: FunctionComponent<Props> = ({
+  username,
+  year = 'last',
+  transformData: transformFn,
+  ...props
+}) => {
   const [data, setData] = useState<CalendarData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
@@ -34,7 +40,7 @@ const GitHubCalendar: FunctionComponent<Props> = ({ username, year = 'last', ...
     setLoading(true);
     setError(null);
     fetchCalendarData(username, year)
-      .then(({ contributions }) => setData(contributions))
+      .then(({ contributions }) => setData(transformData(contributions, transformFn)))
       .catch(setError)
       .finally(() => setLoading(false));
   }, [username, year]);
@@ -63,16 +69,41 @@ const GitHubCalendar: FunctionComponent<Props> = ({ username, year = 'last', ...
   return <Calendar data={data} theme={theme} labels={labels} {...props} />;
 };
 
-// GitHub theme
-const DEFAULT_THEME: Theme = {
-  level4: '#216e39',
-  level3: '#30a14e',
-  level2: '#40c463',
-  level1: '#9be9a8',
-  level0: '#ebedf0',
-};
+const transformData = (data: CalendarData, transformFn?: Props['transformData']): CalendarData => {
+  if (typeof transformFn !== 'function') {
+    return data;
+  }
 
-const API_URL = 'https://github-contributions-api.jogruber.de/v4/';
+  const transformedData = transformFn(data);
+
+  if (!Array.isArray(transformedData)) {
+    throw new Error(`Passed function transformData must return a list of Day objects.`);
+  }
+
+  if (transformedData.length > 0) {
+    const testObj = transformedData[0];
+
+    if (typeof testObj.count !== 'number' || testObj.count < 0) {
+      throw new Error(
+        `Required property "count: number" missing or invalid. Got: ${testObj.count}`,
+      );
+    }
+
+    if (typeof testObj.date !== 'string' || !/(\d{4})-(\d{2})-(\d{2})/.test(testObj.date)) {
+      throw new Error(
+        `Required property "date: YYYY-MM-DD" missing or invalid. Got: ${testObj.date}`,
+      );
+    }
+
+    if (typeof testObj.level !== 'number' || testObj.level < 0 || testObj.level > 4) {
+      throw new Error(
+        `Required property "level: 0|1|2|3|4" missing or invalid: Got: ${testObj.level}.`,
+      );
+    }
+  }
+
+  return transformedData;
+};
 
 export { createCalendarTheme };
 export default GitHubCalendar;
