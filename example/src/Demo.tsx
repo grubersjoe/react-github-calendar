@@ -129,7 +129,6 @@ const Demo: FunctionComponent = () => {
               A new <code>transformData</code> property has been added. It allows you to manipulate
               the array with contribution data after it has been fetched from the API. This way, you
               can, e.g., show a specific date range like the last two months in the calendar. See
-              can, e.g., show a specific date range like the last two months in the calendar. See
               below for an <a href="#example-transform-data">example</a>.
             </li>
             <li>
