@@ -87,13 +87,13 @@ li pre {
 
 a {
   color: inherit;
-  text-decoration: underline 2px hsl(216, 14%, 88%);
+  text-decoration: underline 2px hsl(0, 0%, 88%);
   text-underline-offset: 3px;
   transition: text-decoration 100ms ease-out 0s;
 }
 
 a:hover {
-  text-decoration: underline 2px hsl(216, 14%, 80%);
+  text-decoration: underline 2px hsl(0, 0%, 80%);
 }
 
 section > :last-child {
@@ -103,7 +103,7 @@ section > :last-child {
 hr {
   margin: 2.5rem 0;
   height: 3px;
-  background-color: hsl(216, 14%, 90%);
+  background-color: hsl(0, 0%, 88%);
   border: 0;
 }
 
@@ -111,20 +111,23 @@ pre,
 code {
   font-family: 'Roboto Mono', SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
   font-size: 16px;
-  background: hsl(216, 14%, 93%);
 }
+
 pre {
   margin: 0 0 1.5rem;
-  padding: 0.75em 1em;
-  overflow-x: auto;
+  padding: 0.75em 1em !important;
   border-radius: 4px;
-  line-height: 1.5;
+  background: hsl(0, 0%, 96%) !important;
 }
 
 pre code {
-  background-color: inherit;
+  background: inherit;
   border-radius: 0;
   padding: 0;
+}
+
+code {
+  background: hsl(0, 0%, 94%);
 }
 
 table {
@@ -135,12 +138,13 @@ table {
   font-size: 16px;
 }
 
-thead {
-  border-bottom: 2px solid hsl(216, 14%, 90%);
+thead,
+tr {
+  border-bottom: 2px solid hsl(0, 0%, 88%);
 }
 
 tr {
-  border-bottom: 1px solid hsl(216, 14%, 90%);
+  border-bottom: 1px solid hsl(0, 0%, 88%);
 }
 
 th {

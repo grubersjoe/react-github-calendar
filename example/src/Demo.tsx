@@ -408,8 +408,7 @@ function transformData(data: Array<Day>): Array<Day>;`}
   transformData={selectLastHalfYear} 
   hideTotalCount 
   hideColorLegend
-/>
-`}
+/>`}
           </CodeBlock>
 
           <GitHubCalendar
