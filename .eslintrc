@@ -9,6 +9,7 @@
   "plugins": ["@typescript-eslint"],
   "ignorePatterns": ["*.css", "*.lock", "node_modules/", "build/", "public/"],
   "rules": {
+    "arrow-body-style": "error",
     "react/no-unescaped-entities": 0,
     "react/prop-types": 0
   },
