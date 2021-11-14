@@ -61,7 +61,7 @@ const GitHubCalendar: FunctionComponent<Props> = ({
   }
 
   if (loading || !data) {
-    return <Skeleton loading />;
+    return <Skeleton {...props} loading />;
   }
 
   const theme = props.color ? undefined : props.theme ?? DEFAULT_THEME;
