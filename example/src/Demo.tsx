@@ -269,6 +269,28 @@ const Demo: FunctionComponent = () => {
                   </td>
                 </tr>
                 <tr>
+                  <td>eventHandlers</td>
+                  <td>
+                    (event: SyntheticEvent)
+                    <br />
+                    &nbsp;&nbsp;{'=>'} (data: Day)
+                    <br />
+                    &nbsp;&nbsp;{'=>'} void
+                  </td>
+                  <td>&#123;&#125;</td>
+                  <td>
+                    Map of event handlers to register for the SVG{' '}
+                    <code>
+                      {'<'}rect{'>'}
+                    </code>{' '}
+                    elements that are used to render the calendar days. See this{' '}
+                    <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/activity-calendar--event-handlers">
+                      example
+                    </a>
+                    .
+                  </td>
+                </tr>
+                <tr>
                   <td>fontSize</td>
                   <td>number</td>
                   <td>14</td>
