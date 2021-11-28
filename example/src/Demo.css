@@ -244,7 +244,7 @@ header button {
   }
 
   .container {
-    width: calc(856px + 2rem);
+    width: calc(844px + 2rem); /* default calendar width */
     margin: 2rem auto;
   }
 }
