@@ -1,7 +1,6 @@
 import React, { FormEventHandler, FunctionComponent, useState } from 'react';
 import ReactTooltip from 'react-tooltip';
 import GitHubCalendar, { Props } from 'react-github-calendar';
-import 'typeface-public-sans';
 
 import './Demo.css';
 import pkg from '../package.json';
@@ -76,7 +75,7 @@ const Demo: FunctionComponent = () => {
             on GitHub
           </h4>
 
-          <GitHubCalendar username={username}>
+          <GitHubCalendar username={username} fontSize={16}>
             <ReactTooltip delayShow={50} html />
           </GitHubCalendar>
 
@@ -438,6 +437,7 @@ function transformData(data: Array<Day>): Array<Day>;`}
             transformData={selectLastHalfYear}
             hideTotalCount
             hideColorLegend
+            fontSize={16}
           >
             <ReactTooltip html />
           </GitHubCalendar>

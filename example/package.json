@@ -5,13 +5,14 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@fontsource/ibm-plex-mono": "^4.5.1",
+    "@fontsource/ibm-plex-sans": "^4.5.1",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-github-calendar": "link:..",
     "react-scripts": "^4.0.0",
     "react-syntax-highlighter": "^15.4.5",
-    "react-tooltip": "^4.2.21",
-    "typeface-public-sans": "^1.1.13"
+    "react-tooltip": "^4.2.21"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -7,7 +7,7 @@ button::-moz-focus-inner {
 }
 
 html {
-  font-family: 'Public Sans', sans-serif;
+  font-family: 'IBM Plex Sans', sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #1b1b1b;
@@ -65,8 +65,9 @@ h3 code {
 
 p,
 ul,
-ol {
-  max-width: 72ch;
+ol,
+pre {
+  max-width: 760px;
 }
 
 p {
@@ -109,13 +110,13 @@ hr {
 
 pre,
 code {
-  font-family: 'Roboto Mono', SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+  font-family: 'IBM Plex Mono', SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
   font-size: 16px;
 }
 
 pre {
   margin: 0 0 1.5rem;
-  padding: 0.75em 1em !important;
+  padding: 1.25em !important;
   border-radius: 4px;
   background: hsl(0, 0%, 96%) !important;
 }
@@ -165,12 +166,12 @@ td:not(:last-of-type) {
 
 td:not(:last-of-type) {
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
-  font-size: 90%;
+  font-size: 14px;
   white-space: nowrap;
 }
 
 td code {
-  font-size: 90%;
+  font-size: 14px;
 }
 
 code {
@@ -188,6 +189,7 @@ input,
 button {
   width: 100%;
   margin-bottom: 1rem;
+  padding: 0.7em 1em;
   font-family: inherit;
   font-size: 1rem;
   border: none;
@@ -197,7 +199,6 @@ button {
 input {
   min-width: 15em;
   margin-right: 0.75em;
-  padding: 0.6em 0.8em;
   background-color: #fff;
 }
 
@@ -206,10 +207,10 @@ input:invalid {
 }
 
 button {
-  padding: 0.5em 1em;
   cursor: pointer;
   background-color: #222;
   color: #fff;
+  transition: all 150ms ease-in-out;
 }
 
 button:active {
@@ -219,8 +220,12 @@ button:active {
 }
 
 header button {
-  background-color: #30a14e;
+  background-color: hsl(136, 54%, 41%);
   font-weight: 600;
+}
+
+header button:hover {
+  background-color: hsl(136, 54%, 43%);
 }
 
 .container {
