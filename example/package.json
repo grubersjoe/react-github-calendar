@@ -1,7 +1,7 @@
 {
   "name": "react-github-calendar-example",
   "homepage": "https://grubersjoe.github.io/react-github-calendar/",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "license": "MIT",
   "private": true,
   "dependencies": {
