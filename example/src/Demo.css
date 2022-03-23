@@ -7,7 +7,7 @@ button::-moz-focus-inner {
 }
 
 html {
-  font-family: 'IBM Plex Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #1b1b1b;
@@ -110,7 +110,7 @@ hr {
 
 pre,
 code {
-  font-family: 'IBM Plex Mono', SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
+  font-family: 'Roboto Mono', SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
   font-size: 16px;
 }
 

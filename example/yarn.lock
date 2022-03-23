@@ -1242,15 +1242,15 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fontsource/ibm-plex-mono@^4.5.1":
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/@fontsource/ibm-plex-mono/-/ibm-plex-mono-4.5.1.tgz#f09822dc9d143710687ff8bd05248a86cc2dc4d1"
-  integrity sha512-LW12fxDJ5AsehWKjSdmIV3UZx/DAsbLrLXW7rBww/Rasid2Jgkr6l7mccC1JjcK3RtfQLK8bSYo9OaH61eSikw==
+"@fontsource/roboto-mono@^4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@fontsource/roboto-mono/-/roboto-mono-4.5.3.tgz#04b9969707b10a53511780b0f686d9d0c233a082"
+  integrity sha512-ELuIIUBo1kq2hFmOXjWv9o2VbM22Pct2F0T+D8f5T0MxDKIqkh0m1JMs9bbTzMjc+wVvyJ6LU5EiNkO26kLlKA==
 
-"@fontsource/ibm-plex-sans@^4.5.1":
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/@fontsource/ibm-plex-sans/-/ibm-plex-sans-4.5.1.tgz#0aff4e48f470c1647c180255495d91a28b0a50e6"
-  integrity sha512-Jz+Jgjhrzv21MrsJbUV2sewRrCsKv51NuQFje1QWQbn2E4L1G58pxb6+H9N6EdELlvZvwBffvTYS4OWrF4r71A==
+"@fontsource/roboto@^4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@fontsource/roboto/-/roboto-4.5.3.tgz#c729ac22c35ae1c224cde10042ce7ab356bc4dda"
+  integrity sha512-NUvBTj332dFRdiVkLlavXbDGoD2zyyeGYmMyrXOnctg/3e4pq95+rJgNfUP+k4v8UBk2L1aomGw9dDjbRdAmTg==
 
 "@gar/promisify@^1.0.1":
   version "1.1.2"
@@ -9092,10 +9092,10 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-activity-calendar@^1.4.4:
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/react-activity-calendar/-/react-activity-calendar-1.4.5.tgz#41035522c249a0765de9e78f1b0e9017bef1a170"
-  integrity sha512-OBR0aOYCx+wuisiMkwJaiqVUY9vDgut3q4U9qxmAyjAwHndrp4HbsdX8yHFPZoblA+rh8kSd21ymeLS+HJAv1A==
+react-activity-calendar@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/react-activity-calendar/-/react-activity-calendar-1.5.0.tgz#fd408224d6f203aa4e768d280cb00718a1cc7c87"
+  integrity sha512-u2DEjS3GxpeYVrDsCcAHYg8cCOLgazmyxQvnCF7rbM0eD+2a1FQHxhfIuctIu+AP1Arh+yqfUVVFRnSQynM6/A==
   dependencies:
     date-fns "^2.28.0"
     tinycolor2 "^1.4.0"

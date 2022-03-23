@@ -5,8 +5,8 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@fontsource/ibm-plex-mono": "^4.5.1",
-    "@fontsource/ibm-plex-sans": "^4.5.1",
+    "@fontsource/roboto": "^4.5.3",
+    "@fontsource/roboto-mono": "^4.5.3",
     "react": "link:../node_modules/react",
     "react-dom": "link:../node_modules/react-dom",
     "react-github-calendar": "link:..",

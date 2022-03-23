@@ -19,6 +19,8 @@
     "start": "rollup -c -w"
   },
   "dependencies": {
+    "@fontsource/roboto": "^4.5.3",
+    "@fontsource/roboto-mono": "^4.5.3",
     "react-activity-calendar": "^1.5.0"
   },
   "devDependencies": {

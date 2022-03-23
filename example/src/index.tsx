@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '@fontsource/ibm-plex-sans/latin.css';
-import '@fontsource/ibm-plex-sans/latin-400-italic.css';
-import '@fontsource/ibm-plex-mono/latin.css';
+import '@fontsource/roboto/latin.css';
+import '@fontsource/roboto/latin-400-italic.css';
+import '@fontsource/roboto-mono/latin.css';
 
 import Demo from './Demo';
 
