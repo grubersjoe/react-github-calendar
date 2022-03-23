@@ -13,20 +13,12 @@ const extensions = ['.js', '.jsx', '.ts', '.tsx'];
 
 export default {
   input: 'src/index.tsx',
-  output: [
-    {
-      file: pkg.main,
-      format: 'cjs',
-      sourcemap: true,
-      exports: 'named',
-    },
-    {
-      file: pkg.module,
-      format: 'es',
-      sourcemap: true,
-      exports: 'named',
-    },
-  ],
+  output: {
+    file: pkg.main,
+    format: 'cjs',
+    sourcemap: true,
+    exports: 'named',
+  },
   plugins: [
     external({
       includeDependencies: true,
@@ -44,7 +36,7 @@ export default {
     }),
     commonjs(),
     copy({
-      targets: [{ src: 'src/*.d.ts', dest: 'dist/' }],
+      targets: [{ src: 'src/*.d.ts', dest: 'build/' }],
     }),
     filesize(),
   ],
