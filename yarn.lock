@@ -10192,10 +10192,10 @@ raw-body@2.4.0:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-activity-calendar@^1.4.5:
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/react-activity-calendar/-/react-activity-calendar-1.4.5.tgz#41035522c249a0765de9e78f1b0e9017bef1a170"
-  integrity sha512-OBR0aOYCx+wuisiMkwJaiqVUY9vDgut3q4U9qxmAyjAwHndrp4HbsdX8yHFPZoblA+rh8kSd21ymeLS+HJAv1A==
+react-activity-calendar@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/react-activity-calendar/-/react-activity-calendar-1.5.0.tgz#fd408224d6f203aa4e768d280cb00718a1cc7c87"
+  integrity sha512-u2DEjS3GxpeYVrDsCcAHYg8cCOLgazmyxQvnCF7rbM0eD+2a1FQHxhfIuctIu+AP1Arh+yqfUVVFRnSQynM6/A==
   dependencies:
     date-fns "^2.28.0"
     tinycolor2 "^1.4.0"
