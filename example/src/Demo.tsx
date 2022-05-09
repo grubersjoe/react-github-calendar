@@ -89,7 +89,7 @@ const Demo: FunctionComponent = () => {
 
         <section>
           <h2>Installation</h2>
-          <CodeBlock style={{ marginTop: '0.5rem' }}>yarn install react-github-calendar</CodeBlock>
+          <CodeBlock style={{ marginTop: '0.5rem' }}>yarn add react-github-calendar</CodeBlock>
           <p>Then in your code:</p>
           <CodeBlock>
             {`import GitHubCalendar from 'react-github-calendar';
