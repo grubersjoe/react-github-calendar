@@ -14,10 +14,12 @@ export interface Props extends Omit<CalendarProps, 'data'> {
   username: string;
   year?: Year;
   transformData?: (data: CalendarData) => CalendarData;
+  customProvider?: string;
 }
 
-async function fetchCalendarData(username: string, year: Year): Promise<ApiResponse> {
-  const response = await fetch(`${API_URL}${username}?y=${year}`);
+async function fetchCalendarData(username: string, year: Year, customProvider?: string): Promise<ApiResponse> {
+  const URL = customProvider ? customProvider : `${API_URL}${username}?y=${year}`;
+  const response = await fetch(URL);
   const data: ApiResponse | ApiErrorResponse = await response.json();
 
   if (!response.ok) {
@@ -31,6 +33,7 @@ const GitHubCalendar: FunctionComponent<Props> = ({
   username,
   year = 'last',
   transformData: transformDataProp,
+  customProvider,
   ...props
 }) => {
   const [data, setData] = useState<CalendarData | null>(null);
@@ -45,7 +48,7 @@ const GitHubCalendar: FunctionComponent<Props> = ({
   const fetchData = useCallback(() => {
     setLoading(true);
     setError(null);
-    fetchCalendarData(username, year)
+    fetchCalendarData(username, year, customProvider)
       .then(({ contributions }) => setData(transformDataCallback(contributions)))
       .catch(setError)
       .finally(() => setLoading(false));
