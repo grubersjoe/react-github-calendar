@@ -371,6 +371,12 @@ const Demo: FunctionComponent = () => {
                   <td>0 (Sunday)</td>
                   <td>Index of day to be used as start of week. 0 represents Sunday.</td>
                 </tr>
+                <tr>
+                  <td>customProvider</td>
+                  <td>string</td>
+                  <td></td>
+                  <td>A custom URL to use as alternative for github's API</td>
+                </tr>
               </tbody>
             </table>
           </div>
