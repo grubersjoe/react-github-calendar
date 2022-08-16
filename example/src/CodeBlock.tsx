@@ -6,6 +6,7 @@ import theme from 'react-syntax-highlighter/dist/esm/styles/hljs/docco';
 SyntaxHighlighter.registerLanguage('typescript', ts);
 
 type Props = HTMLAttributes<HTMLPreElement> & {
+  children: string;
   style?: CSSProperties;
 };
 
