@@ -18,14 +18,14 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies (root)
-        run: yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile --ignore-scripts
 
       - name: Install dependencies (example)
         working-directory: ./example
-        run: yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile --ignore-scripts
 
       - name: Run type checks (TypeScript)
-        run: yarn tsc
+        run: yarn --ignore-scripts tsc
 
       - name: Run linter (ESLint)
-        run: yarn lint
+        run: yarn --ignore-scripts lint
