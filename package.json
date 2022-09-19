@@ -1,6 +1,6 @@
 {
   "name": "react-github-calendar",
-  "version": "3.3.3",
+  "version": "3.3.4",
   "description": " A flexible React component to display a GitHub contributions graph",
   "author": "Jonathan Gruber <gruberjonathan@gmail.com>",
   "license": "MIT",
@@ -19,43 +19,47 @@
     "start": "rollup -c -w"
   },
   "dependencies": {
-    "react-activity-calendar": "^1.6.0"
+    "react-activity-calendar": "^1.6.4"
   },
   "devDependencies": {
-    "postcss": "^8.4.16",
-    "@babel/core": "^7.16.0",
+    "@babel/core": "^7.19.1",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.0",
-    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-env": "^7.19.1",
     "@babel/preset-react": "^7.16.0",
     "@babel/preset-typescript": "^7.16.0",
-    "@types/react": "^17.0.36",
-    "@types/react-dom": "^17.0.11",
+    "@types/react": "^18.0.20",
+    "@types/react-dom": "^18.0.6",
     "@types/tinycolor2": "^1.4.3",
-    "@typescript-eslint/eslint-plugin": "^5.4.0",
-    "@typescript-eslint/parser": "^5.4.0",
-    "babel-eslint": "^10.1.0",
-    "cross-env": "^7.0.2",
-    "eslint": "^8.3.0",
-    "eslint-plugin-react": "^7.27.1",
+    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/parser": "^5.38.0",
+    "eslint": "^8.23.1",
+    "eslint-plugin-react": "^7.31.8",
     "eslint-plugin-react-hooks": "^4.3.0",
     "gh-pages": "^4.0.0",
+    "postcss": "^8.4.16",
     "prettier": "^2.4.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "rollup": "^2.60.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^2.79.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-copy": "^3.3.0",
-    "rollup-plugin-filesize": "^9.0.1",
+    "rollup-plugin-filesize": "^9.1.2",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-peer-deps-external": "^2.2.2",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-url": "^3.0.1",
-    "typescript": "^4.5.2"
+    "typescript": "^4.8.3"
   },
   "peerDependencies": {
-    "react": "^17.0.0",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
     "react-tooltip": "^4.2.0"
+  },
+  "peerDependenciesMeta": {
+    "react-tooltip": {
+      "optional": true
+    }
   },
   "files": [
     "build"
