@@ -30,6 +30,7 @@ async function fetchCalendarData(username: string, year: Year): Promise<ApiRespo
 const GitHubCalendar: FunctionComponent<Props> = ({
   username,
   year = 'last',
+  labels,
   transformData: transformDataProp,
   ...props
 }) => {
@@ -67,11 +68,18 @@ const GitHubCalendar: FunctionComponent<Props> = ({
 
   const theme = props.color ? undefined : props.theme ?? DEFAULT_THEME;
 
-  const labels = {
+  const defaultLabels = {
     totalCount: `{{count}} contributions in ${year === 'last' ? 'the last year' : '{{year}}'}`,
   };
 
-  return <Calendar data={data} theme={theme} labels={labels} {...props} />;
+  return (
+    <Calendar
+      data={data}
+      theme={theme}
+      labels={Object.assign({}, defaultLabels, labels)}
+      {...props}
+    />
+  );
 };
 
 export { createCalendarTheme };
