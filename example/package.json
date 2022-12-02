@@ -1,7 +1,7 @@
 {
   "name": "react-github-calendar-example",
   "homepage": "https://grubersjoe.github.io/react-github-calendar/",
-  "version": "3.3.4",
+  "version": "3.3.6",
   "license": "MIT",
   "private": true,
   "dependencies": {
@@ -12,7 +12,7 @@
     "react-github-calendar": "link:..",
     "react-scripts": "^5.0.1",
     "react-syntax-highlighter": "^15.5.0",
-    "react-tooltip": "^4.2.21"
+    "react-tooltip": "^4.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
