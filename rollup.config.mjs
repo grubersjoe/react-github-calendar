@@ -3,12 +3,11 @@ import copy from 'rollup-plugin-copy';
 import external from 'rollup-plugin-peer-deps-external';
 import filesize from 'rollup-plugin-filesize';
 import postcss from 'rollup-plugin-postcss';
-import resolve from '@rollup/plugin-node-resolve';
-import url from '@rollup/plugin-url';
 
+import resolve from '@rollup/plugin-node-resolve';
 import pkg from './package.json' assert { type: "json" };
 
-const extensions = ['.js', '.jsx', '.ts', '.tsx'];
+const extensions = ['.ts', '.tsx'];
 
 export default {
   input: 'src/index.tsx',
@@ -17,6 +16,9 @@ export default {
     format: 'cjs',
     sourcemap: true,
     exports: 'named',
+    // Use 'auto' instead of 'default' for better interoperability with CRA etc.
+    // https://rollupjs.org/guide/en/#outputinterop
+    interop: 'auto',
   },
   plugins: [
     external({
@@ -25,7 +27,6 @@ export default {
     postcss({
       modules: true,
     }),
-    url(),
     babel({
       extensions,
       exclude: 'node_modules/**',

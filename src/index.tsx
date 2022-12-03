@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
 import Calendar, {
-  CalendarData,
   createCalendarTheme,
-  Props as CalendarProps,
   Skeleton,
+  type CalendarData,
+  type Props as CalendarProps,
 } from 'react-activity-calendar';
 
 import { API_URL, DEFAULT_THEME } from './constants';
