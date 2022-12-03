@@ -7177,10 +7177,10 @@ raw-body@2.5.1:
     iconv-lite "0.4.24"
     unpipe "1.0.0"
 
-react-activity-calendar@^1.6.4:
-  version "1.6.4"
-  resolved "https://registry.yarnpkg.com/react-activity-calendar/-/react-activity-calendar-1.6.4.tgz#90cfa80945ef492f13c30b41b829c564c5ab51f1"
-  integrity sha512-NGar/tQBvAJ7Tw+5N5iBW5NJTZguyqn2rJB77ctoFyC/NkPFkVutS3k1A/5EZySLtBm+Nx0j++9rBKgD+YJDSg==
+react-activity-calendar@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/react-activity-calendar/-/react-activity-calendar-1.6.5.tgz#ca2dd418535fdac33470a467b2b69bea79b9e0c7"
+  integrity sha512-MCYCK7Uu7rR1fUzuSCCWz39xTzNSQcdBHESSc666CF3CxWhBfqQuaNaTxumTxRGHMp/9WRlsuBbvwztrMs3edA==
   dependencies:
     "@types/tinycolor2" "^1.4.3"
     date-fns "^2.29.3"
