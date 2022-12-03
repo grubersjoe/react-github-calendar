@@ -10,6 +10,7 @@ export interface Props extends Omit<ActivityCalendarProps, 'data'> {
   username: string;
   year?: number | 'last';
   transformData?: (data: CalendarData) => CalendarData;
+  transformTotalCount?: boolean;
 }
 
 declare const GitHubCalendar: FunctionComponent<Props>;

@@ -345,20 +345,28 @@ function transformData(data: Array<Day>): Array<Day>;`}
 <GitHubCalendar 
   username="${username}" 
   transformData={selectLastHalfYear} 
-  hideTotalCount 
   hideColorLegend
+  hideTotalCount
 />`}
           </CodeBlock>
 
           <GitHubCalendar
             username={username}
             transformData={selectLastHalfYear}
-            hideTotalCount
             hideColorLegend
+            hideTotalCount
             fontSize={16}
           >
             <ReactTooltip html />
           </GitHubCalendar>
+
+          <p>
+            Per default the total count will be calculated from the passed data. However, you can
+            enforce that the total count of the untransformed data is shown by setting the{' '}
+            <code>transformTotalCount</code> to <code>false</code>. The text of total count label
+            below the calendar can be adjusted using the <code>labels.totalCount</code> property and
+            the <code>&#x007B;&#x007B; count &#x007D;&#x007D;</code> placeholder.
+          </p>
         </section>
 
         <p style={{ marginTop: '4rem' }}>

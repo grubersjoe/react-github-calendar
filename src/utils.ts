@@ -1,3 +1,5 @@
+// noinspection SuspiciousTypeOfGuard The caller might not use TypeScript
+
 import { CalendarData } from 'react-activity-calendar';
 
 import { Props } from './index';
@@ -25,7 +27,7 @@ export const transformData = (
       );
     }
 
-    if (typeof testObj.date !== 'string' || !/(\d{4})-(\d{2})-(\d{2})/.test(testObj.date)) {
+    if (!/\d{4}-\d{2}-\d{2}/.test(testObj.date)) {
       throw new Error(
         `Required property "date: YYYY-MM-DD" missing or invalid. Got: ${testObj.date}`,
       );

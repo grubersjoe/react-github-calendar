@@ -14,6 +14,7 @@ export interface Props extends Omit<CalendarProps, 'data'> {
   username: string;
   year?: Year;
   transformData?: (data: CalendarData) => CalendarData;
+  transformTotalCount?: boolean;
 }
 
 async function fetchCalendarData(username: string, year: Year): Promise<ApiResponse> {
@@ -32,25 +33,21 @@ const GitHubCalendar: FunctionComponent<Props> = ({
   year = 'last',
   labels,
   transformData: transformDataProp,
+  transformTotalCount = true,
   ...props
 }) => {
   const [data, setData] = useState<CalendarData | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
-  const transformDataCallback = useCallback(
-    (contributions: CalendarData) => transformData(contributions, transformDataProp),
-    [transformDataProp],
-  );
-
   const fetchData = useCallback(() => {
     setLoading(true);
     setError(null);
     fetchCalendarData(username, year)
-      .then(({ contributions }) => setData(transformDataCallback(contributions)))
+      .then(({ contributions }) => setData(contributions))
       .catch(setError)
       .finally(() => setLoading(false));
-  }, [username, year, transformDataCallback]);
+  }, [username, year]);
 
   useEffect(fetchData, [fetchData]);
 
@@ -72,11 +69,16 @@ const GitHubCalendar: FunctionComponent<Props> = ({
     totalCount: `{{count}} contributions in ${year === 'last' ? 'the last year' : '{{year}}'}`,
   };
 
+  const totalCount = transformTotalCount
+    ? undefined
+    : data.reduce((sum, day) => sum + day.count, 0);
+
   return (
     <Calendar
-      data={data}
+      data={transformData(data, transformDataProp)}
       theme={theme}
       labels={Object.assign({}, defaultLabels, labels)}
+      totalCount={totalCount}
       {...props}
     />
   );

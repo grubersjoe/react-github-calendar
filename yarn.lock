@@ -4157,10 +4157,10 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
-react-activity-calendar@^1.6.7:
-  version "1.6.7"
-  resolved "https://registry.yarnpkg.com/react-activity-calendar/-/react-activity-calendar-1.6.7.tgz#5193b53cfe88be7e57b8f55395f138dfcb42bf3f"
-  integrity sha512-9uW49YW9xRrm1j7oxdlHV3N2TRciTNTLOOd4tG2hRkrWGM7SC6/18IWnnUOhqanN0C2GIkGu5pJ+//DrV7Gliw==
+react-activity-calendar@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/react-activity-calendar/-/react-activity-calendar-1.7.0.tgz#2b0bb6c364de67949f89ff19756957565d056f16"
+  integrity sha512-iyUNhnYYM2zuSI5KUD4xjTbWH4wBFYFm7M1FwZ1J+g8jK7o48730n9v7OemcP++PouH9f4G/oVSGF4Nk3BBcnQ==
   dependencies:
     "@types/tinycolor2" "^1.4.3"
     date-fns "^2.29.3"
