@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-github-calendar/static/css/main.7c15df47.css",
-    "main.js": "/react-github-calendar/static/js/main.f4587879.js",
+    "main.css": "/react-github-calendar/static/css/main.716ca939.css",
+    "main.js": "/react-github-calendar/static/js/main.d2304b41.js",
     "static/media/roboto-latin-400-italic.woff": "/react-github-calendar/static/media/roboto-latin-400-italic.d037cb4792991826de7d.woff",
     "static/media/roboto-latin-500-normal.woff": "/react-github-calendar/static/media/roboto-latin-500-normal.48af7707fe9e6494d6a5.woff",
     "static/media/roboto-latin-100-normal.woff": "/react-github-calendar/static/media/roboto-latin-100-normal.68bb21d0e01219b9771f.woff",
@@ -31,11 +31,11 @@
     "static/media/roboto-mono-latin-400-normal.woff2": "/react-github-calendar/static/media/roboto-mono-latin-400-normal.d3026ee29728abffa752.woff2",
     "static/media/roboto-mono-latin-700-normal.woff2": "/react-github-calendar/static/media/roboto-mono-latin-700-normal.7df391d199f8754a3efd.woff2",
     "index.html": "/react-github-calendar/index.html",
-    "main.7c15df47.css.map": "/react-github-calendar/static/css/main.7c15df47.css.map",
-    "main.f4587879.js.map": "/react-github-calendar/static/js/main.f4587879.js.map"
+    "main.716ca939.css.map": "/react-github-calendar/static/css/main.716ca939.css.map",
+    "main.d2304b41.js.map": "/react-github-calendar/static/js/main.d2304b41.js.map"
   },
   "entrypoints": [
-    "static/css/main.7c15df47.css",
-    "static/js/main.f4587879.js"
+    "static/css/main.716ca939.css",
+    "static/js/main.d2304b41.js"
   ]
 }
