@@ -345,6 +345,16 @@ const Demo: FunctionComponent = () => {
                   </td>
                 </tr>
                 <tr>
+                  <td>transformTotalCount</td>
+                  <td>boolean</td>
+                  <td>true</td>
+                  <td>
+                    When the <code>transformData</code> property is set, the total contribution
+                    count will be calculated based on the transformed data. Set this to{' '}
+                    <code>false</code> to use the original contribution count for all data.
+                  </td>
+                </tr>
+                <tr>
                   <td>weekStart</td>
                   <td>number</td>
                   <td>0 (Sunday)</td>
