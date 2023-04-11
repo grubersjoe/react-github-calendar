@@ -1,3 +1,27 @@
+:root {
+  --font-default: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+  --color-text: #1b1b1b;
+  --color-border: hsl(0, 0%, 88%);
+  --color-border-active: hsl(0, 0%, 80%);
+  --color-page-bg: #fff;
+  --color-header-bg: #141414;
+  --color-header-text: var(--color-page-bg);
+  --color-code-bg: hsl(0, 0%, 94%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text: #fff;
+    --color-border: hsl(0, 0%, 24%);
+    --color-border-active: hsl(0, 0%, 32%);
+    --color-page-bg: hsl(216, 28%, 7%);
+    --color-header-bg: #eee;
+    --color-code-bg: hsl(0, 0%, 18%);
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -7,10 +31,11 @@ button::-moz-focus-inner {
 }
 
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--font-default);
   font-size: 16px;
   line-height: 1.5;
-  color: #1b1b1b;
+  color: var(--color-text);
+  background-color: var(--color-page-bg);
 }
 
 body {
@@ -19,14 +44,10 @@ body {
 }
 
 header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 1.5rem 0 1.25rem;
-  background-image: linear-gradient(120deg, #222, #111);
-  color: #fff;
-  font-size: 20px;
-  text-align: center;
+  background-color: var(--color-header-bg);
+  color: var(--color-header-text);
+  font-size: 1.1rem;
 }
 
 header a {
@@ -47,13 +68,13 @@ h1 {
 }
 
 h2 {
-  margin: 3rem 0 1em;
+  margin: 2.5rem 0 0.75em;
   font-size: 1.563rem;
   font-weight: 700;
 }
 
 h3 {
-  margin: 1.5rem 0 0.5em;
+  margin: 2rem 0 0.75em;
   font-size: 1.25rem;
 }
 
@@ -88,13 +109,13 @@ li pre {
 
 a {
   color: inherit;
-  text-decoration: underline 2px hsl(0, 0%, 88%);
+  text-decoration: underline 2px var(--color-border);
   text-underline-offset: 3px;
   transition: text-decoration 100ms ease-out 0s;
 }
 
 a:hover {
-  text-decoration: underline 2px hsl(0, 0%, 80%);
+  text-decoration: underline 2px var(--color-border-active);
 }
 
 section > :last-child {
@@ -104,21 +125,14 @@ section > :last-child {
 hr {
   margin: 2.5rem 0;
   height: 3px;
-  background-color: hsl(0, 0%, 88%);
+  background-color: var(--color-border);
   border: 0;
 }
 
 pre,
 code {
-  font-family: 'Roboto Mono', SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
-  font-size: 16px;
-}
-
-pre {
-  margin: 0 0 1.5rem;
-  padding: 1.25em !important;
-  border-radius: 4px;
-  background: hsl(0, 0%, 96%) !important;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
 }
 
 pre code {
@@ -128,7 +142,7 @@ pre code {
 }
 
 code {
-  background: hsl(0, 0%, 94%);
+  background: var(--color-code-bg);
 }
 
 table {
@@ -136,16 +150,16 @@ table {
   min-width: 540px;
   margin: 0;
   border-collapse: collapse;
-  font-size: 16px;
+  font-size: 0.9rem;
 }
 
 thead,
 tr {
-  border-bottom: 2px solid hsl(0, 0%, 88%);
+  border-bottom: 2px solid var(--color-border);
 }
 
 tr {
-  border-bottom: 1px solid hsl(0, 0%, 88%);
+  border-bottom: 1px solid var(--color-border);
 }
 
 th {
@@ -155,23 +169,19 @@ th {
 
 th,
 td {
-  padding: 0.6rem 0.4rem;
+  padding: 0.6rem 0;
   vertical-align: top;
   line-height: 1.4;
 }
 
 td:not(:last-of-type) {
-  padding-right: 1.2rem;
+  padding-right: 1.25rem;
 }
 
 td:not(:last-of-type) {
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
-  font-size: 14px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
   white-space: nowrap;
-}
-
-td code {
-  font-size: 14px;
 }
 
 code {
@@ -180,9 +190,8 @@ code {
 }
 
 form {
-  margin: 2.5rem 0 0;
   display: flex;
-  justify-content: center;
+  margin: 2.5rem 0 0;
 }
 
 input,
@@ -191,7 +200,7 @@ button {
   margin-bottom: 1rem;
   padding: 0.7em 1em;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: 15px;
   border: none;
   border-radius: 4px;
 }
@@ -208,8 +217,9 @@ input:invalid {
 
 button {
   cursor: pointer;
-  background-color: #222;
-  color: #fff;
+  color: var(--color-text);
+  border: solid 1px var(--color-text);
+  background-color: transparent;
   transition: all 150ms ease-in-out;
 }
 
@@ -220,17 +230,14 @@ button:active {
 }
 
 header button {
-  background-color: hsl(136, 54%, 41%);
+  color: var(--color-page-bg);
+  border-color: var(--color-page-bg);
   font-weight: 600;
-}
-
-header button:hover {
-  background-color: hsl(136, 54%, 43%);
 }
 
 .container {
   margin: 1.5rem auto;
-  padding: 0 16px;
+  padding: 0 20px;
 }
 
 .react-activity-calendar {
@@ -239,7 +246,7 @@ header button:hover {
 
 @media (min-width: 768px) {
   html {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   input,
@@ -252,6 +259,10 @@ header button:hover {
     width: calc(844px + 2rem); /* default calendar width */
     margin: 2rem auto;
   }
+}
+
+.github-corner .octo {
+  fill: var(--color-text);
 }
 
 .github-corner:hover .octo-arm {

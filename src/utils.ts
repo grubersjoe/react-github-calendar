@@ -1,13 +1,13 @@
 // noinspection SuspiciousTypeOfGuard The caller might not use TypeScript
 
-import { CalendarData } from 'react-activity-calendar';
+import { Activity } from 'react-activity-calendar';
 
 import { Props } from './index';
 
 export const transformData = (
-  data: CalendarData,
+  data: Array<Activity>,
   transformFn?: Props['transformData'],
-): CalendarData => {
+): Array<Activity> => {
   if (typeof transformFn !== 'function') {
     return data;
   }

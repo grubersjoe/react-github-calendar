@@ -1,10 +1,5 @@
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
-import Calendar, {
-  createCalendarTheme,
-  Skeleton,
-  type CalendarData,
-  type Props as CalendarProps,
-} from 'react-activity-calendar';
+import Calendar, { Activity, type Props as CalendarProps, Skeleton } from 'react-activity-calendar';
 
 import { API_URL, DEFAULT_THEME } from './constants';
 import { ApiErrorResponse, ApiResponse, Year } from './types';
@@ -13,7 +8,7 @@ import { transformData } from './utils';
 export interface Props extends Omit<CalendarProps, 'data'> {
   username: string;
   year?: Year;
-  transformData?: (data: CalendarData) => CalendarData;
+  transformData?: (data: Array<Activity>) => Array<Activity>;
   transformTotalCount?: boolean;
 }
 
@@ -36,7 +31,7 @@ const GitHubCalendar: FunctionComponent<Props> = ({
   transformTotalCount = true,
   ...props
 }) => {
-  const [data, setData] = useState<CalendarData | null>(null);
+  const [data, setData] = useState<Array<Activity> | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
@@ -63,7 +58,7 @@ const GitHubCalendar: FunctionComponent<Props> = ({
     return <Skeleton {...props} loading />;
   }
 
-  const theme = props.color ? undefined : props.theme ?? DEFAULT_THEME;
+  const theme = props.theme ?? DEFAULT_THEME;
 
   const defaultLabels = {
     totalCount: `{{count}} contributions in ${year === 'last' ? 'the last year' : '{{year}}'}`,
@@ -71,7 +66,7 @@ const GitHubCalendar: FunctionComponent<Props> = ({
 
   const totalCount = transformTotalCount
     ? undefined
-    : data.reduce((sum, day) => sum + day.count, 0);
+    : data.reduce((sum, activity) => sum + activity.count, 0);
 
   return (
     <Calendar
@@ -84,5 +79,4 @@ const GitHubCalendar: FunctionComponent<Props> = ({
   );
 };
 
-export { createCalendarTheme };
 export default GitHubCalendar;
