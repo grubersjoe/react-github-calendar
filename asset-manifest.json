@@ -1,41 +1,13 @@
 {
   "files": {
-    "main.css": "/react-github-calendar/static/css/main.716ca939.css",
-    "main.js": "/react-github-calendar/static/js/main.d2304b41.js",
-    "static/media/roboto-latin-400-italic.woff": "/react-github-calendar/static/media/roboto-latin-400-italic.d037cb4792991826de7d.woff",
-    "static/media/roboto-latin-500-normal.woff": "/react-github-calendar/static/media/roboto-latin-500-normal.48af7707fe9e6494d6a5.woff",
-    "static/media/roboto-latin-100-normal.woff": "/react-github-calendar/static/media/roboto-latin-100-normal.68bb21d0e01219b9771f.woff",
-    "static/media/roboto-latin-900-normal.woff": "/react-github-calendar/static/media/roboto-latin-900-normal.f5677eb229af2e6c8fe1.woff",
-    "static/media/roboto-latin-300-normal.woff": "/react-github-calendar/static/media/roboto-latin-300-normal.c2f7ab22cb9cbd074c3a.woff",
-    "static/media/roboto-latin-700-normal.woff": "/react-github-calendar/static/media/roboto-latin-700-normal.77ecb942e56f9b036426.woff",
-    "static/media/roboto-latin-400-normal.woff": "/react-github-calendar/static/media/roboto-latin-400-normal.f1e2a76794cb86b2aa8e.woff",
-    "static/media/roboto-latin-400-italic.woff2": "/react-github-calendar/static/media/roboto-latin-400-italic.e10742dbb1d4a0864ba8.woff2",
-    "static/media/roboto-latin-500-normal.woff2": "/react-github-calendar/static/media/roboto-latin-500-normal.f25d774ecfe0996f8eb5.woff2",
-    "static/media/roboto-latin-700-normal.woff2": "/react-github-calendar/static/media/roboto-latin-700-normal.227c93190fe7f82de3f8.woff2",
-    "static/media/roboto-latin-100-normal.woff2": "/react-github-calendar/static/media/roboto-latin-100-normal.30fb0679553d179c3343.woff2",
-    "static/media/roboto-latin-900-normal.woff2": "/react-github-calendar/static/media/roboto-latin-900-normal.2e8becfcae330421664b.woff2",
-    "static/media/roboto-latin-400-normal.woff2": "/react-github-calendar/static/media/roboto-latin-400-normal.b009a76ad6afe4ebd301.woff2",
-    "static/media/roboto-latin-300-normal.woff2": "/react-github-calendar/static/media/roboto-latin-300-normal.c48fb6765a9fcb00b330.woff2",
-    "static/media/roboto-mono-latin-200-normal.woff": "/react-github-calendar/static/media/roboto-mono-latin-200-normal.5c2a1a50e133f955e9ae.woff",
-    "static/media/roboto-mono-latin-300-normal.woff": "/react-github-calendar/static/media/roboto-mono-latin-300-normal.d4f40249668f914084ef.woff",
-    "static/media/roboto-mono-latin-600-normal.woff": "/react-github-calendar/static/media/roboto-mono-latin-600-normal.430844f6bc59a1a2030c.woff",
-    "static/media/roboto-mono-latin-100-normal.woff": "/react-github-calendar/static/media/roboto-mono-latin-100-normal.1ae8c8f54d69c668e173.woff",
-    "static/media/roboto-mono-latin-500-normal.woff": "/react-github-calendar/static/media/roboto-mono-latin-500-normal.aaaee0125e72bf822fe2.woff",
-    "static/media/roboto-mono-latin-700-normal.woff": "/react-github-calendar/static/media/roboto-mono-latin-700-normal.419987d722dd49f45926.woff",
-    "static/media/roboto-mono-latin-400-normal.woff": "/react-github-calendar/static/media/roboto-mono-latin-400-normal.635c393bc288b89d560f.woff",
-    "static/media/roboto-mono-latin-200-normal.woff2": "/react-github-calendar/static/media/roboto-mono-latin-200-normal.3abfa0226a3d9fd27daf.woff2",
-    "static/media/roboto-mono-latin-300-normal.woff2": "/react-github-calendar/static/media/roboto-mono-latin-300-normal.4049410be22872fc5317.woff2",
-    "static/media/roboto-mono-latin-500-normal.woff2": "/react-github-calendar/static/media/roboto-mono-latin-500-normal.f115e285a8c5ddd183d3.woff2",
-    "static/media/roboto-mono-latin-100-normal.woff2": "/react-github-calendar/static/media/roboto-mono-latin-100-normal.17bbb599ff9ecec3572f.woff2",
-    "static/media/roboto-mono-latin-600-normal.woff2": "/react-github-calendar/static/media/roboto-mono-latin-600-normal.3a6344be94af104d64b2.woff2",
-    "static/media/roboto-mono-latin-400-normal.woff2": "/react-github-calendar/static/media/roboto-mono-latin-400-normal.d3026ee29728abffa752.woff2",
-    "static/media/roboto-mono-latin-700-normal.woff2": "/react-github-calendar/static/media/roboto-mono-latin-700-normal.7df391d199f8754a3efd.woff2",
+    "main.css": "/react-github-calendar/static/css/main.2c718d0b.css",
+    "main.js": "/react-github-calendar/static/js/main.8f129c0b.js",
     "index.html": "/react-github-calendar/index.html",
-    "main.716ca939.css.map": "/react-github-calendar/static/css/main.716ca939.css.map",
-    "main.d2304b41.js.map": "/react-github-calendar/static/js/main.d2304b41.js.map"
+    "main.2c718d0b.css.map": "/react-github-calendar/static/css/main.2c718d0b.css.map",
+    "main.8f129c0b.js.map": "/react-github-calendar/static/js/main.8f129c0b.js.map"
   },
   "entrypoints": [
-    "static/css/main.716ca939.css",
-    "static/js/main.d2304b41.js"
+    "static/css/main.2c718d0b.css",
+    "static/js/main.8f129c0b.js"
   ]
 }
