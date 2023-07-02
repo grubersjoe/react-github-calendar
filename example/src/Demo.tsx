@@ -162,7 +162,11 @@ const Demo: FunctionComponent = () => {
                   <td>
                     (event: SyntheticEvent)
                     <br />
-                    &nbsp;&nbsp;{'=>'} (data: Activity)
+                    &nbsp;&nbsp;{'=>'} (data:{' '}
+                    <a href="https://github.com/grubersjoe/react-activity-calendar/blob/main/src/types.ts">
+                      Activity
+                    </a>
+                    )
                     <br />
                     &nbsp;&nbsp;{'=>'} void
                   </td>
@@ -269,16 +273,23 @@ const Demo: FunctionComponent = () => {
                   </td>
                   <td>GitHub theme</td>
                   <td>
-                    Set the calendar colors for the <code>light</code> and <code>dark</code> system
-                    color scheme. The color scale for at least one color scheme needs to be
-                    specified. For undefined values, the default theme is selected. By default, the
-                    calendar will use the currently set system color scheme, but you can enforce a
-                    specific color scheme with the <code>colorScheme</code> prop.
-                    <br />
-                    <br />
-                    Define each color scale explicitly with five colors or pass exactly two colors
-                    (lowest and highest intensity) to calculate a single-hue scale. Colors can be
-                    specified in any valid CSS format.
+                    <p>
+                      Set the calendar colors for the <code>light</code> and <code>dark</code>{' '}
+                      system color scheme. The color scale for at least one color scheme needs to be
+                      specified. For undefined values, the default theme is selected. By default,
+                      the calendar will use the currently set system color scheme, but you can
+                      enforce a specific color scheme with the <code>colorScheme</code> prop.
+                    </p>
+                    <p>
+                      Define each color scale explicitly with five colors or pass exactly two colors
+                      (lowest and highest intensity) to calculate a single-hue scale. Colors can be
+                      specified in any valid CSS format.
+                    </p>
+                    <p>
+                      <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--with-theme">
+                        See this example
+                      </a>
+                    </p>
                   </td>
                 </tr>
                 <tr>
@@ -341,8 +352,9 @@ const Demo: FunctionComponent = () => {
 
           <h3 id="example-transform-data">Usage of the transformData prop</h3>
           <p>
-            You can pass a function as <code>transformData</code> prop that receives the array of
-            contribution data to manipulate it. The following interface must be met:
+            You can pass a function as the <code>transformData</code> prop that receives the array
+            of contribution data to manipulate it. The transformation function must meet the
+            following signature:
           </p>
           <CodeBlock>
             {`interface Activity {
