@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Calendar, { Activity, type Props as CalendarProps, Skeleton } from 'react-activity-calendar';
 
 import { API_URL, DEFAULT_THEME } from './constants';
@@ -22,14 +22,14 @@ async function fetchCalendarData(username: string, year: Year): Promise<ApiRespo
 
   return data as ApiResponse;
 }
-const GitHubCalendar: FunctionComponent<Props> = ({
+const GitHubCalendar = ({
   username,
   year = 'last',
   labels,
   transformData: transformDataCallback,
   transformTotalCount = true,
   ...props
-}) => {
+}: Props) => {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);

@@ -21,7 +21,7 @@ Start watch mode for library first:
 
 ```
 yarn
-yarn start
+yarn dev
 ```
 
 Then start watch mode of example page:
@@ -29,7 +29,7 @@ Then start watch mode of example page:
 ```
 cd example
 yarn
-yarn start
+yarn dev
 ```
 
 Open http://localhost:3000.

@@ -5,12 +5,14 @@ import Demo from './Demo';
 
 const container = document.getElementById('root');
 
-if (container) {
-  const root = createRoot(container);
-
-  root.render(
-    <React.StrictMode>
-      <Demo />
-    </React.StrictMode>,
-  );
+if (!container) {
+  throw new Error('#root not found');
 }
+
+const root = createRoot(container);
+
+root.render(
+  <React.StrictMode>
+    <Demo />
+  </React.StrictMode>,
+);

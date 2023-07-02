@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 
 const style: CSSProperties = {
   position: 'absolute',
@@ -8,7 +8,7 @@ const style: CSSProperties = {
   fill: 'currentcolor',
 };
 
-const ForkMe: React.FC = () => (
+const ForkMe = () => (
   <a
     href="https://github.com/grubersjoe/react-github-calendar"
     className="github-corner"

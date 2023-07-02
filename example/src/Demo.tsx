@@ -1,4 +1,4 @@
-import React, { FormEventHandler, FunctionComponent, useState } from 'react';
+import { createRef, FormEventHandler, FunctionComponent, useState } from 'react';
 import GitHubCalendar, { Props } from 'react-github-calendar';
 
 import './Demo.css';
@@ -27,7 +27,7 @@ const selectLastHalfYear: Props['transformData'] = contributions => {
 
 const Demo: FunctionComponent = () => {
   const [username, setUsername] = useState('grubersjoe');
-  const input = React.createRef<HTMLInputElement>();
+  const input = createRef<HTMLInputElement>();
 
   const updateUsername: FormEventHandler = event => {
     event.preventDefault();
