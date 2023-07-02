@@ -22,16 +22,15 @@ async function fetchCalendarData(username: string, year: Year): Promise<ApiRespo
 
   return data as ApiResponse;
 }
-
 const GitHubCalendar: FunctionComponent<Props> = ({
   username,
   year = 'last',
   labels,
-  transformData: transformDataProp,
+  transformData: transformDataCallback,
   transformTotalCount = true,
   ...props
 }) => {
-  const [data, setData] = useState<Array<Activity> | null>(null);
+  const [data, setData] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
@@ -39,7 +38,7 @@ const GitHubCalendar: FunctionComponent<Props> = ({
     setLoading(true);
     setError(null);
     fetchCalendarData(username, year)
-      .then(({ contributions }) => setData(contributions))
+      .then(setData)
       .catch(setError)
       .finally(() => setLoading(false));
   }, [username, year]);
@@ -64,16 +63,14 @@ const GitHubCalendar: FunctionComponent<Props> = ({
     totalCount: `{{count}} contributions in ${year === 'last' ? 'the last year' : '{{year}}'}`,
   };
 
-  const totalCount = transformTotalCount
-    ? undefined
-    : data.reduce((sum, activity) => sum + activity.count, 0);
+  const totalCount = year === 'last' ? data.total['lastYear'] : data.total[year];
 
   return (
     <Calendar
-      data={transformData(data, transformDataProp)}
+      data={transformData(data.contributions, transformDataCallback)}
       theme={theme}
       labels={Object.assign({}, defaultLabels, labels)}
-      totalCount={totalCount}
+      totalCount={transformDataCallback && transformTotalCount ? undefined : totalCount}
       {...props}
     />
   );

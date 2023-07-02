@@ -354,8 +354,8 @@ const Demo: FunctionComponent = () => {
 function transformData(data: Array<Activity>): Array<Activity>;`}
           </CodeBlock>
           <p>
-            For example, in order to show the last six months of contribution data you can use the
-            following:
+            For example, to only show the the contribution data of the last six months you can do
+            the following:
           </p>
           <CodeBlock>
             {`const selectLastHalfYear = contributions => {
@@ -381,7 +381,9 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
   username="${username}" 
   transformData={selectLastHalfYear} 
   hideColorLegend
-  hideTotalCount
+  labels={{
+    totalCount: '{{count}} contributions in the last half year',
+  }}
 />`}
           </CodeBlock>
 
@@ -391,12 +393,14 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
             username={username}
             transformData={selectLastHalfYear}
             hideColorLegend
-            hideTotalCount
             fontSize={16}
+            labels={{
+              totalCount: '{{count}} contributions in the last half year',
+            }}
           />
 
           <p>
-            Per default the total count will be calculated from the passed data. However, you can
+            The total count will be recalculated based on the transformed data. However, you can
             enforce that the total count of the untransformed data is shown by setting the{' '}
             <code>transformTotalCount</code> to <code>false</code>. The text of total count label
             below the calendar can be adjusted using the <code>labels.totalCount</code> prop and the{' '}
