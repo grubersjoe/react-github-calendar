@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-github-calendar/static/css/main.2c718d0b.css",
-    "main.js": "/react-github-calendar/static/js/main.c406c68a.js",
+    "main.css": "/react-github-calendar/static/css/main.4247398f.css",
+    "main.js": "/react-github-calendar/static/js/main.64e67cbb.js",
     "index.html": "/react-github-calendar/index.html",
-    "main.2c718d0b.css.map": "/react-github-calendar/static/css/main.2c718d0b.css.map",
-    "main.c406c68a.js.map": "/react-github-calendar/static/js/main.c406c68a.js.map"
+    "main.4247398f.css.map": "/react-github-calendar/static/css/main.4247398f.css.map",
+    "main.64e67cbb.js.map": "/react-github-calendar/static/js/main.64e67cbb.js.map"
   },
   "entrypoints": [
-    "static/css/main.2c718d0b.css",
-    "static/js/main.c406c68a.js"
+    "static/css/main.4247398f.css",
+    "static/js/main.64e67cbb.js"
   ]
 }
