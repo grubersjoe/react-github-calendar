@@ -1,11 +1,11 @@
 import { createRef, FormEventHandler, FunctionComponent, useState } from 'react';
 import GitHubCalendar, { Props } from 'react-github-calendar';
 
-import './Demo.css';
-import pkg from '../package.json';
+import '../styles.scss';
+import pkg from '../../package.json';
 
-import CodeBlock from './CodeBlock';
-import ForkMe from './ForkMe';
+import CodeBlock from './CodeBlock.tsx';
+import ForkMe from './ForkMe.tsx';
 import GitHubButton from 'react-github-btn';
 
 const selectLastHalfYear: Props['transformData'] = contributions => {
@@ -66,15 +66,17 @@ const Demo: FunctionComponent = () => {
             on GitHub
           </h4>
 
-          <GitHubCalendar username={username} fontSize={16} />
+          <div style={{ overflowX: 'auto' }}>
+            <GitHubCalendar username={username} fontSize={16} />
+          </div>
 
-          <p style={{ marginBottom: 12 }}>
+          <p style={{ marginBottom: '1.25rem' }}>
             Made with love by <a href="https://jogruber.de">@grubersjoe</a>, current version:{' '}
             <a href="https://www.npmjs.com/package/react-github-calendar">
               <code>v{pkg.version}</code>
             </a>
           </p>
-          <p>
+          <div>
             <GitHubButton
               href="https://github.com/grubersjoe/react-github-calendar"
               data-color-scheme="no-preference: light; light: light; dark: dark;"
@@ -85,7 +87,7 @@ const Demo: FunctionComponent = () => {
             >
               Star
             </GitHubButton>
-          </p>
+          </div>
         </section>
 
         <section>
@@ -401,15 +403,17 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
 
           <br />
 
-          <GitHubCalendar
-            username={username}
-            transformData={selectLastHalfYear}
-            hideColorLegend
-            fontSize={16}
-            labels={{
-              totalCount: '{{count}} contributions in the last half year',
-            }}
-          />
+          <div style={{ overflowX: 'auto' }}>
+            <GitHubCalendar
+              username={username}
+              transformData={selectLastHalfYear}
+              hideColorLegend
+              fontSize={16}
+              labels={{
+                totalCount: '{{count}} contributions in the last half year',
+              }}
+            />
+          </div>
 
           <p>
             The total count will be recalculated based on the transformed data. However, you can
