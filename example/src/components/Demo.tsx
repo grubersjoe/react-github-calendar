@@ -66,9 +66,7 @@ const Demo: FunctionComponent = () => {
             on GitHub
           </h4>
 
-          <div style={{ overflowX: 'auto' }}>
-            <GitHubCalendar username={username} fontSize={16} />
-          </div>
+          <GitHubCalendar username={username} fontSize={16} />
 
           <p style={{ marginBottom: '1.25rem' }}>
             Made with love by <a href="https://jogruber.de">@grubersjoe</a>, current version:{' '}
@@ -110,7 +108,7 @@ const Demo: FunctionComponent = () => {
             </a>{' '}
             of <code>react-activity-calendar</code>
           </p>
-          <div style={{ overflowX: 'auto' }}>
+          <div className="table-overflow">
             <table>
               <thead>
                 <tr>
@@ -403,17 +401,15 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
 
           <br />
 
-          <div style={{ overflowX: 'auto' }}>
-            <GitHubCalendar
-              username={username}
-              transformData={selectLastHalfYear}
-              hideColorLegend
-              fontSize={16}
-              labels={{
-                totalCount: '{{count}} contributions in the last half year',
-              }}
-            />
-          </div>
+          <GitHubCalendar
+            username={username}
+            transformData={selectLastHalfYear}
+            hideColorLegend
+            fontSize={16}
+            labels={{
+              totalCount: '{{count}} contributions in the last half year',
+            }}
+          />
 
           <p>
             The total count will be recalculated based on the transformed data. However, you can

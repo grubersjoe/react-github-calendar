@@ -1,6 +1,6 @@
 {
   "name": "react-github-calendar",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "description": " A flexible React component to display a GitHub contributions graph",
   "author": "Jonathan Gruber <gruberjonathan@gmail.com>",
   "license": "MIT",
@@ -19,11 +19,10 @@
     "prepublishOnly": "npx tsc && npm run lint && npm run build"
   },
   "dependencies": {
-    "react-activity-calendar": "^2.0.2"
+    "react-activity-calendar": "^2.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.0",
     "@babel/preset-env": "^7.22.5",
     "@babel/preset-react": "^7.22.5",
     "@babel/preset-typescript": "^7.22.5",
@@ -32,17 +31,17 @@
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "@types/tinycolor2": "^1.4.3",
-    "@typescript-eslint/eslint-plugin": "^5.60.1",
-    "@typescript-eslint/parser": "^5.60.1",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
     "eslint": "^8.44.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "gh-pages": "^5.0.0",
+    "gh-pages": "^6.0.0",
     "postcss": "^8.4.24",
     "prettier": "^2.8.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rollup": "^3.26.0",
+    "rollup": "^4.3.0",
     "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-filesize": "^10.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.2",

@@ -166,14 +166,19 @@ pre code {
 }
 
 table {
-  width: 100%;
-  min-width: 540px;
+  max-width: 100%;
   margin: 0;
   border-collapse: collapse;
 
   @media (min-width: 768px) {
+    min-width: 540px;
     font-size: 0.9rem;
   }
+}
+
+.table-overflow {
+    width: 100%;
+    overflow: auto;
 }
 
 thead,
@@ -282,14 +287,13 @@ button {
   padding: 0 20px;
 
   @media (min-width: 768px) {
-    width: calc(844px + 2rem); /* default calendar width */
+    width: calc(848px + 2rem); /* default calendar width */
     margin: 2rem auto;
   }
 }
 
 .react-activity-calendar {
   margin: 0 0 1.5rem;
-  min-width: 780px;
 }
 
 .github-corner .octo {
