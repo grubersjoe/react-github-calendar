@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   react-activity-calendar:
-    specifier: ^2.1.5
-    version: 2.1.5(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^2.1.7
+    version: 2.1.7(react-dom@18.2.0)(react@18.2.0)
 
 devDependencies:
   '@babel/core':
@@ -4914,8 +4914,8 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
-  /react-activity-calendar@2.1.5(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-WAQJIB4KeHLfnyZZhAo9C2EBjwfeCvBqMNfgQhZizxZepxs9KMCGs7wjF+sHcrhnGp4EK9jv9KFDtHBunj3SZw==}
+  /react-activity-calendar@2.1.7(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Dhm55DHVDdtMpM9YtNq6RDqzBoP4ZWxPIe2nmHhWxwuRyar+gWYUJG5ZRVvaOI5PjlOOC0dIaMKB5+XH+konBA==}
     peerDependencies:
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0

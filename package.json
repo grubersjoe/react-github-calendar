@@ -1,6 +1,6 @@
 {
   "name": "react-github-calendar",
-  "version": "4.0.3",
+  "version": "4.0.5",
   "description": " A flexible React component to display a GitHub contributions graph",
   "author": "Jonathan Gruber <gruberjonathan@gmail.com>",
   "license": "MIT",
@@ -19,7 +19,7 @@
     "prepublishOnly": "npx tsc && npm run lint && npm run build"
   },
   "dependencies": {
-    "react-activity-calendar": "^2.1.5"
+    "react-activity-calendar": "^2.1.7"
   },
   "devDependencies": {
     "@babel/core": "^7.23.3",
