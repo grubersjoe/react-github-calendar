@@ -17,12 +17,13 @@
     "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {
+    "@types/node": "^20",
     "@types/react": "link:../node_modules/@types/react",
     "@types/react-dom": "link:../node_modules/@types/react-dom",
-    "@types/react-syntax-highlighter": "^15.5.6",
-    "@vitejs/plugin-react": "^4.0.1",
+    "@types/react-syntax-highlighter": "^15.5.10",
+    "@vitejs/plugin-react": "^4.2.0",
     "sass": "^1.63.6",
-    "typescript": "^5.1.6",
-    "vite": "^4.3.9"
+    "typescript": "^5.3.2",
+    "vite": "^5.0.4"
   }
 }

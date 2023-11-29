@@ -72,6 +72,7 @@ const GitHubCalendar = ({
       labels={Object.assign({}, defaultLabels, labels)}
       totalCount={transformDataCallback && transformTotalCount ? undefined : totalCount}
       {...props}
+      maxLevel={4}
     />
   );
 };
