@@ -1,5 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import Calendar, { Activity, type Props as CalendarProps, Skeleton } from 'react-activity-calendar';
+import Calendar, {
+  Activity,
+  type Props as CalendarProps,
+  Skeleton,
+} from 'react-activity-calendar';
 
 import { API_URL, DEFAULT_THEME } from './constants';
 import { ApiErrorResponse, ApiResponse, Year } from './types';
@@ -12,7 +16,10 @@ export interface Props extends Omit<CalendarProps, 'data'> {
   transformTotalCount?: boolean;
 }
 
-async function fetchCalendarData(username: string, year: Year): Promise<ApiResponse> {
+async function fetchCalendarData(
+  username: string,
+  year: Year,
+): Promise<ApiResponse> {
   const response = await fetch(`${API_URL}${username}?y=${year}`);
   const data: ApiResponse | ApiErrorResponse = await response.json();
 
@@ -60,17 +67,22 @@ const GitHubCalendar = ({
   const theme = props.theme ?? DEFAULT_THEME;
 
   const defaultLabels = {
-    totalCount: `{{count}} contributions in ${year === 'last' ? 'the last year' : '{{year}}'}`,
+    totalCount: `{{count}} contributions in ${
+      year === 'last' ? 'the last year' : '{{year}}'
+    }`,
   };
 
-  const totalCount = year === 'last' ? data.total['lastYear'] : data.total[year];
+  const totalCount =
+    year === 'last' ? data.total['lastYear'] : data.total[year];
 
   return (
     <Calendar
       data={transformData(data.contributions, transformDataCallback)}
       theme={theme}
       labels={Object.assign({}, defaultLabels, labels)}
-      totalCount={transformDataCallback && transformTotalCount ? undefined : totalCount}
+      totalCount={
+        transformDataCallback && transformTotalCount ? undefined : totalCount
+      }
       {...props}
       maxLevel={4}
     />

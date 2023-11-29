@@ -1,4 +1,9 @@
-import { createRef, FormEventHandler, FunctionComponent, useState } from 'react';
+import {
+  createRef,
+  FormEventHandler,
+  FunctionComponent,
+  useState,
+} from 'react';
 import GitHubCalendar, { Props } from 'react-github-calendar';
 
 import '../styles.scss';
@@ -8,12 +13,12 @@ import CodeBlock from './CodeBlock.tsx';
 import ForkMe from './ForkMe.tsx';
 import GitHubButton from 'react-github-btn';
 
-const selectLastHalfYear: Props['transformData'] = contributions => {
+const selectLastHalfYear: Props['transformData'] = (contributions) => {
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth();
   const shownMonths = 6;
 
-  return contributions.filter(activity => {
+  return contributions.filter((activity) => {
     const date = new Date(activity.date);
     const monthOfDay = date.getMonth();
 
@@ -29,7 +34,7 @@ const Demo: FunctionComponent = () => {
   const [username, setUsername] = useState('grubersjoe');
   const input = createRef<HTMLInputElement>();
 
-  const updateUsername: FormEventHandler = event => {
+  const updateUsername: FormEventHandler = (event) => {
     event.preventDefault();
     if (input.current && String(input.current.value).trim()) {
       setUsername(String(input.current.value).trim().toLowerCase());
@@ -42,7 +47,9 @@ const Demo: FunctionComponent = () => {
         <ForkMe />
         <div className="container">
           <h1>GitHub Contributions Calendar</h1>
-          <div>A React component to display a GitHub contributions calendar </div>
+          <div>
+            A React component to display a GitHub contributions calendar{' '}
+          </div>
           <form onSubmit={updateUsername}>
             <input
               type="text"
@@ -60,7 +67,10 @@ const Demo: FunctionComponent = () => {
       <main className="container">
         <section>
           <h4 style={{ fontWeight: 'normal', margin: '1em 0' }}>
-            <a href={`https://github.com/${username}`} style={{ textDecoration: 'none' }}>
+            <a
+              href={`https://github.com/${username}`}
+              style={{ textDecoration: 'none' }}
+            >
               @{username}
             </a>{' '}
             on GitHub
@@ -69,7 +79,8 @@ const Demo: FunctionComponent = () => {
           <GitHubCalendar username={username} fontSize={16} />
 
           <p style={{ marginBottom: '1.25rem' }}>
-            Made with love by <a href="https://jogruber.de">@grubersjoe</a>, current version:{' '}
+            Made with love by <a href="https://jogruber.de">@grubersjoe</a>,
+            current version:{' '}
             <a href="https://www.npmjs.com/package/react-github-calendar">
               <code>v{pkg.version}</code>
             </a>
@@ -90,7 +101,9 @@ const Demo: FunctionComponent = () => {
 
         <section>
           <h2>Installation</h2>
-          <CodeBlock style={{ marginTop: '0.5rem' }}>yarn add react-github-calendar</CodeBlock>
+          <CodeBlock style={{ marginTop: '0.5rem' }}>
+            yarn add react-github-calendar
+          </CodeBlock>
           <p>Then in your code:</p>
           <CodeBlock>
             {`import GitHubCalendar from 'react-github-calendar';
@@ -131,7 +144,10 @@ const Demo: FunctionComponent = () => {
                   <td>year</td>
                   <td>number | 'last'</td>
                   <td>'last'</td>
-                  <td>To be rendered year. Defaults to the last year like on GitHub.</td>
+                  <td>
+                    To be rendered year. Defaults to the last year like on
+                    GitHub.
+                  </td>
                 </tr>
                 <tr>
                   <td>blockMargin</td>
@@ -155,7 +171,9 @@ const Demo: FunctionComponent = () => {
                   <td>colorScheme</td>
                   <td>'light' | 'dark'</td>
                   <td />
-                  <td>Use a specific color scheme instead of the system one.</td>
+                  <td>
+                    Use a specific color scheme instead of the system one.
+                  </td>
                 </tr>
                 <tr>
                   <td>eventHandlers</td>
@@ -244,8 +262,8 @@ const Demo: FunctionComponent = () => {
                   </td>
                   <td>false</td>
                   <td>
-                    Render prop for calendar blocks (activities). For example, useful to wrap the
-                    element with a tooltip component. Use{' '}
+                    Render prop for calendar blocks (activities). For example,
+                    useful to wrap the element with a tooltip component. Use{' '}
                     <a href="https://react.dev/reference/react/cloneElement">
                       <code>React.cloneElement</code>
                     </a>{' '}
@@ -274,16 +292,19 @@ const Demo: FunctionComponent = () => {
                   <td>GitHub theme</td>
                   <td>
                     <p>
-                      Set the calendar colors for the <code>light</code> and <code>dark</code>{' '}
-                      system color scheme. The color scale for at least one color scheme needs to be
-                      specified. For undefined values, the default theme is selected. By default,
-                      the calendar will use the currently set system color scheme, but you can
-                      enforce a specific color scheme with the <code>colorScheme</code> prop.
+                      Set the calendar colors for the <code>light</code> and{' '}
+                      <code>dark</code> system color scheme. The color scale for
+                      at least one color scheme needs to be specified. For
+                      undefined values, the default theme is selected. By
+                      default, the calendar will use the currently set system
+                      color scheme, but you can enforce a specific color scheme
+                      with the <code>colorScheme</code> prop.
                     </p>
                     <p>
-                      Define each color scale explicitly with five colors or pass exactly two colors
-                      (lowest and highest intensity) to calculate a single-hue scale. Colors can be
-                      specified in any valid CSS format.
+                      Define each color scale explicitly with five colors or
+                      pass exactly two colors (lowest and highest intensity) to
+                      calculate a single-hue scale. Colors can be specified in
+                      any valid CSS format.
                     </p>
                     <p>
                       <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--with-theme">
@@ -297,8 +318,8 @@ const Demo: FunctionComponent = () => {
                   <td>number</td>
                   <td />
                   <td>
-                    Overwrite the total activity count. Useful in combination with{' '}
-                    <code>transformData</code>.
+                    Overwrite the total activity count. Useful in combination
+                    with <code>transformData</code>.
                   </td>
                 </tr>
                 <tr>
@@ -318,8 +339,8 @@ const Demo: FunctionComponent = () => {
                   </td>
                   <td />
                   <td>
-                    A function that receives the array of contribution data and that has to return
-                    an array with the same data type. See{' '}
+                    A function that receives the array of contribution data and
+                    that has to return an array with the same data type. See{' '}
                     <a href="#example-transform-data">example</a>.
                   </td>
                 </tr>
@@ -327,7 +348,10 @@ const Demo: FunctionComponent = () => {
                   <td>weekStart</td>
                   <td>number</td>
                   <td>0 (Sunday)</td>
-                  <td>Index of day to be used as start of week. 0 represents Sunday.</td>
+                  <td>
+                    Index of day to be used as start of week. 0 represents
+                    Sunday.
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -338,7 +362,10 @@ const Demo: FunctionComponent = () => {
           <h2>Examples & FAQ</h2>
           <p>
             Please refer to the Storybook of the calendar component for{' '}
-            <a href="https://grubersjoe.github.io/react-activity-calendar">interactive examples</a>.
+            <a href="https://grubersjoe.github.io/react-activity-calendar">
+              interactive examples
+            </a>
+            .
           </p>
 
           <h3 id="tooltips">How do I add tooltips?</h3>
@@ -352,9 +379,9 @@ const Demo: FunctionComponent = () => {
 
           <h3 id="example-transform-data">Usage of the transformData prop</h3>
           <p>
-            You can pass a function as the <code>transformData</code> prop that receives the array
-            of contribution data to manipulate it. The transformation function must meet the
-            following signature:
+            You can pass a function as the <code>transformData</code> prop that
+            receives the array of contribution data to manipulate it. The
+            transformation function must meet the following signature:
           </p>
           <CodeBlock>
             {`interface Activity {
@@ -366,8 +393,8 @@ const Demo: FunctionComponent = () => {
 function transformData(data: Array<Activity>): Array<Activity>;`}
           </CodeBlock>
           <p>
-            For example, to only show the the contribution data of the last six months you can do
-            the following:
+            For example, to only show the the contribution data of the last six
+            months you can do the following:
           </p>
           <CodeBlock>
             {`const selectLastHalfYear = contributions => {
@@ -412,16 +439,20 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
           />
 
           <p>
-            The total count will be recalculated based on the transformed data. However, you can
-            enforce that the total count of the untransformed data is shown by setting the{' '}
-            <code>transformTotalCount</code> to <code>false</code>. The text of total count label
-            below the calendar can be adjusted using the <code>labels.totalCount</code> prop and the{' '}
-            <code>&#x007B;&#x007B; count &#x007D;&#x007D;</code> placeholder.
+            The total count will be recalculated based on the transformed data.
+            However, you can enforce that the total count of the untransformed
+            data is shown by setting the <code>transformTotalCount</code> to{' '}
+            <code>false</code>. The text of total count label below the calendar
+            can be adjusted using the <code>labels.totalCount</code> prop and
+            the <code>&#x007B;&#x007B; count &#x007D;&#x007D;</code>{' '}
+            placeholder.
           </p>
         </section>
 
         <p style={{ marginTop: '3rem' }}>
-          <button onClick={() => window.scroll({ top: 0, behavior: 'smooth' })}>Back to top</button>
+          <button onClick={() => window.scroll({ top: 0, behavior: 'smooth' })}>
+            Back to top
+          </button>
         </p>
       </main>
     </div>

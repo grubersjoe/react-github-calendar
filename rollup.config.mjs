@@ -1,11 +1,11 @@
-import babel from "@rollup/plugin-babel";
-import copy from "rollup-plugin-copy";
-import external from "rollup-plugin-peer-deps-external";
-import filesize from "rollup-plugin-filesize";
-import postcss from "rollup-plugin-postcss";
+import babel from '@rollup/plugin-babel';
+import copy from 'rollup-plugin-copy';
+import external from 'rollup-plugin-peer-deps-external';
+import filesize from 'rollup-plugin-filesize';
+import postcss from 'rollup-plugin-postcss';
 
-import resolve from "@rollup/plugin-node-resolve";
-import pkg from "./package.json" assert { type: "json" };
+import resolve from '@rollup/plugin-node-resolve';
+import pkg from './package.json' assert { type: 'json' };
 
 const extensions = ['.ts', '.tsx'];
 

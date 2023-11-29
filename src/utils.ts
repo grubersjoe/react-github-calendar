@@ -15,7 +15,9 @@ export const transformData = (
   const transformedData = transformFn(data);
 
   if (!Array.isArray(transformedData)) {
-    throw new Error(`Passed function transformData must return a list of Day objects.`);
+    throw new Error(
+      `Passed function transformData must return a list of Day objects.`,
+    );
   }
 
   if (transformedData.length > 0) {
@@ -33,7 +35,11 @@ export const transformData = (
       );
     }
 
-    if (typeof testObj.level !== 'number' || testObj.level < 0 || testObj.level > 4) {
+    if (
+      typeof testObj.level !== 'number' ||
+      testObj.level < 0 ||
+      testObj.level > 4
+    ) {
       throw new Error(
         `Required property "level: 0 | 1 | 2 | 3 | 4" missing or invalid: Got: ${testObj.level}.`,
       );
