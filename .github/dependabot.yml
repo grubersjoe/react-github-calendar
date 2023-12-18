@@ -9,3 +9,6 @@ updates:
        dependencies:
           patterns:
             - "*"
+          update-types:
+            - "minor"
+            - "patch"
