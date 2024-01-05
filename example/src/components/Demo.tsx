@@ -14,19 +14,24 @@ import ForkMe from './ForkMe.tsx';
 import GitHubButton from 'react-github-btn';
 
 const selectLastHalfYear: Props['transformData'] = (contributions) => {
-  const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth();
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
   const shownMonths = 6;
 
   return contributions.filter((activity) => {
-    const date = new Date(activity.date);
-    const monthOfDay = date.getMonth();
+      const date = new Date(activity.date);
+      const year = date.getFullYear();
+      const month = date.getMonth();
 
-    return (
-      date.getFullYear() === currentYear &&
-      monthOfDay > currentMonth - shownMonths &&
-      monthOfDay <= currentMonth
-    );
+      if (currentMonth >= shownMonths) {
+          return year === currentYear && month > currentMonth - shownMonths && month <= currentMonth;
+      } else {
+          return (
+              (year === currentYear && month <= currentMonth) ||
+              (year === currentYear - 1 && month > 11 - (shownMonths - currentMonth))
+          );
+      }
   });
 };
 
