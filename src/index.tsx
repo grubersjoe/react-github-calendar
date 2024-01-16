@@ -3,8 +3,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Calendar, {
   Activity,
-  type Props as CalendarProps,
   Skeleton,
+  type Props as CalendarProps,
 } from 'react-activity-calendar';
 
 import { API_URL, DEFAULT_THEME } from './constants';
@@ -26,7 +26,9 @@ async function fetchCalendarData(
   const data: ApiResponse | ApiErrorResponse = await response.json();
 
   if (!response.ok) {
-    throw new Error((data as ApiErrorResponse).error);
+    throw Error(
+      `Unable to fetch GitHub contribution data for ${username}: HTTP ${response.status}}`,
+    );
   }
 
   return data as ApiResponse;
@@ -40,7 +42,7 @@ const GitHubCalendar = ({
   ...props
 }: Props) => {
   const [data, setData] = useState<ApiResponse | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
   const fetchData = useCallback(() => {
@@ -54,12 +56,9 @@ const GitHubCalendar = ({
 
   useEffect(fetchData, [fetchData]);
 
+  // React error boundaries can't handle asynchronous code, so rethrow.
   if (error) {
-    return (
-      <div>
-        <i>Unable to fetch contribution data. See console.</i>
-      </div>
-    );
+    throw error;
   }
 
   if (loading || !data) {
