@@ -19,7 +19,8 @@
     "prepublishOnly": "npx tsc && npm run lint && npm run build"
   },
   "dependencies": {
-    "react-activity-calendar": "^2.2.5"
+    "react-activity-calendar": "^2.2.5",
+    "react-error-boundary": "^4.0.12"
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",
