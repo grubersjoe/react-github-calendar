@@ -12,7 +12,8 @@
     "arrow-body-style": "error",
     "react/no-unescaped-entities": 0,
     "react/prop-types": 0,
-    "react/react-in-jsx-scope": 0
+    "react/react-in-jsx-scope": 0,
+    "no-console": "error"
   },
   "settings": {
     "react": {
