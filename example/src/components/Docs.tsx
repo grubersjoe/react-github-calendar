@@ -4,6 +4,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import GitHubButton from 'react-github-btn';
 import GitHubCalendar, { Props } from 'react-github-calendar';
 import { useSearchParams } from 'react-router-dom';
@@ -12,6 +13,8 @@ import '../styles.scss';
 import pkg from '../../package.json';
 
 import CodeBlock from './CodeBlock.tsx';
+
+import { errorRenderer } from './Error.tsx';
 import ForkMe from './ForkMe.tsx';
 
 const defaultUsername = 'grubersjoe';
@@ -73,7 +76,9 @@ const Docs: FunctionComponent = () => {
             on GitHub
           </h4>
 
-          <GitHubCalendar username={username} fontSize={16} />
+          <ErrorBoundary fallbackRender={errorRenderer} key={username}>
+            <GitHubCalendar username={username} fontSize={16} />
+          </ErrorBoundary>
 
           <p style={{ marginBottom: '1.25rem' }}>
             Made with love by <a href="https://jogruber.de">@grubersjoe</a>,
@@ -436,15 +441,17 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
 
           <br />
 
-          <GitHubCalendar
-            username={username}
-            transformData={selectLastHalfYear}
-            hideColorLegend
-            fontSize={16}
-            labels={{
-              totalCount: '{{count}} contributions in the last half year',
-            }}
-          />
+          <ErrorBoundary fallbackRender={errorRenderer} key={username}>
+            <GitHubCalendar
+              username={username}
+              transformData={selectLastHalfYear}
+              hideColorLegend
+              fontSize={16}
+              labels={{
+                totalCount: '{{count}} contributions in the last half year',
+              }}
+            />
+          </ErrorBoundary>
 
           <p>
             The total count will be recalculated based on the transformed data.

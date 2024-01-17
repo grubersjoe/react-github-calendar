@@ -3,8 +3,8 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Calendar, {
   Activity,
-  Skeleton,
   type Props as CalendarProps,
+  Skeleton,
 } from 'react-activity-calendar';
 
 import { API_URL, DEFAULT_THEME } from './constants';
@@ -27,7 +27,7 @@ async function fetchCalendarData(
 
   if (!response.ok) {
     throw Error(
-      `Unable to fetch GitHub contribution data for ${username}: HTTP ${response.status}}`,
+      `Fetching contribution data for '${username}' failed: ${(data as ApiErrorResponse).error}`,
     );
   }
 
