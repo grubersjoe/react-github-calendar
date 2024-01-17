@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 
 import Docs from './components/Docs.tsx';
 
@@ -12,9 +12,9 @@ if (!container) {
 
 const root = createRoot(container);
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
-    path: '/',
+    path: '/*',
     element: <Docs />,
   },
 ]);
