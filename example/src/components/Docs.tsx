@@ -1,43 +1,40 @@
 import {
-  createRef,
   FormEventHandler,
   FunctionComponent,
+  useEffect,
   useState,
 } from 'react';
+import GitHubButton from 'react-github-btn';
 import GitHubCalendar, { Props } from 'react-github-calendar';
+import { useSearchParams } from 'react-router-dom';
 
 import '../styles.scss';
 import pkg from '../../package.json';
 
 import CodeBlock from './CodeBlock.tsx';
 import ForkMe from './ForkMe.tsx';
-import GitHubButton from 'react-github-btn';
 
-const selectLastHalfYear: Props['transformData'] = (contributions) => {
-  const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth();
-  const shownMonths = 6;
+const defaultUsername = 'grubersjoe';
 
-  return contributions.filter((activity) => {
-    const date = new Date(activity.date);
-    const monthOfDay = date.getMonth();
+const Docs: FunctionComponent = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialUsername = searchParams.get('user') ?? defaultUsername;
 
-    return (
-      date.getFullYear() === currentYear &&
-      monthOfDay > currentMonth - shownMonths &&
-      monthOfDay <= currentMonth
-    );
-  });
-};
+  const [username, setUsername] = useState(initialUsername);
+  const [input, setInput] = useState(initialUsername);
 
-const Demo: FunctionComponent = () => {
-  const [username, setUsername] = useState('grubersjoe');
-  const input = createRef<HTMLInputElement>();
+  useEffect(() => {
+    if (initialUsername !== username) {
+      setUsername(initialUsername);
+      setInput(initialUsername);
+    }
+  }, [initialUsername, username]);
 
-  const updateUsername: FormEventHandler = (event) => {
+  const onUsernameSubmit: FormEventHandler = (event) => {
     event.preventDefault();
-    if (input.current && String(input.current.value).trim()) {
-      setUsername(String(input.current.value).trim().toLowerCase());
+    const val = input.trim();
+    if (val && val !== username) {
+      setSearchParams({ user: val.toLowerCase() });
     }
   };
 
@@ -50,13 +47,13 @@ const Demo: FunctionComponent = () => {
           <div>
             A React component to display a GitHub contributions calendar{' '}
           </div>
-          <form onSubmit={updateUsername}>
+          <form onSubmit={onUsernameSubmit}>
             <input
               type="text"
               placeholder="Enter your GitHub username"
-              name="name"
+              value={input}
+              onChange={(event) => setInput(event.target.value)}
               autoComplete="on"
-              ref={input}
               required
             />
             <button type="submit">Show calendar</button>
@@ -470,4 +467,21 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
   );
 };
 
-export default Demo;
+const selectLastHalfYear: Props['transformData'] = (contributions) => {
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth();
+  const shownMonths = 6;
+
+  return contributions.filter((activity) => {
+    const date = new Date(activity.date);
+    const monthOfDay = date.getMonth();
+
+    return (
+      date.getFullYear() === currentYear &&
+      monthOfDay > currentMonth - shownMonths &&
+      monthOfDay <= currentMonth
+    );
+  });
+};
+
+export default Docs;

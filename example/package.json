@@ -1,7 +1,7 @@
 {
   "name": "react-github-calendar-example",
   "homepage": "https://grubersjoe.github.io/react-github-calendar/",
-  "version": "4.0.8",
+  "version": "4.1.0",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -12,6 +12,7 @@
   "dependencies": {
     "react-github-btn": "^1.4.0",
     "react-github-calendar": "link:..",
+    "react-router-dom": "^6.21.2",
     "react-syntax-highlighter": "^15.5.0"
   },
   "devDependencies": {

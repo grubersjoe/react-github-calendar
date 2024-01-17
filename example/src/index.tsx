@@ -1,7 +1,8 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Demo from './components/Demo.tsx';
+import Docs from './components/Docs.tsx';
 
 const container = document.getElementById('root');
 
@@ -11,8 +12,15 @@ if (!container) {
 
 const root = createRoot(container);
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Docs />,
+  },
+]);
+
 root.render(
   <StrictMode>
-    <Demo />
+    <RouterProvider router={router} />
   </StrictMode>,
 );
