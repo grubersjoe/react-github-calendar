@@ -16,6 +16,8 @@ export interface Props extends Omit<CalendarProps, 'data'> {
   year?: Year;
   transformData?: (data: Array<Activity>) => Array<Activity>;
   transformTotalCount?: boolean;
+  throwOnError?: boolean;
+  errorMessage?: string;
 }
 
 async function fetchCalendarData(
@@ -27,7 +29,7 @@ async function fetchCalendarData(
 
   if (!response.ok) {
     throw Error(
-      `Fetching contribution data for '${username}' failed: ${(data as ApiErrorResponse).error}`,
+      `Fetching GitHub contribution data for "${username}" failed: ${(data as ApiErrorResponse).error}`,
     );
   }
 
@@ -37,28 +39,34 @@ const GitHubCalendar = ({
   username,
   year = 'last',
   labels,
-  transformData: transformDataCallback,
+  transformData: transformFn,
   transformTotalCount = true,
+  throwOnError = false,
+  errorMessage = `Error – Fetching GitHub contribution data for "${username}" failed.`,
   ...props
 }: Props) => {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
+  const [fetchError, setFetchError] = useState<Error | null>(null);
 
   const fetchData = useCallback(() => {
     setLoading(true);
-    setError(null);
+    setFetchError(null);
     fetchCalendarData(username, year)
       .then(setData)
-      .catch(setError)
+      .catch(setFetchError)
       .finally(() => setLoading(false));
   }, [username, year]);
 
   useEffect(fetchData, [fetchData]);
 
   // React error boundaries can't handle asynchronous code, so rethrow.
-  if (error) {
-    throw error;
+  if (fetchError) {
+    if (throwOnError) {
+      throw fetchError;
+    } else {
+      return <div>{errorMessage}</div>;
+    }
   }
 
   if (loading || !data) {
@@ -78,12 +86,10 @@ const GitHubCalendar = ({
 
   return (
     <Calendar
-      data={transformData(data.contributions, transformDataCallback)}
+      data={transformData(data.contributions, transformFn)}
       theme={theme}
       labels={Object.assign({}, defaultLabels, labels)}
-      totalCount={
-        transformDataCallback && transformTotalCount ? undefined : totalCount
-      }
+      totalCount={transformFn && transformTotalCount ? undefined : totalCount}
       {...props}
       maxLevel={4}
     />

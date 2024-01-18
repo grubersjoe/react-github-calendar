@@ -77,10 +77,10 @@ const Docs: FunctionComponent = () => {
           </h4>
 
           <ErrorBoundary fallbackRender={errorRenderer} key={username}>
-            <GitHubCalendar username={username} fontSize={16} />
+            <GitHubCalendar username={username} fontSize={16} throwOnError />
           </ErrorBoundary>
 
-          <p style={{ marginBottom: '1.25rem' }}>
+          <p style={{ marginTop: '1.25rem', marginBottom: '1.25rem' }}>
             Made with love by <a href="https://jogruber.de">@grubersjoe</a>,
             current version:{' '}
             <a href="https://www.npmjs.com/package/react-github-calendar">
@@ -117,11 +117,15 @@ const Docs: FunctionComponent = () => {
         <section>
           <h2>Component properties</h2>
           <p>
-            See{' '}
+            The component uses{' '}
+            <a href="https://github.com/grubersjoe/react-activity-calendar">
+              <code>react-activity-calendar</code>
+            </a>{' '}
+            internally, so all its properties are supported. See the{' '}
             <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/docs/react-activity-calendar--docs">
               documentation
-            </a>{' '}
-            of <code>react-activity-calendar</code>
+            </a>
+            .
           </p>
           <div className="table-overflow">
             <table>
@@ -136,7 +140,7 @@ const Docs: FunctionComponent = () => {
               <tbody>
                 <tr>
                   <td>username</td>
-                  <td>string</td>
+                  <td>string!</td>
                   <td />
                   <td>
                     A GitHub username (<em>required, obviously</em>).
@@ -175,6 +179,16 @@ const Docs: FunctionComponent = () => {
                   <td />
                   <td>
                     Use a specific color scheme instead of the system one.
+                  </td>
+                </tr>
+                <tr>
+                  <td>errorMessage</td>
+                  <td>string</td>
+                  <td />
+                  <td>
+                    Message to show if fetching GitHub contribution data fails.
+                    Only relevant if <code>throwOnError</code> is{' '}
+                    <code>false</code>.
                   </td>
                 </tr>
                 <tr>
@@ -233,7 +247,7 @@ const Docs: FunctionComponent = () => {
                   <td />
                   <td>
                     Localization strings for all calendar labels.{' '}
-                    <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--with-localized-labels">
+                    <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--localized-labels">
                       See here for details
                     </a>
                     .
@@ -309,10 +323,23 @@ const Docs: FunctionComponent = () => {
                       any valid CSS format.
                     </p>
                     <p>
-                      <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--with-theme">
+                      <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--color-themes">
                         See this example
                       </a>
                     </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>throwOnError</td>
+                  <td>boolean</td>
+                  <td>false</td>
+                  <td>
+                    Whether to throw an <code>Error</code> if fetching GitHub
+                    contribution data fails. Use a React{' '}
+                    <a href="https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary">
+                      error boundary
+                    </a>{' '}
+                    to handle the error.
                   </td>
                 </tr>
                 <tr>
@@ -384,7 +411,7 @@ const Docs: FunctionComponent = () => {
           <h3 id="tooltips">How do I add tooltips?</h3>
           <p>
             See{' '}
-            <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--with-tooltips">
+            <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--tooltips">
               tooltip examples
             </a>{' '}
             how to use the <code>renderBlock</code> prop. .
@@ -450,10 +477,11 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
               labels={{
                 totalCount: '{{count}} contributions in the last half year',
               }}
+              throwOnError
             />
           </ErrorBoundary>
 
-          <p>
+          <p style={{ marginTop: '1.25rem' }}>
             The total count will be recalculated based on the transformed data.
             However, you can enforce that the total count of the untransformed
             data is shown by setting the <code>transformTotalCount</code> to{' '}
