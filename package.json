@@ -1,6 +1,6 @@
 {
   "name": "react-github-calendar",
-  "version": "4.1.1",
+  "version": "4.1.2",
   "description": " A flexible React component to display a GitHub contributions graph",
   "author": "Jonathan Gruber <gruberjonathan@gmail.com>",
   "license": "MIT",
@@ -14,6 +14,7 @@
     "dev": "rollup -c -w",
     "format": "prettier --write './*' 'src/**/*' 'example/**/*'",
     "lint": "eslint 'src/**/*' 'example/src/**/*'",
+    "postbuild": "dts-bundle-generator src/index.tsx -o build/index.d.ts --no-check --no-banner",
     "predeploy": "cd example && ./sync-version.js && pnpm install && npm run build",
     "prepare": "npm run build",
     "prepublishOnly": "npx tsc && npm run lint && npm run build"
@@ -34,6 +35,7 @@
     "@types/tinycolor2": "^1.4.6",
     "@typescript-eslint/eslint-plugin": "^6.18.1",
     "@typescript-eslint/parser": "^6.18.1",
+    "dts-bundle-generator": "^9.2.5",
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.3.0",
@@ -43,7 +45,6 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rollup": "^4.9.5",
-    "rollup-plugin-copy": "^3.3.0",
     "rollup-plugin-filesize": "^10.0.0",
     "rollup-plugin-peer-deps-external": "^2.2.2",
     "rollup-plugin-postcss": "^4.0.2",

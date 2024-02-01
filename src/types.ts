@@ -1,4 +1,8 @@
-import { Activity } from 'react-activity-calendar';
+export interface Activity {
+  date: string;
+  count: number;
+  level: 0 | 1 | 2 | 3 | 4;
+}
 
 export type Year = number | 'last';
 
@@ -13,3 +17,16 @@ export interface ApiResponse {
 export interface ApiErrorResponse {
   error: string;
 }
+
+type Color = string;
+type ColorScale = [Color, Color, Color, Color, Color];
+
+export type ThemeInput =
+  | {
+      light: ColorScale | [from: Color, to: Color];
+      dark?: ColorScale | [from: Color, to: Color];
+    }
+  | {
+      light?: ColorScale | [from: Color, to: Color];
+      dark: ColorScale | [from: Color, to: Color];
+    };

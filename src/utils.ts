@@ -1,8 +1,5 @@
-// noinspection SuspiciousTypeOfGuard The caller might not use TypeScript
-
-import { Activity } from 'react-activity-calendar';
-
 import { Props } from './index';
+import { Activity } from './types';
 
 export const transformData = (
   data: Array<Activity>,

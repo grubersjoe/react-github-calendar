@@ -1,4 +1,4 @@
-import { ThemeInput } from 'react-activity-calendar';
+import { ThemeInput } from './types';
 
 export const API_URL = 'https://github-contributions-api.jogruber.de/v4/';
 

@@ -1,23 +1,34 @@
 'use client';
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 import Calendar, {
-  Activity,
-  type Props as CalendarProps,
+  type Props as ActivityCalendarProps,
   Skeleton,
 } from 'react-activity-calendar';
 
 import { API_URL, DEFAULT_THEME } from './constants';
-import { ApiErrorResponse, ApiResponse, Year } from './types';
+import {
+  Activity,
+  ApiErrorResponse,
+  ApiResponse,
+  ThemeInput,
+  Year,
+} from './types';
 import { transformData } from './utils';
 
-export interface Props extends Omit<CalendarProps, 'data'> {
+export interface Props extends Omit<ActivityCalendarProps, 'data' | 'theme'> {
   username: string;
-  year?: Year;
+  errorMessage?: string;
+  theme?: ThemeInput;
+  throwOnError?: boolean;
   transformData?: (data: Array<Activity>) => Array<Activity>;
   transformTotalCount?: boolean;
-  throwOnError?: boolean;
-  errorMessage?: string;
+  year?: Year;
 }
 
 async function fetchCalendarData(
@@ -35,7 +46,7 @@ async function fetchCalendarData(
 
   return data as ApiResponse;
 }
-const GitHubCalendar = ({
+const GitHubCalendar: FunctionComponent<Props> = ({
   username,
   year = 'last',
   labels,
@@ -44,26 +55,26 @@ const GitHubCalendar = ({
   throwOnError = false,
   errorMessage = `Error – Fetching GitHub contribution data for "${username}" failed.`,
   ...props
-}: Props) => {
+}) => {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState(false);
-  const [fetchError, setFetchError] = useState<Error | null>(null);
+  const [error, setError] = useState<Error | null>(null);
 
   const fetchData = useCallback(() => {
     setLoading(true);
-    setFetchError(null);
+    setError(null);
     fetchCalendarData(username, year)
       .then(setData)
-      .catch(setFetchError)
+      .catch(setError)
       .finally(() => setLoading(false));
   }, [username, year]);
 
   useEffect(fetchData, [fetchData]);
 
   // React error boundaries can't handle asynchronous code, so rethrow.
-  if (fetchError) {
+  if (error) {
     if (throwOnError) {
-      throw fetchError;
+      throw error;
     } else {
       return <div>{errorMessage}</div>;
     }
