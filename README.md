@@ -17,19 +17,19 @@ npm install react-github-calendar
 
 ## Development
 
-Start watch mode for library first:
+Start watch mode for the library first:
 
 ```shell
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Then start watch mode of example page:
 
 ```shell
 cd example
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Open http://localhost:3000.
@@ -46,5 +46,5 @@ npm publish --access=public
 ### Update demo page
 
 ```shell
-npm run deploy
+pnpm deploy
 ```

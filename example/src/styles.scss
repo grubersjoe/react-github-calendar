@@ -293,8 +293,14 @@ button {
   }
 }
 
-.react-activity-calendar {
-  margin: 0 0 1.5rem;
+.error {
+    display: inline-block;
+    margin: 0 0 1rem;
+    padding: 0.5rem 0.75rem;
+    background-color: #f8d7da;
+    border: 1px solid #f1aeb5;
+    border-radius: 4px;
+    font-size: 90%;
 }
 
 .github-corner .octo {

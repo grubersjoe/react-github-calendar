@@ -1,18 +1,26 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { createHashRouter, RouterProvider } from 'react-router-dom';
 
-import Demo from './components/Demo.tsx';
+import Docs from './components/Docs.tsx';
 
 const container = document.getElementById('root');
 
 if (!container) {
-  throw new Error('#root not found');
+  throw Error('#root not found');
 }
 
 const root = createRoot(container);
 
+const router = createHashRouter([
+  {
+    path: '/*',
+    element: <Docs />,
+  },
+]);
+
 root.render(
-  <React.StrictMode>
-    <Demo />
-  </React.StrictMode>,
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>,
 );

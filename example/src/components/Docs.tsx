@@ -1,48 +1,43 @@
 import {
-  createRef,
   FormEventHandler,
   FunctionComponent,
+  useEffect,
   useState,
 } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import GitHubButton from 'react-github-btn';
 import GitHubCalendar, { Props } from 'react-github-calendar';
+import { useSearchParams } from 'react-router-dom';
 
 import '../styles.scss';
 import pkg from '../../package.json';
 
 import CodeBlock from './CodeBlock.tsx';
+
+import { errorRenderer } from './Error.tsx';
 import ForkMe from './ForkMe.tsx';
-import GitHubButton from 'react-github-btn';
 
-const selectLastHalfYear: Props['transformData'] = (contributions) => {
-  const currentDate = new Date();
-  const currentYear = currentDate.getFullYear();
-  const currentMonth = currentDate.getMonth();
-  const shownMonths = 6;
+const defaultUsername = 'grubersjoe';
 
-  return contributions.filter((activity) => {
-      const date = new Date(activity.date);
-      const year = date.getFullYear();
-      const month = date.getMonth();
+const Docs: FunctionComponent = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialUsername = searchParams.get('user') ?? defaultUsername;
 
-      if (currentMonth >= shownMonths) {
-          return year === currentYear && month > currentMonth - shownMonths && month <= currentMonth;
-      } else {
-          return (
-              (year === currentYear && month <= currentMonth) ||
-              (year === currentYear - 1 && month > 11 - (shownMonths - currentMonth))
-          );
-      }
-  });
-};
+  const [username, setUsername] = useState(initialUsername);
+  const [input, setInput] = useState(initialUsername);
 
-const Demo: FunctionComponent = () => {
-  const [username, setUsername] = useState('grubersjoe');
-  const input = createRef<HTMLInputElement>();
+  useEffect(() => {
+    if (initialUsername !== username) {
+      setUsername(initialUsername);
+      setInput(initialUsername);
+    }
+  }, [initialUsername, username]);
 
-  const updateUsername: FormEventHandler = (event) => {
+  const onUsernameSubmit: FormEventHandler = (event) => {
     event.preventDefault();
-    if (input.current && String(input.current.value).trim()) {
-      setUsername(String(input.current.value).trim().toLowerCase());
+    const val = input.trim();
+    if (val && val !== username) {
+      setSearchParams({ user: val.toLowerCase() });
     }
   };
 
@@ -55,13 +50,13 @@ const Demo: FunctionComponent = () => {
           <div>
             A React component to display a GitHub contributions calendar{' '}
           </div>
-          <form onSubmit={updateUsername}>
+          <form onSubmit={onUsernameSubmit}>
             <input
               type="text"
               placeholder="Enter your GitHub username"
-              name="name"
+              value={input}
+              onChange={(event) => setInput(event.target.value)}
               autoComplete="on"
-              ref={input}
               required
             />
             <button type="submit">Show calendar</button>
@@ -81,9 +76,11 @@ const Demo: FunctionComponent = () => {
             on GitHub
           </h4>
 
-          <GitHubCalendar username={username} fontSize={16} />
+          <ErrorBoundary fallbackRender={errorRenderer} key={username}>
+            <GitHubCalendar username={username} fontSize={16} throwOnError />
+          </ErrorBoundary>
 
-          <p style={{ marginBottom: '1.25rem' }}>
+          <p style={{ marginTop: '1.25rem', marginBottom: '1.25rem' }}>
             Made with love by <a href="https://jogruber.de">@grubersjoe</a>,
             current version:{' '}
             <a href="https://www.npmjs.com/package/react-github-calendar">
@@ -120,11 +117,15 @@ const Demo: FunctionComponent = () => {
         <section>
           <h2>Component properties</h2>
           <p>
-            See{' '}
+            The component uses{' '}
+            <a href="https://github.com/grubersjoe/react-activity-calendar">
+              <code>react-activity-calendar</code>
+            </a>{' '}
+            internally, so all its properties are supported. See the{' '}
             <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/docs/react-activity-calendar--docs">
               documentation
-            </a>{' '}
-            of <code>react-activity-calendar</code>
+            </a>
+            .
           </p>
           <div className="table-overflow">
             <table>
@@ -139,7 +140,7 @@ const Demo: FunctionComponent = () => {
               <tbody>
                 <tr>
                   <td>username</td>
-                  <td>string</td>
+                  <td>string!</td>
                   <td />
                   <td>
                     A GitHub username (<em>required, obviously</em>).
@@ -178,6 +179,16 @@ const Demo: FunctionComponent = () => {
                   <td />
                   <td>
                     Use a specific color scheme instead of the system one.
+                  </td>
+                </tr>
+                <tr>
+                  <td>errorMessage</td>
+                  <td>string</td>
+                  <td />
+                  <td>
+                    Message to show if fetching GitHub contribution data fails.
+                    Only relevant if <code>throwOnError</code> is{' '}
+                    <code>false</code>.
                   </td>
                 </tr>
                 <tr>
@@ -236,7 +247,7 @@ const Demo: FunctionComponent = () => {
                   <td />
                   <td>
                     Localization strings for all calendar labels.{' '}
-                    <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--with-localized-labels">
+                    <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--localized-labels">
                       See here for details
                     </a>
                     .
@@ -312,10 +323,23 @@ const Demo: FunctionComponent = () => {
                       any valid CSS format.
                     </p>
                     <p>
-                      <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--with-theme">
+                      <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--color-themes">
                         See this example
                       </a>
                     </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>throwOnError</td>
+                  <td>boolean</td>
+                  <td>false</td>
+                  <td>
+                    Whether to throw an <code>Error</code> if fetching GitHub
+                    contribution data fails. Use a React{' '}
+                    <a href="https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary">
+                      error boundary
+                    </a>{' '}
+                    to handle the error.
                   </td>
                 </tr>
                 <tr>
@@ -354,9 +378,10 @@ const Demo: FunctionComponent = () => {
                   <td>boolean</td>
                   <td>true</td>
                   <td>
-                    When the <code>transformData</code> property is set, the total contribution
-                    count will be calculated based on the transformed data. Set this to{' '}
-                    <code>false</code> to use the original contribution count for all data.
+                    When the <code>transformData</code> property is set, the
+                    total contribution count will be calculated based on the
+                    transformed data. Set this to <code>false</code> to use the
+                    original contribution count for all data.
                   </td>
                 </tr>
                 <tr>
@@ -386,7 +411,7 @@ const Demo: FunctionComponent = () => {
           <h3 id="tooltips">How do I add tooltips?</h3>
           <p>
             See{' '}
-            <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--with-tooltips">
+            <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--tooltips">
               tooltip examples
             </a>{' '}
             how to use the <code>renderBlock</code> prop. .
@@ -412,20 +437,26 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
             months you can do the following:
           </p>
           <CodeBlock>
-            {`const selectLastHalfYear = contributions => {
-  const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth();
+
+          {`const selectLastHalfYear = contributions => {
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
   const shownMonths = 6;
 
-  return contributions.filter(activity => {
-    const date = new Date(activity.date);
-    const monthOfDay = date.getMonth();
+  return contributions.filter((activity) => {
+      const date = new Date(activity.date);
+      const year = date.getFullYear();
+      const month = date.getMonth();
 
-    return (
-      date.getFullYear() === currentYear &&
-      monthOfDay > currentMonth - shownMonths &&
-      monthOfDay <= currentMonth
-    );
+      if (currentMonth >= shownMonths) {
+          return year === currentYear && month > currentMonth - shownMonths && month <= currentMonth;
+      } else {
+          return (
+              (year === currentYear && month <= currentMonth) ||
+              (year === currentYear - 1 && month > 11 - (shownMonths - currentMonth))
+          );
+      }
   });
 };
 
@@ -443,17 +474,20 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
 
           <br />
 
-          <GitHubCalendar
-            username={username}
-            transformData={selectLastHalfYear}
-            hideColorLegend
-            fontSize={16}
-            labels={{
-              totalCount: '{{count}} contributions in the last half year',
-            }}
-          />
+          <ErrorBoundary fallbackRender={errorRenderer} key={username}>
+            <GitHubCalendar
+              username={username}
+              transformData={selectLastHalfYear}
+              hideColorLegend
+              fontSize={16}
+              labels={{
+                totalCount: '{{count}} contributions in the last half year',
+              }}
+              throwOnError
+            />
+          </ErrorBoundary>
 
-          <p>
+          <p style={{ marginTop: '1.25rem' }}>
             The total count will be recalculated based on the transformed data.
             However, you can enforce that the total count of the untransformed
             data is shown by setting the <code>transformTotalCount</code> to{' '}
@@ -474,4 +508,21 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
   );
 };
 
-export default Demo;
+const selectLastHalfYear: Props['transformData'] = (contributions) => {
+  const currentYear = new Date().getFullYear();
+  const currentMonth = new Date().getMonth();
+  const shownMonths = 6;
+
+  return contributions.filter((activity) => {
+    const date = new Date(activity.date);
+    const monthOfDay = date.getMonth();
+
+    return (
+      date.getFullYear() === currentYear &&
+      monthOfDay > currentMonth - shownMonths &&
+      monthOfDay <= currentMonth
+    );
+  });
+};
+
+export default Docs;
