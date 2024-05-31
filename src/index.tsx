@@ -102,6 +102,7 @@ const GitHubCalendar: FunctionComponent<Props> = ({
       labels={Object.assign({}, defaultLabels, labels)}
       totalCount={transformFn && transformTotalCount ? undefined : totalCount}
       {...props}
+      loading={Boolean(props.loading) || loading}
       maxLevel={4}
     />
   );
