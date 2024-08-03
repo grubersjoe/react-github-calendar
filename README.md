@@ -3,7 +3,9 @@
 [![CI](https://github.com/grubersjoe/react-github-calendar/actions/workflows/test.yml/badge.svg)](https://github.com/grubersjoe/react-github-calendar/actions/workflows/test.yml)
 
 A React component to display a GitHub contributions graph based on
-[`react-activity-calendar`](https://github.com/grubersjoe/react-activity-calendar) and [`github-contributions-api`](https://github.com/grubersjoe/github-contributions-api).
+[`react-activity-calendar`](https://github.com/grubersjoe/react-activity-calendar)
+and
+[`github-contributions-api`](https://github.com/grubersjoe/github-contributions-api).
 
 ![Screenshot](preview.png?v3)
 
@@ -46,5 +48,5 @@ npm publish --access=public
 ### Update demo page
 
 ```shell
-pnpm deploy
+pnpm run deploy
 ```
