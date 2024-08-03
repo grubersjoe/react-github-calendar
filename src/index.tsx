@@ -1,11 +1,6 @@
 'use client';
 
-import React, {
-  FunctionComponent,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import React, { forwardRef, useCallback, useEffect, useState } from 'react';
 import Calendar, {
   type Props as ActivityCalendarProps,
   Skeleton,
@@ -46,66 +41,74 @@ async function fetchCalendarData(
 
   return data as ApiResponse;
 }
-const GitHubCalendar: FunctionComponent<Props> = ({
-  username,
-  year = 'last',
-  labels,
-  transformData: transformFn,
-  transformTotalCount = true,
-  throwOnError = false,
-  errorMessage = `Error – Fetching GitHub contribution data for "${username}" failed.`,
-  ...props
-}) => {
-  const [data, setData] = useState<ApiResponse | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
+const GitHubCalendar = forwardRef<HTMLElement, Props>(
+  (
+    {
+      username,
+      year = 'last',
+      labels,
+      transformData: transformFn,
+      transformTotalCount = true,
+      throwOnError = false,
+      errorMessage = `Error – Fetching GitHub contribution data for "${username}" failed.`,
+      ...props
+    },
+    ref,
+  ) => {
+    const [data, setData] = useState<ApiResponse | null>(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<Error | null>(null);
 
-  const fetchData = useCallback(() => {
-    setLoading(true);
-    setError(null);
-    fetchCalendarData(username, year)
-      .then(setData)
-      .catch(setError)
-      .finally(() => setLoading(false));
-  }, [username, year]);
+    const fetchData = useCallback(() => {
+      setLoading(true);
+      setError(null);
+      fetchCalendarData(username, year)
+        .then(setData)
+        .catch(setError)
+        .finally(() => setLoading(false));
+    }, [username, year]);
 
-  useEffect(fetchData, [fetchData]);
+    useEffect(fetchData, [fetchData]);
 
-  // React error boundaries can't handle asynchronous code, so rethrow.
-  if (error) {
-    if (throwOnError) {
-      throw error;
-    } else {
-      return <div>{errorMessage}</div>;
+    // React error boundaries can't handle asynchronous code, so rethrow.
+    if (error) {
+      if (throwOnError) {
+        throw error;
+      } else {
+        return <div>{errorMessage}</div>;
+      }
     }
-  }
 
-  if (loading || !data) {
-    return <Skeleton {...props} loading />;
-  }
+    if (loading || !data) {
+      return <Skeleton {...props} loading />;
+    }
 
-  const theme = props.theme ?? DEFAULT_THEME;
+    const theme = props.theme ?? DEFAULT_THEME;
 
-  const defaultLabels = {
-    totalCount: `{{count}} contributions in ${
-      year === 'last' ? 'the last year' : '{{year}}'
-    }`,
-  };
+    const defaultLabels = {
+      totalCount: `{{count}} contributions in ${
+        year === 'last' ? 'the last year' : '{{year}}'
+      }`,
+    };
 
-  const totalCount =
-    year === 'last' ? data.total['lastYear'] : data.total[year];
+    const totalCount =
+      year === 'last' ? data.total['lastYear'] : data.total[year];
 
-  return (
-    <Calendar
-      data={transformData(data.contributions, transformFn)}
-      theme={theme}
-      labels={Object.assign({}, defaultLabels, labels)}
-      totalCount={transformFn && transformTotalCount ? undefined : totalCount}
-      {...props}
-      loading={Boolean(props.loading) || loading}
-      maxLevel={4}
-    />
-  );
-};
+    return (
+      <Calendar
+        data={transformData(data.contributions, transformFn)}
+        labels={Object.assign({}, defaultLabels, labels)}
+        ref={ref}
+        theme={theme}
+        totalCount={transformFn && transformTotalCount ? undefined : totalCount}
+        {...props}
+        loading={Boolean(props.loading) || loading}
+        maxLevel={4}
+      />
+    );
+  },
+);
+
+GitHubCalendar.displayName = 'GitHubCalendar';
 
 export default GitHubCalendar;

@@ -194,7 +194,7 @@ const Docs: FunctionComponent = () => {
                 <tr>
                   <td>eventHandlers</td>
                   <td>
-                    (event: SyntheticEvent)
+                    (event: React.SyntheticEvent)
                     <br />
                     &nbsp;&nbsp;{'=>'} (data:{' '}
                     <a href="https://github.com/grubersjoe/react-activity-calendar/blob/main/src/types.ts">
@@ -260,6 +260,12 @@ const Docs: FunctionComponent = () => {
                   <td>Toggle for loading state.</td>
                 </tr>
                 <tr>
+                  <td>ref</td>
+                  <td>React.RefObject&lt;HTMLElement&gt;</td>
+                  <td></td>
+                  <td>Ref to access the calendar DOM node.</td>
+                </tr>
+                <tr>
                   <td>renderBlock</td>
                   <td>
                     (<br />
@@ -294,7 +300,7 @@ const Docs: FunctionComponent = () => {
                 </tr>
                 <tr>
                   <td>style</td>
-                  <td>CSSProperties</td>
+                  <td>React.CSSProperties</td>
                   <td />
                   <td>Style object to pass to component container.</td>
                 </tr>
