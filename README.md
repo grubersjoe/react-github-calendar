@@ -12,7 +12,7 @@ A React component to display a GitHub contributions graph based on
 ## Installation
 
 ```shell
-npm install react-github-calendar
+pnpm install react-github-calendar
 ```
 
 ## Development
