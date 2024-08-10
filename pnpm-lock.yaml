@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       react-activity-calendar:
-        specifier: ^2.3.4
-        version: 2.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^2.3.5
+        version: 2.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-error-boundary:
         specifier: ^4.0.12
         version: 4.0.13(react@18.3.1)
@@ -2740,8 +2740,8 @@ packages:
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
-  react-activity-calendar@2.3.4:
-    resolution: {integrity: sha512-bRdEci1mtafJvkRQFrhgiYr707ejEn5JhBZpU313lFqbpULun0NqXzjnpbJ2TuuAnfcGxL++6SccgKFULWf7Fw==}
+  react-activity-calendar@2.3.5:
+    resolution: {integrity: sha512-ky4L2kbfjCzbY/e2yfsX8jhCsgLKZW70OL1lYR8XsEihYGucYnYimgJUUKiwj3GBTNfgFuZYSZUBxEnc4M0brA==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
@@ -6341,7 +6341,7 @@ snapshots:
 
   queue-microtask@1.2.3: {}
 
-  react-activity-calendar@2.3.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-activity-calendar@2.3.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       '@types/chroma-js': 2.4.4
       chroma-js: 2.6.0

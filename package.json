@@ -20,7 +20,7 @@
     "prepublishOnly": "npx tsc && npm run lint && npm run build"
   },
   "dependencies": {
-    "react-activity-calendar": "^2.3.4",
+    "react-activity-calendar": "^2.3.5",
     "react-error-boundary": "^4.0.12"
   },
   "devDependencies": {
@@ -54,7 +54,9 @@
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"
   },
-  "files": ["build"],
+  "files": [
+    "build"
+  ],
   "browserslist": [
     "last 2 chrome version",
     "last 2 firefox version",
