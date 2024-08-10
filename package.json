@@ -1,6 +1,6 @@
 {
   "name": "react-github-calendar",
-  "version": "4.2.1",
+  "version": "4.2.2",
   "description": " React component to display a GitHub contributions calendar",
   "author": "Jonathan Gruber <gruberjonathan@gmail.com>",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "prepublishOnly": "npx tsc && npm run lint && npm run build"
   },
   "dependencies": {
-    "react-activity-calendar": "^2.3.1",
+    "react-activity-calendar": "^2.3.4",
     "react-error-boundary": "^4.0.12"
   },
   "devDependencies": {
@@ -40,7 +40,7 @@
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.2",
     "gh-pages": "^6.1.1",
-    "postcss": "^8.4.33",
+    "postcss": "^8.4.41",
     "prettier": "^3.3.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -54,9 +54,7 @@
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"
   },
-  "files": [
-    "build"
-  ],
+  "files": ["build"],
   "browserslist": [
     "last 2 chrome version",
     "last 2 firefox version",
