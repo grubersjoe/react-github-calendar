@@ -7,19 +7,12 @@ import Calendar, {
 } from 'react-activity-calendar';
 
 import { API_URL, DEFAULT_THEME } from './constants';
-import {
-  Activity,
-  ApiErrorResponse,
-  ApiResponse,
-  ThemeInput,
-  Year,
-} from './types';
+import { Activity, ApiErrorResponse, ApiResponse, Year } from './types';
 import { transformData } from './utils';
 
-export interface Props extends Omit<ActivityCalendarProps, 'data' | 'theme'> {
+export interface Props extends Omit<ActivityCalendarProps, 'data'> {
   username: string;
   errorMessage?: string;
-  theme?: ThemeInput;
   throwOnError?: boolean;
   transformData?: (data: Array<Activity>) => Array<Activity>;
   transformTotalCount?: boolean;

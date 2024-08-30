@@ -17,16 +17,3 @@ export interface ApiResponse {
 export interface ApiErrorResponse {
   error: string;
 }
-
-type Color = string;
-type ColorScale = [Color, Color, Color, Color, Color];
-
-export type ThemeInput =
-  | {
-      light: ColorScale | [from: Color, to: Color];
-      dark?: ColorScale | [from: Color, to: Color];
-    }
-  | {
-      light?: ColorScale | [from: Color, to: Color];
-      dark: ColorScale | [from: Color, to: Color];
-    };
