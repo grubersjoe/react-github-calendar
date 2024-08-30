@@ -282,7 +282,7 @@ const Docs: FunctionComponent = () => {
                     <br />
                     )&nbsp;{'=>'} ReactElement
                   </td>
-                  <td>false</td>
+                  <td />
                   <td>
                     Render prop for calendar blocks (activities). For example,
                     useful to wrap the element with a tooltip component. Use{' '}
@@ -293,10 +293,38 @@ const Docs: FunctionComponent = () => {
                   </td>
                 </tr>
                 <tr>
+                  <td>renderColorLegend</td>
+                  <td>
+                    (<br />
+                    &nbsp;&nbsp;block:{' '}
+                    <a href="https://github.com/grubersjoe/react-activity-calendar/blob/main/src/types.ts">
+                      BlockElement
+                    </a>
+                    ,
+                    <br />
+                    &nbsp;&nbsp;level: number
+                    <br />
+                    )&nbsp;{'=>'} ReactElement
+                  </td>
+                  <td />
+                  <td>
+                    Render prop for color legend blocks. For example, useful to
+                    wrap the element with a tooltip component. Use{' '}
+                    <a href="https://react.dev/reference/react/cloneElement">
+                      <code>React.cloneElement</code>
+                    </a>{' '}
+                    to pass additional props to the element if necessary.
+                  </td>
+                </tr>
+                <tr>
                   <td>showWeekdayLabels</td>
-                  <td>boolean</td>
+                  <td>boolean | Array&lt;DayName&gt;</td>
                   <td>false</td>
-                  <td>Toggle to show weekday labels left to the calendar.</td>
+                  <td>
+                    Toggle to show weekday labels left to the calendar.
+                    Alternatively, pass a list of ISO 8601 weekday names to
+                    show. For example <code>['mon', 'wed', 'fri']</code>.
+                  </td>
                 </tr>
                 <tr>
                   <td>style</td>
@@ -420,7 +448,7 @@ const Docs: FunctionComponent = () => {
             <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--tooltips">
               tooltip examples
             </a>{' '}
-            how to use the <code>renderBlock</code> prop. .
+            how to use the <code>renderBlock</code> prop.
           </p>
 
           <h3 id="example-transform-data">Usage of the transformData prop</h3>
