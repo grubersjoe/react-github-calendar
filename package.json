@@ -5,7 +5,10 @@
   "author": "Jonathan Gruber <gruberjonathan@gmail.com>",
   "license": "MIT",
   "homepage": "https://grubersjoe.github.io/react-github-calendar/",
-  "repository": "grubersjoe/react-github-calendar",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grubersjoe/react-github-calendar.git"
+  },
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
