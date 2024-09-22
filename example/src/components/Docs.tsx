@@ -471,20 +471,26 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
             months you can do the following:
           </p>
           <CodeBlock>
-            {`const selectLastHalfYear = contributions => {
-  const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth();
+
+          {`const selectLastHalfYear = contributions => {
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
   const shownMonths = 6;
 
-  return contributions.filter(activity => {
-    const date = new Date(activity.date);
-    const monthOfDay = date.getMonth();
+  return contributions.filter((activity) => {
+      const date = new Date(activity.date);
+      const year = date.getFullYear();
+      const month = date.getMonth();
 
-    return (
-      date.getFullYear() === currentYear &&
-      monthOfDay > currentMonth - shownMonths &&
-      monthOfDay <= currentMonth
-    );
+      if (currentMonth >= shownMonths) {
+          return year === currentYear && month > currentMonth - shownMonths && month <= currentMonth;
+      } else {
+          return (
+              (year === currentYear && month <= currentMonth) ||
+              (year === currentYear - 1 && month > 11 - (shownMonths - currentMonth))
+          );
+      }
   });
 };
 
