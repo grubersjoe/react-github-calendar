@@ -88,9 +88,9 @@ const GitHubCalendar = forwardRef<HTMLElement, Props>(
         data={transformData(data.contributions, transformFn)}
         labels={Object.assign({}, defaultLabels, labels)}
         ref={ref}
-        theme={theme}
         totalCount={transformFn && transformTotalCount ? undefined : totalCount}
         {...props}
+        theme={theme}
         loading={Boolean(props.loading) || loading}
         maxLevel={4}
       />
