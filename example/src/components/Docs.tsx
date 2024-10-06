@@ -1,9 +1,4 @@
-import {
-  FormEventHandler,
-  FunctionComponent,
-  useEffect,
-  useState,
-} from 'react';
+import { FormEventHandler, FunctionComponent, useEffect, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import GitHubButton from 'react-github-btn';
 import GitHubCalendar, { Props } from 'react-github-calendar';
@@ -12,10 +7,10 @@ import { useSearchParams } from 'react-router-dom';
 import '../styles.scss';
 import pkg from '../../package.json';
 
-import CodeBlock from './CodeBlock.tsx';
+import CodeBlock from './CodeBlock';
 
-import { errorRenderer } from './Error.tsx';
-import ForkMe from './ForkMe.tsx';
+import { errorRenderer } from './Error';
+import ForkMe from './ForkMe';
 
 const defaultUsername = 'grubersjoe';
 
@@ -55,7 +50,9 @@ const Docs: FunctionComponent = () => {
               type="text"
               placeholder="Enter your GitHub username"
               value={input}
-              onChange={(event) => setInput(event.target.value)}
+              onChange={(event) => {
+                setInput(event.target.value);
+              }}
               autoComplete="on"
               required
             />
@@ -527,7 +524,11 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
         </section>
 
         <p style={{ marginTop: '3rem' }}>
-          <button onClick={() => window.scroll({ top: 0, behavior: 'smooth' })}>
+          <button
+            onClick={() => {
+              window.scroll({ top: 0, behavior: 'smooth' });
+            }}
+          >
             Back to top
           </button>
         </p>

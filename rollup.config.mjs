@@ -1,10 +1,9 @@
 import babel from '@rollup/plugin-babel';
-
 import resolve from '@rollup/plugin-node-resolve';
 import filesize from 'rollup-plugin-filesize';
 import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
-import pkg from './package.json' with {type: 'json'};
+import pkg from './package.json' with { type: 'json' };
 
 const extensions = ['.ts', '.tsx'];
 
@@ -31,7 +30,7 @@ export default {
     }),
     babel({
       extensions,
-      babelHelpers: 'bundled'
+      babelHelpers: 'bundled',
     }),
     resolve({
       extensions,

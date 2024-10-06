@@ -1,10 +1,7 @@
 'use client';
 
 import React, { forwardRef, useCallback, useEffect, useState } from 'react';
-import Calendar, {
-  type Props as ActivityCalendarProps,
-  Skeleton,
-} from 'react-activity-calendar';
+import Calendar, { type Props as ActivityCalendarProps, Skeleton } from 'react-activity-calendar';
 
 import { API_URL, DEFAULT_THEME } from './constants';
 import { Activity, ApiErrorResponse, ApiResponse, Year } from './types';
@@ -24,7 +21,7 @@ async function fetchCalendarData(
   year: Year,
 ): Promise<ApiResponse> {
   const response = await fetch(`${API_URL}${username}?y=${year}`);
-  const data: ApiResponse | ApiErrorResponse = await response.json();
+  const data = (await response.json()) as ApiResponse | ApiErrorResponse;
 
   if (!response.ok) {
     throw Error(
@@ -57,8 +54,14 @@ const GitHubCalendar = forwardRef<HTMLElement, Props>(
       setError(null);
       fetchCalendarData(username, year)
         .then(setData)
-        .catch(setError)
-        .finally(() => setLoading(false));
+        .catch((err: unknown) => {
+          if (err instanceof Error) {
+            setError(err);
+          }
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     }, [username, year]);
 
     useEffect(fetchData, [fetchData]);
@@ -79,9 +82,7 @@ const GitHubCalendar = forwardRef<HTMLElement, Props>(
     const theme = props.theme ?? DEFAULT_THEME;
 
     const defaultLabels = {
-      totalCount: `{{count}} contributions in ${
-        year === 'last' ? 'the last year' : '{{year}}'
-      }`,
+      totalCount: `{{count}} contributions in ${year === 'last' ? 'the last year' : '{{year}}'}`,
     };
 
     const totalCount =

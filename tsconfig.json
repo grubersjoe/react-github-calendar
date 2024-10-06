@@ -14,7 +14,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ESNext",
+    "target": "ESNext"
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "example/src/**/*", "example/sync-version.js"]
 }
