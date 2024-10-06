@@ -34,7 +34,7 @@ jobs:
         run: pnpm install -r --ignore-scripts
 
       - name: Check formatting (Prettier)
-        run: pnpm format -c
+        run: pnpx prettier -c .
 
       - name: Generate TypeScript types
         run: pnpm postbuild
