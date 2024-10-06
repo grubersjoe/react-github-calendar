@@ -31,7 +31,7 @@ jobs:
           restore-keys: ${{ runner.os }}-pnpm-store-
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install -r
 
       - name: Check formatting (Prettier)
         run: pnpm format -c
