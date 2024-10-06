@@ -36,6 +36,9 @@ jobs:
       - name: Check formatting (Prettier)
         run: pnpm format -c
 
+      - name: Generate TypeScript types
+        run: pnpm postbuild
+
       - name: Run type checks (TypeScript)
         run: pnpm tsc
 
