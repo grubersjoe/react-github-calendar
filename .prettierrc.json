@@ -1,6 +1,6 @@
 {
   "plugins": ["@ianvs/prettier-plugin-sort-imports"],
-  "importOrder": ["<BUILTIN_MODULES>", "^react$", "<THIRD_PARTY_MODULES>", "^[.]", "<TYPES>"],
+  "importOrder": ["<BUILTIN_MODULES>", "^react$", "<THIRD_PARTY_MODULES>", "^[.]"],
   "importOrderParserPlugins": ["typescript", "jsx", "importAttributes"],
   "importOrderTypeScriptVersion": "5.5.0",
   "arrowParens": "avoid",
