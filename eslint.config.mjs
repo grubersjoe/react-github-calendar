@@ -1,7 +1,9 @@
 // @ts-check
 import { fixupPluginRules } from '@eslint/compat';
 import eslint from '@eslint/js';
+// @ts-ignore
 import reactHooks from 'eslint-plugin-react-hooks';
+// @ts-ignore
 import react from 'eslint-plugin-react/configs/recommended.js';
 import globals from 'globals';
 import typescript from 'typescript-eslint';

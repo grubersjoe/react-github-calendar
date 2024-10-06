@@ -15,6 +15,5 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ESNext"
-  },
-  "include": ["src/**/*", "example/src/**/*", "example/sync-version.js"]
+  }
 }
