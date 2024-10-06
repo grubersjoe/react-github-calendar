@@ -1,0 +1,23 @@
+name: GitHub actions updater
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0' # every Sunday
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.2.0
+        with:
+          token: ${{ secrets.WORKFLOW_SECRET }} # Access token with `workflow` scope
+
+      - name: Run GitHub Actions Version Updater
+        uses: saadmk11/github-actions-version-updater@v0.8.1
+        with:
+          # [Required] Access token with `workflow` scope.
+          token: ${{ secrets.WORKFLOW_SECRET }} # Access token with `workflow` scope
+          committer_username: 'Jonathan Gruber'
+          committer_email: 'gruberjonathan@gmail.com'
+          commit_message: 'Update GitHub actions'
