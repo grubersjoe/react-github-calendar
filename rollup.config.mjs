@@ -38,10 +38,7 @@ export default {
     filesize(),
   ],
   onwarn(warning, warn) {
-    if (
-      warning.code === 'MODULE_LEVEL_DIRECTIVE' &&
-      warning.message.includes('use client')
-    ) {
+    if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes('use client')) {
       return; // ignore the error for now
     }
     warn(warning);

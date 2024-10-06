@@ -3,13 +3,10 @@ import { ErrorBoundary } from 'react-error-boundary';
 import GitHubButton from 'react-github-btn';
 import GitHubCalendar, { Props } from 'react-github-calendar';
 import { useSearchParams } from 'react-router-dom';
-
-import '../styles.scss';
 import pkg from '../../package.json';
-
 import CodeBlock from './CodeBlock';
-
 import { errorRenderer } from './Error';
+import '../styles.scss';
 import ForkMe from './ForkMe';
 
 const defaultUsername = 'grubersjoe';
@@ -28,7 +25,7 @@ const Docs: FunctionComponent = () => {
     }
   }, [initialUsername, username]);
 
-  const onUsernameSubmit: FormEventHandler = (event) => {
+  const onUsernameSubmit: FormEventHandler = event => {
     event.preventDefault();
     const val = input.trim();
     if (val && val !== username) {
@@ -42,15 +39,13 @@ const Docs: FunctionComponent = () => {
         <ForkMe />
         <div className="container">
           <h1>GitHub Contributions Calendar</h1>
-          <div>
-            A React component to display a GitHub contributions calendar{' '}
-          </div>
+          <div>A React component to display a GitHub contributions calendar </div>
           <form onSubmit={onUsernameSubmit}>
             <input
               type="text"
               placeholder="Enter your GitHub username"
               value={input}
-              onChange={(event) => {
+              onChange={event => {
                 setInput(event.target.value);
               }}
               autoComplete="on"
@@ -64,10 +59,7 @@ const Docs: FunctionComponent = () => {
       <main className="container">
         <section>
           <h4 style={{ fontWeight: 'normal', margin: '1em 0' }}>
-            <a
-              href={`https://github.com/${username}`}
-              style={{ textDecoration: 'none' }}
-            >
+            <a href={`https://github.com/${username}`} style={{ textDecoration: 'none' }}>
               @{username}
             </a>{' '}
             on GitHub
@@ -78,8 +70,7 @@ const Docs: FunctionComponent = () => {
           </ErrorBoundary>
 
           <p style={{ marginTop: '1.25rem', marginBottom: '1.25rem' }}>
-            Made with love by <a href="https://jogruber.de">@grubersjoe</a>,
-            current version:{' '}
+            Made with love by <a href="https://jogruber.de">@grubersjoe</a>, current version:{' '}
             <a href="https://www.npmjs.com/package/react-github-calendar">
               <code>v{pkg.version}</code>
             </a>
@@ -100,9 +91,7 @@ const Docs: FunctionComponent = () => {
 
         <section>
           <h2>Installation</h2>
-          <CodeBlock style={{ marginTop: '0.5rem' }}>
-            yarn add react-github-calendar
-          </CodeBlock>
+          <CodeBlock style={{ marginTop: '0.5rem' }}>yarn add react-github-calendar</CodeBlock>
           <p>Then in your code:</p>
           <CodeBlock>
             {`import GitHubCalendar from 'react-github-calendar';
@@ -147,10 +136,7 @@ const Docs: FunctionComponent = () => {
                   <td>year</td>
                   <td>number | 'last'</td>
                   <td>'last'</td>
-                  <td>
-                    To be rendered year. Defaults to the last year like on
-                    GitHub.
-                  </td>
+                  <td>To be rendered year. Defaults to the last year like on GitHub.</td>
                 </tr>
                 <tr>
                   <td>blockMargin</td>
@@ -174,18 +160,15 @@ const Docs: FunctionComponent = () => {
                   <td>colorScheme</td>
                   <td>'light' | 'dark'</td>
                   <td />
-                  <td>
-                    Use a specific color scheme instead of the system one.
-                  </td>
+                  <td>Use a specific color scheme instead of the system one.</td>
                 </tr>
                 <tr>
                   <td>errorMessage</td>
                   <td>string</td>
                   <td />
                   <td>
-                    Message to show if fetching GitHub contribution data fails.
-                    Only relevant if <code>throwOnError</code> is{' '}
-                    <code>false</code>.
+                    Message to show if fetching GitHub contribution data fails. Only relevant if{' '}
+                    <code>throwOnError</code> is <code>false</code>.
                   </td>
                 </tr>
                 <tr>
@@ -281,8 +264,8 @@ const Docs: FunctionComponent = () => {
                   </td>
                   <td />
                   <td>
-                    Render prop for calendar blocks (activities). For example,
-                    useful to wrap the element with a tooltip component. Use{' '}
+                    Render prop for calendar blocks (activities). For example, useful to wrap the
+                    element with a tooltip component. Use{' '}
                     <a href="https://react.dev/reference/react/cloneElement">
                       <code>React.cloneElement</code>
                     </a>{' '}
@@ -305,8 +288,8 @@ const Docs: FunctionComponent = () => {
                   </td>
                   <td />
                   <td>
-                    Render prop for color legend blocks. For example, useful to
-                    wrap the element with a tooltip component. Use{' '}
+                    Render prop for color legend blocks. For example, useful to wrap the element
+                    with a tooltip component. Use{' '}
                     <a href="https://react.dev/reference/react/cloneElement">
                       <code>React.cloneElement</code>
                     </a>{' '}
@@ -318,9 +301,9 @@ const Docs: FunctionComponent = () => {
                   <td>boolean | Array&lt;DayName&gt;</td>
                   <td>false</td>
                   <td>
-                    Toggle to show weekday labels left to the calendar.
-                    Alternatively, pass a list of ISO 8601 weekday names to
-                    show. For example <code>['mon', 'wed', 'fri']</code>.
+                    Toggle to show weekday labels left to the calendar. Alternatively, pass a list
+                    of ISO 8601 weekday names to show. For example{' '}
+                    <code>['mon', 'wed', 'fri']</code>.
                   </td>
                 </tr>
                 <tr>
@@ -339,19 +322,16 @@ const Docs: FunctionComponent = () => {
                   <td>GitHub theme</td>
                   <td>
                     <p>
-                      Set the calendar colors for the <code>light</code> and{' '}
-                      <code>dark</code> system color scheme. The color scale for
-                      at least one color scheme needs to be specified. For
-                      undefined values, the default theme is selected. By
-                      default, the calendar will use the currently set system
-                      color scheme, but you can enforce a specific color scheme
-                      with the <code>colorScheme</code> prop.
+                      Set the calendar colors for the <code>light</code> and <code>dark</code>{' '}
+                      system color scheme. The color scale for at least one color scheme needs to be
+                      specified. For undefined values, the default theme is selected. By default,
+                      the calendar will use the currently set system color scheme, but you can
+                      enforce a specific color scheme with the <code>colorScheme</code> prop.
                     </p>
                     <p>
-                      Define each color scale explicitly with five colors or
-                      pass exactly two colors (lowest and highest intensity) to
-                      calculate a single-hue scale. Colors can be specified in
-                      any valid CSS format.
+                      Define each color scale explicitly with five colors or pass exactly two colors
+                      (lowest and highest intensity) to calculate a single-hue scale. Colors can be
+                      specified in any valid CSS format.
                     </p>
                     <p>
                       <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--color-themes">
@@ -365,8 +345,8 @@ const Docs: FunctionComponent = () => {
                   <td>boolean</td>
                   <td>false</td>
                   <td>
-                    Whether to throw an <code>Error</code> if fetching GitHub
-                    contribution data fails. Use a React{' '}
+                    Whether to throw an <code>Error</code> if fetching GitHub contribution data
+                    fails. Use a React{' '}
                     <a href="https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary">
                       error boundary
                     </a>{' '}
@@ -378,8 +358,8 @@ const Docs: FunctionComponent = () => {
                   <td>number</td>
                   <td />
                   <td>
-                    Overwrite the total activity count. Useful in combination
-                    with <code>transformData</code>.
+                    Overwrite the total activity count. Useful in combination with{' '}
+                    <code>transformData</code>.
                   </td>
                 </tr>
                 <tr>
@@ -399,8 +379,8 @@ const Docs: FunctionComponent = () => {
                   </td>
                   <td />
                   <td>
-                    A function that receives the array of contribution data and
-                    that has to return an array with the same data type. See{' '}
+                    A function that receives the array of contribution data and that has to return
+                    an array with the same data type. See{' '}
                     <a href="#example-transform-data">example</a>.
                   </td>
                 </tr>
@@ -409,20 +389,16 @@ const Docs: FunctionComponent = () => {
                   <td>boolean</td>
                   <td>true</td>
                   <td>
-                    When the <code>transformData</code> property is set, the
-                    total contribution count will be calculated based on the
-                    transformed data. Set this to <code>false</code> to use the
-                    original contribution count for all data.
+                    When the <code>transformData</code> property is set, the total contribution
+                    count will be calculated based on the transformed data. Set this to{' '}
+                    <code>false</code> to use the original contribution count for all data.
                   </td>
                 </tr>
                 <tr>
                   <td>weekStart</td>
                   <td>number</td>
                   <td>0 (Sunday)</td>
-                  <td>
-                    Index of day to be used as start of week. 0 represents
-                    Sunday.
-                  </td>
+                  <td>Index of day to be used as start of week. 0 represents Sunday.</td>
                 </tr>
               </tbody>
             </table>
@@ -433,10 +409,7 @@ const Docs: FunctionComponent = () => {
           <h2>Examples & FAQ</h2>
           <p>
             Please refer to the Storybook of the calendar component for{' '}
-            <a href="https://grubersjoe.github.io/react-activity-calendar">
-              interactive examples
-            </a>
-            .
+            <a href="https://grubersjoe.github.io/react-activity-calendar">interactive examples</a>.
           </p>
 
           <h3 id="tooltips">How do I add tooltips?</h3>
@@ -450,9 +423,9 @@ const Docs: FunctionComponent = () => {
 
           <h3 id="example-transform-data">Usage of the transformData prop</h3>
           <p>
-            You can pass a function as the <code>transformData</code> prop that
-            receives the array of contribution data to manipulate it. The
-            transformation function must meet the following signature:
+            You can pass a function as the <code>transformData</code> prop that receives the array
+            of contribution data to manipulate it. The transformation function must meet the
+            following signature:
           </p>
           <CodeBlock>
             {`interface Activity {
@@ -464,8 +437,8 @@ const Docs: FunctionComponent = () => {
 function transformData(data: Array<Activity>): Array<Activity>;`}
           </CodeBlock>
           <p>
-            For example, to only show the the contribution data of the last six
-            months you can do the following:
+            For example, to only show the the contribution data of the last six months you can do
+            the following:
           </p>
           <CodeBlock>
             {`const selectLastHalfYear = contributions => {
@@ -513,13 +486,11 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
           </ErrorBoundary>
 
           <p style={{ marginTop: '1.25rem' }}>
-            The total count will be recalculated based on the transformed data.
-            However, you can enforce that the total count of the untransformed
-            data is shown by setting the <code>transformTotalCount</code> to{' '}
-            <code>false</code>. The text of total count label below the calendar
-            can be adjusted using the <code>labels.totalCount</code> prop and
-            the <code>&#x007B;&#x007B; count &#x007D;&#x007D;</code>{' '}
-            placeholder.
+            The total count will be recalculated based on the transformed data. However, you can
+            enforce that the total count of the untransformed data is shown by setting the{' '}
+            <code>transformTotalCount</code> to <code>false</code>. The text of total count label
+            below the calendar can be adjusted using the <code>labels.totalCount</code> prop and the{' '}
+            <code>&#x007B;&#x007B; count &#x007D;&#x007D;</code> placeholder.
           </p>
         </section>
 
@@ -537,12 +508,12 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
   );
 };
 
-const selectLastHalfYear: Props['transformData'] = (contributions) => {
+const selectLastHalfYear: Props['transformData'] = contributions => {
   const currentYear = new Date().getFullYear();
   const currentMonth = new Date().getMonth();
   const shownMonths = 6;
 
-  return contributions.filter((activity) => {
+  return contributions.filter(activity => {
     const date = new Date(activity.date);
     const monthOfDay = date.getMonth();
 

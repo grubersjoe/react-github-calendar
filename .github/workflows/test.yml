@@ -3,7 +3,7 @@ name: CI
 on:
   - push
   - pull_request
-  
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -32,6 +32,9 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Check formatting (Prettier)
+        run: pnpm format -c
 
       - name: Run type checks (TypeScript)
         run: pnpm tsc

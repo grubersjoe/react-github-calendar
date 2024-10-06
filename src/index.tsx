@@ -1,11 +1,11 @@
 'use client';
 
 import React, { forwardRef, useCallback, useEffect, useState } from 'react';
-import Calendar, { type Props as ActivityCalendarProps, Skeleton } from 'react-activity-calendar';
-
+import Calendar, { Skeleton } from 'react-activity-calendar';
 import { API_URL, DEFAULT_THEME } from './constants';
 import { Activity, ApiErrorResponse, ApiResponse, Year } from './types';
 import { transformData } from './utils';
+import type { Props as ActivityCalendarProps } from 'react-activity-calendar';
 
 export interface Props extends Omit<ActivityCalendarProps, 'data'> {
   username: string;
@@ -16,10 +16,7 @@ export interface Props extends Omit<ActivityCalendarProps, 'data'> {
   year?: Year;
 }
 
-async function fetchCalendarData(
-  username: string,
-  year: Year,
-): Promise<ApiResponse> {
+async function fetchCalendarData(username: string, year: Year): Promise<ApiResponse> {
   const response = await fetch(`${API_URL}${username}?y=${year}`);
   const data = (await response.json()) as ApiResponse | ApiErrorResponse;
 
@@ -85,8 +82,7 @@ const GitHubCalendar = forwardRef<HTMLElement, Props>(
       totalCount: `{{count}} contributions in ${year === 'last' ? 'the last year' : '{{year}}'}`,
     };
 
-    const totalCount =
-      year === 'last' ? data.total['lastYear'] : data.total[year];
+    const totalCount = year === 'last' ? data.total['lastYear'] : data.total[year];
 
     return (
       <Calendar
