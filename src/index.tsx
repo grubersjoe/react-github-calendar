@@ -1,11 +1,10 @@
 'use client';
 
 import React, { forwardRef, useCallback, useEffect, useState } from 'react';
-import Calendar, { Skeleton } from 'react-activity-calendar';
+import Calendar, { Skeleton, type Props as ActivityCalendarProps } from 'react-activity-calendar';
 import { API_URL, DEFAULT_THEME } from './constants';
 import { Activity, ApiErrorResponse, ApiResponse, Year } from './types';
 import { transformData } from './utils';
-import type { Props as ActivityCalendarProps } from 'react-activity-calendar';
 
 export interface Props extends Omit<ActivityCalendarProps, 'data'> {
   username: string;
