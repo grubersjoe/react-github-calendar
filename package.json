@@ -1,6 +1,6 @@
 {
   "name": "react-github-calendar",
-  "version": "4.4.1",
+  "version": "4.4.2",
   "description": " React component to display a GitHub contributions calendar",
   "author": "Jonathan Gruber <gruberjonathan@gmail.com>",
   "license": "MIT",
