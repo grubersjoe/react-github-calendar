@@ -20,8 +20,7 @@ npm install react-github-calendar
 
 This component cannot be rendered on the server (SSR). Please refer to the
 [known issues](https://github.com/grubersjoe/react-activity-calendar/blob/main/README.md#known-issues)
-of `react-activity-calendar` for more details how to render it on the client
-only.
+of `react-activity-calendar` for more details how to render it on the client only.
 
 Create React App also is not supported. Again see the README.
 
