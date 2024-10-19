@@ -13,24 +13,33 @@ A React component to display a GitHub contributions graph based on
 ## Installation
 
 ```shell
-pnpm install react-github-calendar
+npm install react-github-calendar
 ```
+
+## Known issues
+
+This component cannot be rendered on the server (SSR). Please refer to the
+[known issues](https://github.com/grubersjoe/react-activity-calendar/blob/main/README.md#known-issues)
+of `react-activity-calendar` for more details how to render it on the client
+only.
+
+Create React App also is not supported. Again see the README.
 
 ## Development
 
 Start watch mode for the library first:
 
 ```shell
-pnpm install
-pnpm dev
+npm install
+npm dev
 ```
 
 Then start watch mode of example page:
 
 ```shell
 cd example
-pnpm install
-pnpm dev
+npm install
+npm dev
 ```
 
 Open http://localhost:3000.
@@ -47,5 +56,5 @@ npm publish --access=public
 ### Update demo page
 
 ```shell
-pnpm run deploy
+npm run deploy
 ```
