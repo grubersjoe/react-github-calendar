@@ -1,10 +1,13 @@
 'use client';
 
 import React, { forwardRef, useCallback, useEffect, useState } from 'react';
-import Calendar, { Skeleton, type Props as ActivityCalendarProps } from 'react-activity-calendar';
-import { API_URL, DEFAULT_THEME } from './constants';
+import Calendar, {
+  Skeleton,
+  ThemeInput,
+  type Props as ActivityCalendarProps,
+} from 'react-activity-calendar';
+import { transformData } from './lib';
 import { Activity, ApiErrorResponse, ApiResponse, Year } from './types';
-import { transformData } from './utils';
 
 export interface Props extends Omit<ActivityCalendarProps, 'data'> {
   username: string;
@@ -16,7 +19,8 @@ export interface Props extends Omit<ActivityCalendarProps, 'data'> {
 }
 
 async function fetchCalendarData(username: string, year: Year): Promise<ApiResponse> {
-  const response = await fetch(`${API_URL}${username}?y=${year}`);
+  const apiUrl = 'https://github-contributions-api.jogruber.de/v4/';
+  const response = await fetch(`${apiUrl}${username}?y=${year}`);
   const data = (await response.json()) as ApiResponse | ApiErrorResponse;
 
   if (!response.ok) {
@@ -27,6 +31,7 @@ async function fetchCalendarData(username: string, year: Year): Promise<ApiRespo
 
   return data as ApiResponse;
 }
+
 const GitHubCalendar = forwardRef<HTMLElement, Props>(
   (
     {
@@ -75,7 +80,7 @@ const GitHubCalendar = forwardRef<HTMLElement, Props>(
       return <Skeleton {...props} loading />;
     }
 
-    const theme = props.theme ?? DEFAULT_THEME;
+    const theme = props.theme ?? gitHubTheme;
 
     const defaultLabels = {
       totalCount: `{{count}} contributions in ${year === 'last' ? 'the last year' : '{{year}}'}`,
@@ -99,5 +104,10 @@ const GitHubCalendar = forwardRef<HTMLElement, Props>(
 );
 
 GitHubCalendar.displayName = 'GitHubCalendar';
+
+const gitHubTheme = {
+  light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
+  dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
+} satisfies ThemeInput;
 
 export default GitHubCalendar;

@@ -1,7 +1,7 @@
 {
   "name": "react-github-calendar-example",
   "homepage": "https://grubersjoe.github.io/react-github-calendar/",
-  "version": "4.4.2",
+  "version": "4.5.1",
   "license": "MIT",
   "private": true,
   "scripts": {
@@ -10,18 +10,18 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react-error-boundary": "^4.0.13",
+    "react-error-boundary": "^4.1.2",
     "react-github-btn": "^1.4.0",
     "react-github-calendar": "link:..",
-    "react-router-dom": "^6.26.0",
-    "react-syntax-highlighter": "^15.5.0"
+    "react-router-dom": "^6.27.0",
+    "react-syntax-highlighter": "^15.6.1"
   },
   "devDependencies": {
-    "@types/node": "^22.2.0",
+    "@types/node": "^22.7.8",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "@vitejs/plugin-react": "^4.3.1",
-    "sass": "^1.77.8",
-    "typescript": "^5.5.4",
-    "vite": "^5.4.6"
+    "@vitejs/plugin-react": "^4.3.3",
+    "sass": "^1.80.3",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.9"
   }
 }

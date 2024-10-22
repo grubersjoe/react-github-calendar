@@ -1,6 +1,6 @@
 {
   "name": "react-github-calendar",
-  "version": "4.4.2",
+  "version": "4.5.1",
   "description": " React component to display a GitHub contributions calendar",
   "author": "Jonathan Gruber <gruberjonathan@gmail.com>",
   "license": "MIT",
@@ -13,18 +13,19 @@
   "types": "build/index.d.ts",
   "scripts": {
     "build": "rollup -c",
+    "check": "pnpx prettier -c . && pnpm exec tsc && pnpm lint",
     "deploy": "gh-pages -d example/build",
     "dev": "rollup -c -w",
     "format": "prettier --write .",
     "lint": "eslint .",
     "postbuild": "dts-bundle-generator src/index.tsx -o build/index.d.ts --no-check --no-banner",
-    "predeploy": "cd example && ./sync-version.js && pnpm install && npm run build",
-    "prepare": "npm run build",
-    "prepublishOnly": "npx tsc && npm run lint && npm run build"
+    "predeploy": "cd example && ./sync-version.js && pnpm install && pnpm build",
+    "prepare": "husky",
+    "prepublishOnly": "pnpm check && pnpm build"
   },
   "dependencies": {
-    "react-activity-calendar": "^2.6.3",
-    "react-error-boundary": "^4.1.1"
+    "react-activity-calendar": "^2.7.1",
+    "react-error-boundary": "^4.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.8",
@@ -47,6 +48,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "gh-pages": "^6.2.0",
     "globals": "^15.11.0",
+    "husky": "^9.1.6",
     "postcss": "^8.4.47",
     "prettier": "^3.3.2",
     "react": "^18.3.1",
@@ -56,7 +58,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.2",
     "rollup-plugin-postcss": "^4.0.2",
     "typescript": "^5.6.3",
-    "typescript-eslint": "^8.10.0"
+    "typescript-eslint": "^8.11.0"
   },
   "peerDependencies": {
     "react": "^17.0.0 || ^18.0.0",
