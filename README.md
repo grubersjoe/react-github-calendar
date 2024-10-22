@@ -32,7 +32,9 @@ Yes. However, not with this component because it fetches data client-side. For S
 fetch the GitHub contribution data from a suitable
 [API](https://github.com/grubersjoe/github-contributions-api) server-side and pass it on to the
 internally used [`react-activity-calendar`](https://github.com/grubersjoe/react-activity-calendar)
-component.
+component. See the
+[source code](https://github.com/grubersjoe/react-github-calendar/blob/main/src/index.tsx) for the
+GitHub color theme.
 
 ### Why is Create React App unsupported?
 
