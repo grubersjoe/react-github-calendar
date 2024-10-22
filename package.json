@@ -62,6 +62,12 @@
     "react": "^17.0.0 || ^18.0.0",
     "react-dom": "^17.0.0 || ^18.0.0"
   },
-  "files": ["build"],
-  "browserslist": ["last 2 chrome version", "last 2 firefox version", "last 2 safari version"]
+  "files": [
+    "build"
+  ],
+  "browserslist": [
+    "last 2 chrome version",
+    "last 2 firefox version",
+    "last 2 safari version"
+  ]
 }
