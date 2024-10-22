@@ -65,7 +65,7 @@ npm dev
 
 Open http://localhost:3000.
 
-## Publish a new release
+### Publish a new release
 
 ```shell
 npm publish --dry-run
