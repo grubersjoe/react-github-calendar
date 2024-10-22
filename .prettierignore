@@ -1,6 +1,7 @@
 .gitignore
 .npmignore
 .prettierignore
+pnpm-lock.yaml
 
 LICENSE
 
