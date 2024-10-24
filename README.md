@@ -21,7 +21,7 @@ npm install react-github-calendar
 ```tsx
 import GitHubCalendar from 'react-github-calendar';
 
-const App = () => <GitHubCalendar username="grubersjoe" />;
+<GitHubCalendar username="grubersjoe" />;
 ```
 
 ## FAQ
@@ -33,8 +33,8 @@ fetch the GitHub contribution data from a suitable
 [API](https://github.com/grubersjoe/github-contributions-api) server-side and pass it on to the
 internally used [`react-activity-calendar`](https://github.com/grubersjoe/react-activity-calendar)
 component. See the
-[source code](https://github.com/grubersjoe/react-github-calendar/blob/main/src/index.tsx) for the
-GitHub color theme.
+[source code](https://github.com/grubersjoe/react-github-calendar/blob/main/src/index.tsx) as
+example and the GitHub color theme.
 
 ### Why is Create React App unsupported?
 
