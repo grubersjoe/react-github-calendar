@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { createHashRouter, RouterProvider } from 'react-router-dom';
+import { createHashRouter } from 'react-router';
+import { RouterProvider } from 'react-router/dom';
 import Docs from './components/Docs';
 
 const container = document.getElementById('root');

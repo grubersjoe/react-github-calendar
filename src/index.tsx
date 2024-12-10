@@ -3,11 +3,11 @@
 import React, { forwardRef, useCallback, useEffect, useState } from 'react';
 import Calendar, {
   Skeleton,
-  ThemeInput,
   type Props as ActivityCalendarProps,
+  type ThemeInput,
 } from 'react-activity-calendar';
 import { transformData } from './lib';
-import { Activity, ApiErrorResponse, ApiResponse, Year } from './types';
+import type { Activity, ApiErrorResponse, ApiResponse, Year } from './types';
 
 export interface Props extends Omit<ActivityCalendarProps, 'data'> {
   username: string;

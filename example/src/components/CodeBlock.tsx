@@ -1,13 +1,11 @@
-import { CSSProperties, FunctionComponent } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { tomorrow as theme } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 type Props = {
   children: string;
-  style?: CSSProperties;
 };
 
-const CodeBlock: FunctionComponent<Props> = ({ children }) => (
+const CodeBlock = ({ children }: Props) => (
   <SyntaxHighlighter
     language="typescript"
     customStyle={{
