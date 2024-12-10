@@ -33,6 +33,12 @@ importers:
       '@vitejs/plugin-react':
         specifier: ^4.3.3
         version: 4.3.3(vite@5.4.9(@types/node@22.7.8)(sass@1.80.3))
+      react:
+        specifier: ^18
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.0.0
+        version: 18.3.1(react@18.3.1)
       sass:
         specifier: ^1.80.3
         version: 1.80.3
