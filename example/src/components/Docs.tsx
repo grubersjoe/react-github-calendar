@@ -1,8 +1,8 @@
-import { FormEventHandler, FunctionComponent, useEffect, useState } from 'react';
+import { useEffect, useState, type FormEventHandler } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import GitHubButton from 'react-github-btn';
-import GitHubCalendar, { Props } from 'react-github-calendar';
-import { useSearchParams } from 'react-router-dom';
+import GitHubCalendar, { type Props } from 'react-github-calendar';
+import { useSearchParams } from 'react-router';
 import pkg from '../../package.json';
 import CodeBlock from './CodeBlock';
 import { errorRenderer } from './Error';
@@ -11,7 +11,7 @@ import ForkMe from './ForkMe';
 
 const defaultUsername = 'grubersjoe';
 
-const Docs: FunctionComponent = () => {
+const Docs = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialUsername = searchParams.get('user') ?? defaultUsername;
 
@@ -91,7 +91,7 @@ const Docs: FunctionComponent = () => {
 
         <section>
           <h2>Installation</h2>
-          <CodeBlock style={{ marginTop: '0.5rem' }}>yarn add react-github-calendar</CodeBlock>
+          <CodeBlock>npm add react-github-calendar</CodeBlock>
           <p>Then in your code:</p>
           <CodeBlock>
             {`import GitHubCalendar from 'react-github-calendar';
