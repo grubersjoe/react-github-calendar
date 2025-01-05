@@ -1,6 +1,6 @@
 {
   "name": "react-github-calendar",
-  "version": "4.5.2",
+  "version": "4.5.3",
   "description": " React component to display a GitHub contributions calendar",
   "author": "Jonathan Gruber <gruberjonathan@gmail.com>",
   "license": "MIT",
@@ -24,8 +24,8 @@
     "prepublishOnly": "pnpm check && pnpm build"
   },
   "dependencies": {
-    "react-activity-calendar": "^2.7.5",
-    "react-error-boundary": "^4.1.2"
+    "react-activity-calendar": "^2.7.6",
+    "react-error-boundary": "^5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.25.8",
@@ -38,14 +38,14 @@
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-node-resolve": "^16.0.0",
     "@types/eslint__js": "^8.42.3",
-    "@types/node": "^22.10.2",
+    "@types/node": "^22.10.5",
     "@types/react": "^19.0.2",
     "@types/tinycolor2": "^1.4.6",
     "dts-bundle-generator": "^9.5.1",
     "eslint": "^9.17.0",
-    "eslint-plugin-react": "^7.37.1",
+    "eslint-plugin-react": "^7.37.3",
     "eslint-plugin-react-hooks": "^5.1.0",
-    "gh-pages": "^6.2.0",
+    "gh-pages": "^6.3.0",
     "globals": "^15.14.0",
     "husky": "^9.1.7",
     "postcss": "^8.4.49",
@@ -56,7 +56,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.2",
     "rollup-plugin-postcss": "^4.0.2",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.18.1"
+    "typescript-eslint": "^8.19.0"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0"
