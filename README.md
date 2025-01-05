@@ -46,7 +46,7 @@ Using this component inside CRA will lead to errors for reasons described in iss
 [#105](https://github.com/grubersjoe/react-activity-calendar/issues/105) of
 `react-activity-calendar`. This repo is not for CRA support questions. If you encounter issues, you
 need to fix those yourself given the maintenance state of CRA. Personally, I would recommend using
-[Vite](https://vitejs.dev/) instead of CRA.
+[Vite](https://vitejs.dev/) instead of CRA. It offers everything that CRA does and more.
 
 ## Development
 
