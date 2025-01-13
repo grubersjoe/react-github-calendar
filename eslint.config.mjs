@@ -1,12 +1,12 @@
 // @ts-check
-import { fixupPluginRules } from '@eslint/compat';
-import eslint from '@eslint/js';
+import { fixupPluginRules } from '@eslint/compat'
+import eslint from '@eslint/js'
 // @ts-ignore
-import reactHooks from 'eslint-plugin-react-hooks';
+import reactHooks from 'eslint-plugin-react-hooks'
 // @ts-ignore
-import react from 'eslint-plugin-react/configs/recommended.js';
-import globals from 'globals';
-import typescript from 'typescript-eslint';
+import react from 'eslint-plugin-react/configs/recommended.js'
+import globals from 'globals'
+import typescript from 'typescript-eslint'
 
 export default typescript.config(
   eslint.configs.recommended,
@@ -59,4 +59,4 @@ export default typescript.config(
       ...reactHooks.configs.recommended.rules,
     },
   },
-);
+)

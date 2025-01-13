@@ -1,35 +1,35 @@
-'use client';
+'use client'
 
-import React, { forwardRef, useCallback, useEffect, useState } from 'react';
+import React, { forwardRef, useCallback, useEffect, useState } from 'react'
 import Calendar, {
   Skeleton,
   type Props as ActivityCalendarProps,
   type ThemeInput,
-} from 'react-activity-calendar';
-import { transformData } from './lib';
-import type { Activity, ApiErrorResponse, ApiResponse, Year } from './types';
+} from 'react-activity-calendar'
+import { transformData } from './lib'
+import type { Activity, ApiErrorResponse, ApiResponse, Year } from './types'
 
 export interface Props extends Omit<ActivityCalendarProps, 'data'> {
-  username: string;
-  errorMessage?: string;
-  throwOnError?: boolean;
-  transformData?: (data: Array<Activity>) => Array<Activity>;
-  transformTotalCount?: boolean;
-  year?: Year;
+  username: string
+  errorMessage?: string
+  throwOnError?: boolean
+  transformData?: (data: Array<Activity>) => Array<Activity>
+  transformTotalCount?: boolean
+  year?: Year
 }
 
 async function fetchCalendarData(username: string, year: Year): Promise<ApiResponse> {
-  const apiUrl = 'https://github-contributions-api.jogruber.de/v4/';
-  const response = await fetch(`${apiUrl}${username}?y=${year}`);
-  const data = (await response.json()) as ApiResponse | ApiErrorResponse;
+  const apiUrl = 'https://github-contributions-api.jogruber.de/v4/'
+  const response = await fetch(`${apiUrl}${username}?y=${year}`)
+  const data = (await response.json()) as ApiResponse | ApiErrorResponse
 
   if (!response.ok) {
     throw Error(
       `Fetching GitHub contribution data for "${username}" failed: ${(data as ApiErrorResponse).error}`,
-    );
+    )
   }
 
-  return data as ApiResponse;
+  return data as ApiResponse
 }
 
 const GitHubCalendar = forwardRef<HTMLElement, Props>(
@@ -46,47 +46,47 @@ const GitHubCalendar = forwardRef<HTMLElement, Props>(
     },
     ref,
   ) => {
-    const [data, setData] = useState<ApiResponse | null>(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<Error | null>(null);
+    const [data, setData] = useState<ApiResponse | null>(null)
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState<Error | null>(null)
 
     const fetchData = useCallback(() => {
-      setLoading(true);
-      setError(null);
+      setLoading(true)
+      setError(null)
       fetchCalendarData(username, year)
         .then(setData)
         .catch((err: unknown) => {
           if (err instanceof Error) {
-            setError(err);
+            setError(err)
           }
         })
         .finally(() => {
-          setLoading(false);
-        });
-    }, [username, year]);
+          setLoading(false)
+        })
+    }, [username, year])
 
-    useEffect(fetchData, [fetchData]);
+    useEffect(fetchData, [fetchData])
 
     // React error boundaries can't handle asynchronous code, so rethrow.
     if (error) {
       if (throwOnError) {
-        throw error;
+        throw error
       } else {
-        return <div>{errorMessage}</div>;
+        return <div>{errorMessage}</div>
       }
     }
 
     if (loading || !data) {
-      return <Skeleton {...props} loading />;
+      return <Skeleton {...props} loading />
     }
 
-    const theme = props.theme ?? gitHubTheme;
+    const theme = props.theme ?? gitHubTheme
 
     const defaultLabels = {
       totalCount: `{{count}} contributions in ${year === 'last' ? 'the last year' : '{{year}}'}`,
-    };
+    }
 
-    const totalCount = year === 'last' ? data.total['lastYear'] : data.total[year];
+    const totalCount = year === 'last' ? data.total['lastYear'] : data.total[year]
 
     return (
       <Calendar
@@ -99,15 +99,15 @@ const GitHubCalendar = forwardRef<HTMLElement, Props>(
         loading={Boolean(props.loading) || loading}
         maxLevel={4}
       />
-    );
+    )
   },
-);
+)
 
-GitHubCalendar.displayName = 'GitHubCalendar';
+GitHubCalendar.displayName = 'GitHubCalendar'
 
 const gitHubTheme = {
   light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
   dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
-} satisfies ThemeInput;
+} satisfies ThemeInput
 
-export default GitHubCalendar;
+export default GitHubCalendar

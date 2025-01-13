@@ -1,9 +1,9 @@
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { tomorrow as theme } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { tomorrow as theme } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 type Props = {
-  children: string;
-};
+  children: string
+}
 
 const CodeBlock = ({ children }: Props) => (
   <SyntaxHighlighter
@@ -21,6 +21,6 @@ const CodeBlock = ({ children }: Props) => (
   >
     {children}
   </SyntaxHighlighter>
-);
+)
 
-export default CodeBlock;
+export default CodeBlock

@@ -2,9 +2,10 @@
   "plugins": ["@ianvs/prettier-plugin-sort-imports"],
   "importOrder": ["<BUILTIN_MODULES>", "^react$", "<THIRD_PARTY_MODULES>", "^[.]"],
   "importOrderParserPlugins": ["typescript", "jsx", "importAttributes"],
-  "importOrderTypeScriptVersion": "5.5.0",
+  "importOrderTypeScriptVersion": "5.7.0",
   "arrowParens": "avoid",
   "printWidth": 100,
   "proseWrap": "always",
-  "singleQuote": true
+  "singleQuote": true,
+  "semi": false
 }

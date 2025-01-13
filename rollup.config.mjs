@@ -1,11 +1,11 @@
-import babel from '@rollup/plugin-babel';
-import resolve from '@rollup/plugin-node-resolve';
-import filesize from 'rollup-plugin-filesize';
-import external from 'rollup-plugin-peer-deps-external';
-import postcss from 'rollup-plugin-postcss';
-import pkg from './package.json' with { type: 'json' };
+import babel from '@rollup/plugin-babel'
+import resolve from '@rollup/plugin-node-resolve'
+import filesize from 'rollup-plugin-filesize'
+import external from 'rollup-plugin-peer-deps-external'
+import postcss from 'rollup-plugin-postcss'
+import pkg from './package.json' with { type: 'json' }
 
-const extensions = ['.ts', '.tsx'];
+const extensions = ['.ts', '.tsx']
 
 export default {
   input: 'src/index.tsx',
@@ -39,8 +39,8 @@ export default {
   ],
   onwarn(warning, warn) {
     if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes('use client')) {
-      return; // ignore the error for now
+      return // ignore the error for now
     }
-    warn(warning);
+    warn(warning)
   },
-};
+}

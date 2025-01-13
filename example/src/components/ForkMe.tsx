@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import type { CSSProperties } from 'react'
 
 const style: CSSProperties = {
   position: 'absolute',
@@ -6,7 +6,7 @@ const style: CSSProperties = {
   right: 0,
   border: 0,
   fill: 'currentcolor',
-};
+}
 
 const ForkMe = () => (
   <a
@@ -27,6 +27,6 @@ const ForkMe = () => (
       />
     </svg>
   </a>
-);
+)
 
-export default ForkMe;
+export default ForkMe

@@ -1,37 +1,37 @@
-import { useEffect, useState, type FormEventHandler } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
-import GitHubButton from 'react-github-btn';
-import GitHubCalendar, { type Props } from 'react-github-calendar';
-import { useSearchParams } from 'react-router';
-import pkg from '../../package.json';
-import CodeBlock from './CodeBlock';
-import { errorRenderer } from './Error';
-import '../styles.scss';
-import ForkMe from './ForkMe';
+import { useEffect, useState, type FormEventHandler } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
+import GitHubButton from 'react-github-btn'
+import GitHubCalendar, { type Props } from 'react-github-calendar'
+import { useSearchParams } from 'react-router'
+import pkg from '../../package.json'
+import CodeBlock from './CodeBlock'
+import { errorRenderer } from './Error'
+import '../styles.scss'
+import ForkMe from './ForkMe'
 
-const defaultUsername = 'grubersjoe';
+const defaultUsername = 'grubersjoe'
 
 const Docs = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const initialUsername = searchParams.get('user') ?? defaultUsername;
+  const [searchParams, setSearchParams] = useSearchParams()
+  const initialUsername = searchParams.get('user') ?? defaultUsername
 
-  const [username, setUsername] = useState(initialUsername);
-  const [input, setInput] = useState(initialUsername);
+  const [username, setUsername] = useState(initialUsername)
+  const [input, setInput] = useState(initialUsername)
 
   useEffect(() => {
     if (initialUsername !== username) {
-      setUsername(initialUsername);
-      setInput(initialUsername);
+      setUsername(initialUsername)
+      setInput(initialUsername)
     }
-  }, [initialUsername, username]);
+  }, [initialUsername, username])
 
   const onUsernameSubmit: FormEventHandler = event => {
-    event.preventDefault();
-    const val = input.trim();
+    event.preventDefault()
+    const val = input.trim()
     if (val && val !== username) {
-      setSearchParams({ user: val.toLowerCase() });
+      setSearchParams({ user: val.toLowerCase() })
     }
-  };
+  }
 
   return (
     <div>
@@ -46,7 +46,7 @@ const Docs = () => {
               placeholder="Enter your GitHub username"
               value={input}
               onChange={event => {
-                setInput(event.target.value);
+                setInput(event.target.value)
               }}
               autoComplete="on"
               required
@@ -497,7 +497,7 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
         <p style={{ marginTop: '3rem' }}>
           <button
             onClick={() => {
-              window.scroll({ top: 0, behavior: 'smooth' });
+              window.scroll({ top: 0, behavior: 'smooth' })
             }}
           >
             Back to top
@@ -505,24 +505,24 @@ function transformData(data: Array<Activity>): Array<Activity>;`}
         </p>
       </main>
     </div>
-  );
-};
+  )
+}
 
 const selectLastHalfYear: Props['transformData'] = contributions => {
-  const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth();
-  const shownMonths = 6;
+  const currentYear = new Date().getFullYear()
+  const currentMonth = new Date().getMonth()
+  const shownMonths = 6
 
   return contributions.filter(activity => {
-    const date = new Date(activity.date);
-    const monthOfDay = date.getMonth();
+    const date = new Date(activity.date)
+    const monthOfDay = date.getMonth()
 
     return (
       date.getFullYear() === currentYear &&
       monthOfDay > currentMonth - shownMonths &&
       monthOfDay <= currentMonth
-    );
-  });
-};
+    )
+  })
+}
 
-export default Docs;
+export default Docs

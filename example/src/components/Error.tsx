@@ -1,4 +1,4 @@
-import type { FallbackProps } from 'react-error-boundary';
+import type { FallbackProps } from 'react-error-boundary'
 
 export const errorRenderer = ({ error }: FallbackProps) => (
   <div className="error">
@@ -10,4 +10,4 @@ export const errorRenderer = ({ error }: FallbackProps) => (
       </>
     ) : null}
   </div>
-);
+)

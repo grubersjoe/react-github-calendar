@@ -19,9 +19,9 @@ npm install react-github-calendar
 ## Usage
 
 ```tsx
-import GitHubCalendar from 'react-github-calendar';
+import GitHubCalendar from 'react-github-calendar'
 
-<GitHubCalendar username="grubersjoe" />;
+;<GitHubCalendar username="grubersjoe" />
 ```
 
 ## FAQ
