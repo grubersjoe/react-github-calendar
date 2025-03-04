@@ -1,44 +1,30 @@
-// @ts-check
-import { fixupPluginRules } from '@eslint/compat'
 import eslint from '@eslint/js'
-// @ts-ignore
+import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
-// @ts-ignore
-import react from 'eslint-plugin-react/configs/recommended.js'
 import globals from 'globals'
 import typescript from 'typescript-eslint'
 
 export default typescript.config(
   eslint.configs.recommended,
-  ...typescript.configs.strictTypeChecked,
-  {
-    ignores: [
-      'build/',
-      'public/',
-      'example/build/',
-      'example/vite.config.mts',
-      'eslint.config.mjs',
-      'rollup.config.mjs',
-    ],
-  },
+  typescript.configs.strictTypeChecked,
+  typescript.configs.stylisticTypeChecked,
+  react.configs.flat.recommended,
+  react.configs.flat['jsx-runtime'],
+  reactHooks.configs['recommended-latest'],
   {
     rules: {
-      '@typescript-eslint/restrict-template-expressions': 'off',
       'no-console': 'error',
+      '@typescript-eslint/array-type': ['error', { default: 'generic' }],
+      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+      'react/no-unescaped-entities': 'off',
     },
     languageOptions: {
-      parserOptions: {
-        project: true,
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-  },
-  {
-    ...react,
-    languageOptions: {
-      ...react.languageOptions,
       globals: {
         ...globals.browser,
+      },
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
       },
     },
     settings: {
@@ -46,17 +32,9 @@ export default typescript.config(
         version: 'detect',
       },
     },
-    rules: {
-      'react/display-name': 1,
-      'react/react-in-jsx-scope': 0,
-    },
   },
   {
-    plugins: {
-      'react-hooks': fixupPluginRules(reactHooks),
-    },
-    rules: {
-      ...reactHooks.configs.recommended.rules,
-    },
+    // Note: there must be no other properties in this object
+    ignores: ['build/', 'public/', 'example/build/', 'rollup.config.mjs'],
   },
 )

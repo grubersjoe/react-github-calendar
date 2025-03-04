@@ -1,4 +1,6 @@
 {
+  "include": ["src/**/*", "example/**/*", "./*"],
+  "exclude": ["**/build/"],
   "compilerOptions": {
     "allowJs": true,
     "esModuleInterop": true,

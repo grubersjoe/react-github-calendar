@@ -1,6 +1,6 @@
 'use client'
 
-import React, { forwardRef, useCallback, useEffect, useState } from 'react'
+import { forwardRef, useCallback, useEffect, useState } from 'react'
 import Calendar, {
   Skeleton,
   type Props as ActivityCalendarProps,
@@ -9,18 +9,18 @@ import Calendar, {
 import { transformData } from './lib'
 import type { Activity, ApiErrorResponse, ApiResponse, Year } from './types'
 
-export interface Props extends Omit<ActivityCalendarProps, 'data'> {
+export type Props = {
   username: string
   errorMessage?: string
   throwOnError?: boolean
   transformData?: (data: Array<Activity>) => Array<Activity>
   transformTotalCount?: boolean
   year?: Year
-}
+} & Omit<ActivityCalendarProps, 'data'>
 
 async function fetchCalendarData(username: string, year: Year): Promise<ApiResponse> {
   const apiUrl = 'https://github-contributions-api.jogruber.de/v4/'
-  const response = await fetch(`${apiUrl}${username}?y=${year}`)
+  const response = await fetch(`${apiUrl}${username}?y=${String(year)}`)
   const data = (await response.json()) as ApiResponse | ApiErrorResponse
 
   if (!response.ok) {
@@ -86,7 +86,7 @@ const GitHubCalendar = forwardRef<HTMLElement, Props>(
       totalCount: `{{count}} contributions in ${year === 'last' ? 'the last year' : '{{year}}'}`,
     }
 
-    const totalCount = year === 'last' ? data.total['lastYear'] : data.total[year]
+    const totalCount = year === 'last' ? data.total.lastYear : data.total[year]
 
     return (
       <Calendar
