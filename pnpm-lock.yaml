@@ -47,7 +47,7 @@ importers:
         specifier: ^22.13.9
         version: 22.13.9
       '@types/react':
-        specifier: ^19.0.10
+        specifier: ^19
         version: 19.0.10
       '@types/tinycolor2':
         specifier: ^1.4.6
