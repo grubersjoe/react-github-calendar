@@ -1,8 +1,4 @@
 {
-  "name": "react-github-calendar-example",
-  "homepage": "https://grubersjoe.github.io/react-github-calendar/",
-  "version": "4.5.6",
-  "license": "MIT",
   "private": true,
   "scripts": {
     "build": "tsc && vite build",
@@ -27,5 +23,11 @@
     "sass": "^1.83.4",
     "typescript": "^5.7.3",
     "vite": "^6.0.11"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild"
+    ]
   }
 }

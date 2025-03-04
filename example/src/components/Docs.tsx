@@ -3,7 +3,6 @@ import { ErrorBoundary } from 'react-error-boundary'
 import GitHubButton from 'react-github-btn'
 import GitHubCalendar, { type Props } from 'react-github-calendar'
 import { useSearchParams } from 'react-router'
-import pkg from '../../package.json'
 import CodeBlock from './CodeBlock'
 import { errorRenderer } from './Error'
 import '../styles.scss'
@@ -69,13 +68,18 @@ const Docs = () => {
             <GitHubCalendar username={username} fontSize={16} throwOnError />
           </ErrorBoundary>
 
-          <p style={{ marginTop: '1.25rem', marginBottom: '1.25rem' }}>
-            Made with love by <a href="https://jogruber.de">@grubersjoe</a>, current version:{' '}
-            <a href="https://www.npmjs.com/package/react-github-calendar">
-              <code>v{pkg.version}</code>
-            </a>
+          <p style={{ marginTop: '2rem', marginBottom: '0.75rem' }}>
+            Made with love by <a href="https://jogruber.de">@grubersjoe</a>.
           </p>
-          <div>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1em' }}>
+            <a href="https://www.npmjs.com/package/react-github-calendar">
+              <img
+                src="https://badge.fury.io/js/react-github-calendar.svg"
+                alt="npm version"
+                height="25"
+              />
+            </a>
             <GitHubButton
               href="https://github.com/grubersjoe/react-github-calendar"
               data-color-scheme="no-preference: light; light: light; dark: dark;"

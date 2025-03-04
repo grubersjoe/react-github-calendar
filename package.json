@@ -19,7 +19,7 @@
     "format": "prettier --write .",
     "lint": "eslint .",
     "postbuild": "dts-bundle-generator src/index.tsx -o build/index.d.ts --no-check --no-banner",
-    "predeploy": "cd example && ./sync-version.js && pnpm install && pnpm build",
+    "predeploy": "pnpm build && cd example && pnpm install && pnpm build",
     "prepare": "husky",
     "prepublishOnly": "pnpm check && pnpm build"
   },
