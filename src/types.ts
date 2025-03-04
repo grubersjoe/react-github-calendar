@@ -1,4 +1,4 @@
-export interface Activity {
+export type Activity = {
   date: string
   count: number
   level: 0 | 1 | 2 | 3 | 4
@@ -6,7 +6,7 @@ export interface Activity {
 
 export type Year = number | 'last'
 
-export interface ApiResponse {
+export type ApiResponse = {
   total: {
     [year: number]: number
     [year: string]: number // 'lastYear;
@@ -14,6 +14,6 @@ export interface ApiResponse {
   contributions: Array<Activity>
 }
 
-export interface ApiErrorResponse {
+export type ApiErrorResponse = {
   error: string
 }

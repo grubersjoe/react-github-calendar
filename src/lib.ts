@@ -20,16 +20,18 @@ export const transformData = (
     }
 
     if (typeof d.count !== 'number' || d.count < 0) {
-      throw Error(`Required property "count: number" missing or invalid. Got: ${d.count}`)
+      throw Error(`Required property "count: number" missing or invalid. Got: ${d.count as string}`)
     }
 
     if (typeof d.date !== 'string' || !/\d{4}-\d{2}-\d{2}/.test(d.date)) {
-      throw Error(`Required property "date: YYYY-MM-DD" missing or invalid. Got: ${d.date}`)
+      throw Error(
+        `Required property "date: YYYY-MM-DD" missing or invalid. Got: ${d.date as string}`,
+      )
     }
 
     if (typeof d.level !== 'number' || d.level < 0 || d.level > 4) {
       throw Error(
-        `Required property "level: 0 | 1 | 2 | 3 | 4" missing or invalid: Got: ${d.level}.`,
+        `Required property "level: 0 | 1 | 2 | 3 | 4" missing or invalid: Got: ${d.level as string}.`,
       )
     }
   }
