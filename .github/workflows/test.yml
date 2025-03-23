@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.2.2
-      - uses: actions/setup-node@v4.2.0
+      - uses: actions/setup-node@v4.3.0
         with:
           node-version: 20
 
@@ -23,7 +23,7 @@ jobs:
         shell: bash
         run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
-      - uses: actions/cache@v4.2.2
+      - uses: actions/cache@v4.2.3
         name: Setup pnpm cache
         with:
           path: ${{ env.STORE_PATH }}
