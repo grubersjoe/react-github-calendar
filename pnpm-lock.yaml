@@ -13,8 +13,8 @@ importers:
   .:
     dependencies:
       react-activity-calendar:
-        specifier: ^2.7.8
-        version: 2.7.10(react@19.1.0)
+        specifier: ^2.7.11
+        version: 2.7.11(react@19.1.0)
       react-error-boundary:
         specifier: ^6.0.0
         version: 6.0.0(react@19.1.0)
@@ -2829,8 +2829,8 @@ packages:
     resolution: {integrity: sha512-RmkhL8CAyCRPXCE28MMH0z2PNWQBNk2Q09ZdxM9IOOXwxwZbN+qbWaatPkdkWIKL2ZVDImrN/pK5HTRz2PcS4g==}
     engines: {node: '>= 0.8'}
 
-  react-activity-calendar@2.7.10:
-    resolution: {integrity: sha512-O6ev2JxbsbmF7hPpRCkiXxQ+vGwXS5iUVwOCqtvlJnGhpyJ3ZJap7/qfIZA0WZcDj4gpQh2Dcvkmwh3yBXRrPQ==}
+  react-activity-calendar@2.7.11:
+    resolution: {integrity: sha512-JHJyvdYciBVPt1ZkE2pqnmg0ZMsmer09CXD1qWe2hpl3PyMosVqFOMZmDqjLxRWI6VD2ILH4RFk5dZCuWwnaPg==}
     peerDependencies:
       react: ^19
 
@@ -6568,7 +6568,7 @@ snapshots:
       iconv-lite: 0.6.3
       unpipe: 1.0.0
 
-  react-activity-calendar@2.7.10(react@19.1.0):
+  react-activity-calendar@2.7.11(react@19.1.0):
     dependencies:
       date-fns: 4.1.0
       react: 19.1.0
