@@ -57,12 +57,6 @@
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0"
   },
-  "pnpm": {
-    "overrides": {
-      "react": "^19",
-      "@types/react": "^19"
-    }
-  },
   "files": [
     "build"
   ],
