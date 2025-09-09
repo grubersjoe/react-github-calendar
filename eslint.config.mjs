@@ -1,10 +1,11 @@
 import eslint from '@eslint/js'
 import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
+import { defineConfig } from 'eslint/config'
 import globals from 'globals'
 import typescript from 'typescript-eslint'
 
-export default typescript.config(
+export default defineConfig(
   eslint.configs.recommended,
   typescript.configs.strictTypeChecked,
   typescript.configs.stylisticTypeChecked,
