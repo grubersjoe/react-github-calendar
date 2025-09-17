@@ -11,6 +11,10 @@ A React component to display a GitHub contributions graph based on
 
 [Demo and documentation](https://grubersjoe.github.io/react-github-calendar/)
 
+<a href="https://www.buymeacoffee.com/grubersjoe">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 48px;" >
+</a>
+
 ## Installation
 
 ```shell
