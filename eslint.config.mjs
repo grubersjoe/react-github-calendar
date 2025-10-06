@@ -11,6 +11,7 @@ export default defineConfig(
   typescript.configs.stylisticTypeChecked,
   react.configs.flat.recommended,
   react.configs.flat['jsx-runtime'],
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
   reactHooks.configs['recommended-latest'],
   {
     rules: {

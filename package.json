@@ -40,7 +40,7 @@
     "dts-bundle-generator": "^9.5.1",
     "eslint": "^9.35.0",
     "eslint-plugin-react": "^7.37.3",
-    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-hooks": "^6.1.1",
     "gh-pages": "^6.3.0",
     "globals": "^16.0.0",
     "husky": "^9.1.7",
