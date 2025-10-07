@@ -12,23 +12,17 @@ const defaultUsername = 'grubersjoe'
 
 const Docs = () => {
   const [searchParams, setSearchParams] = useSearchParams()
-  const initialUsername = searchParams.get('user') ?? defaultUsername
-
-  const [username, setUsername] = useState(initialUsername)
-  const [input, setInput] = useState(initialUsername)
+  const username = searchParams.get('user') ?? defaultUsername
+  const [input, setInput] = useState(username)
 
   useEffect(() => {
-    if (initialUsername !== username) {
-      setUsername(initialUsername)
-      setInput(initialUsername)
-    }
-  }, [initialUsername, username])
+    setInput(username)
+  }, [username])
 
   const onUsernameSubmit: FormEventHandler = event => {
     event.preventDefault()
-    const val = input.trim()
-    if (val && val !== username) {
-      setSearchParams({ user: val.toLowerCase() })
+    if (input && input !== username) {
+      setSearchParams({ user: input })
     }
   }
 
@@ -45,7 +39,7 @@ const Docs = () => {
               placeholder="Enter your GitHub username"
               value={input}
               onChange={event => {
-                setInput(event.target.value)
+                setInput(event.target.value.trim().toLowerCase())
               }}
               autoComplete="on"
               required
