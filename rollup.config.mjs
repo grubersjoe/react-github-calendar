@@ -30,6 +30,7 @@ export default {
     }),
     babel({
       extensions,
+      exclude: 'node_modules/**',
       babelHelpers: 'bundled',
     }),
     resolve({
