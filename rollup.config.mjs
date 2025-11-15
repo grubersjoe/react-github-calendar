@@ -1,33 +1,27 @@
 import babel from '@rollup/plugin-babel'
 import resolve from '@rollup/plugin-node-resolve'
+import copy from 'rollup-plugin-copy'
 import filesize from 'rollup-plugin-filesize'
-import external from 'rollup-plugin-peer-deps-external'
-import postcss from 'rollup-plugin-postcss'
-import pkg from './package.json' with { type: 'json' }
 
 const extensions = ['.ts', '.tsx']
 
 export default {
   input: 'src/index.tsx',
   output: {
-    file: pkg.main,
-    format: 'cjs',
+    dir: 'build',
+    format: 'es',
+    chunkFileNames: 'chunks/[name]-[hash].js',
     sourcemap: true,
     exports: 'named',
-    // Use 'auto' instead of 'default' for better interoperability with CRA etc.
+    // Use 'auto' instead of 'default' to support more environments.
     // https://rollupjs.org/guide/en/#outputinterop
     interop: 'auto',
-    // Rollup does not support this React Server Components directive yet.
+    // Rollup does not support this React Server Components directive yet:
     // https://github.com/rollup/rollup/issues/4699
     banner: `'use client';`,
   },
+  external: ['react', 'react/jsx-runtime', 'react-activity-calendar'],
   plugins: [
-    external({
-      includeDependencies: true,
-    }),
-    postcss({
-      modules: true,
-    }),
     babel({
       extensions,
       exclude: 'node_modules/**',
@@ -35,6 +29,9 @@ export default {
     }),
     resolve({
       extensions,
+    }),
+    copy({
+      targets: [{ src: 'src/styles/tooltips.css', dest: 'build/' }],
     }),
     filesize(),
   ],

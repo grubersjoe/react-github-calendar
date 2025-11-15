@@ -3,16 +3,19 @@
 [![CI](https://github.com/grubersjoe/react-github-calendar/actions/workflows/test.yml/badge.svg)](https://github.com/grubersjoe/react-github-calendar/actions/workflows/test.yml)
 [![npm version](https://badge.fury.io/js/react-github-calendar.svg)](https://www.npmjs.com/package/react-github-calendar)
 
-A React component to display a GitHub contributions graph based on
+A React component to display a GitHub contributions calendar based on
 [`react-activity-calendar`](https://github.com/grubersjoe/react-activity-calendar) and
 [`github-contributions-api`](https://github.com/grubersjoe/github-contributions-api).
+
+**Version 5** has been released 🎉<br>See the list of
+[breaking changes](https://github.com/grubersjoe/react-activity-calendar/releases/tag/v5.0).
 
 ![Screenshot](preview.png)
 
 [Demo and documentation](https://grubersjoe.github.io/react-github-calendar/)
 
 <a href="https://www.buymeacoffee.com/grubersjoe">
-  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px;" >
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 32px;" >
 </a>
 
 ## Installation
