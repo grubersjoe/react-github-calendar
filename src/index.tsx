@@ -1,12 +1,8 @@
 'use client'
 
 import { forwardRef, useCallback, useEffect, useState } from 'react'
-import Calendar, {
-  Skeleton,
-  type Props as ActivityCalendarProps,
-  type ThemeInput,
-} from 'react-activity-calendar'
-import { transformData } from './lib'
+import { ActivityCalendar, type Props as ActivityCalendarProps } from 'react-activity-calendar'
+import { gitHubTheme, transformData } from './lib'
 import type { Activity, ApiErrorResponse, ApiResponse, Year } from './types'
 
 export type Props = {
@@ -14,7 +10,6 @@ export type Props = {
   errorMessage?: string
   throwOnError?: boolean
   transformData?: (data: Array<Activity>) => Array<Activity>
-  transformTotalCount?: boolean
   year?: Year
 } & Omit<ActivityCalendarProps, 'data'>
 
@@ -32,14 +27,13 @@ async function fetchCalendarData(username: string, year: Year): Promise<ApiRespo
   return data as ApiResponse
 }
 
-const GitHubCalendar = forwardRef<HTMLElement, Props>(
+export const GitHubCalendar = forwardRef<HTMLElement, Props>(
   (
     {
       username,
       year = 'last',
       labels,
       transformData: transformFn,
-      transformTotalCount = true,
       throwOnError = false,
       errorMessage = `Error – Fetching GitHub contribution data for "${username}" failed.`,
       ...props
@@ -77,7 +71,7 @@ const GitHubCalendar = forwardRef<HTMLElement, Props>(
     }
 
     if (loading || !data) {
-      return <Skeleton {...props} loading />
+      return <ActivityCalendar data={[]} loading />
     }
 
     const theme = props.theme ?? gitHubTheme
@@ -86,14 +80,11 @@ const GitHubCalendar = forwardRef<HTMLElement, Props>(
       totalCount: `{{count}} contributions in ${year === 'last' ? 'the last year' : '{{year}}'}`,
     }
 
-    const totalCount = year === 'last' ? data.total.lastYear : data.total[year]
-
     return (
-      <Calendar
+      <ActivityCalendar
         data={transformData(data.contributions, transformFn)}
         labels={Object.assign({}, defaultLabels, labels)}
         ref={ref}
-        totalCount={transformFn && transformTotalCount ? undefined : totalCount}
         {...props}
         theme={theme}
         loading={Boolean(props.loading) || loading}
@@ -104,10 +95,3 @@ const GitHubCalendar = forwardRef<HTMLElement, Props>(
 )
 
 GitHubCalendar.displayName = 'GitHubCalendar'
-
-const gitHubTheme = {
-  light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
-  dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
-} satisfies ThemeInput
-
-export default GitHubCalendar

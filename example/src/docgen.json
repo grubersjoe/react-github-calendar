@@ -1,0 +1,843 @@
+{
+  "description": "",
+  "methods": [],
+  "displayName": "ActivityCalendar",
+  "props": {
+    "data": {
+      "required": true,
+      "tsType": {
+        "name": "Array",
+        "elements": [
+          {
+            "name": "signature",
+            "type": "object",
+            "raw": "{\n  date: string\n  count: number\n  level: number\n}",
+            "signature": {
+              "properties": [
+                {
+                  "key": "date",
+                  "value": {
+                    "name": "string",
+                    "required": true
+                  }
+                },
+                {
+                  "key": "count",
+                  "value": {
+                    "name": "number",
+                    "required": true
+                  }
+                },
+                {
+                  "key": "level",
+                  "value": {
+                    "name": "number",
+                    "required": true
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "raw": "Array<Activity>"
+      },
+      "description": "List of calendar entries. Each `Activity` object requires an ISO 8601\n`date` string in the format `yyyy-MM-dd`, a `count` property with the\namount of tracked data, and a `level` property in the range `0-maxLevel`\nto specify activity intensity. The `maxLevel` prop defaults to 4.\n\nDates without corresponding entries are assumed to have no activity. This\nallows you to set arbitrary start and end dates for the calendar by passing\nempty entries as the first and last items.\n\nExample object:\n\n```\n{\n  date: \"2021-02-20\",\n  count: 16,\n  level: 3\n}\n```"
+    },
+    "blockMargin": {
+      "required": false,
+      "tsType": {
+        "name": "number"
+      },
+      "description": "Margin between blocks in pixels.",
+      "defaultValue": {
+        "value": "4",
+        "computed": false
+      }
+    },
+    "blockRadius": {
+      "required": false,
+      "tsType": {
+        "name": "number"
+      },
+      "description": "Border radius of blocks in pixels.",
+      "defaultValue": {
+        "value": "2",
+        "computed": false
+      }
+    },
+    "blockSize": {
+      "required": false,
+      "tsType": {
+        "name": "number"
+      },
+      "description": "Block size in pixels.",
+      "defaultValue": {
+        "value": "12",
+        "computed": false
+      }
+    },
+    "colorScheme": {
+      "required": false,
+      "tsType": {
+        "name": "union",
+        "raw": "'light' | 'dark'",
+        "elements": [
+          {
+            "name": "literal",
+            "value": "'light'"
+          },
+          {
+            "name": "literal",
+            "value": "'dark'"
+          }
+        ]
+      },
+      "description": "Use the `'light'` or `'dark'` color scheme instead of the system one.",
+      "defaultValue": {
+        "value": "undefined",
+        "computed": true
+      }
+    },
+    "fontSize": {
+      "required": false,
+      "tsType": {
+        "name": "number"
+      },
+      "description": "Font size for text in pixels.",
+      "defaultValue": {
+        "value": "14",
+        "computed": false
+      }
+    },
+    "labels": {
+      "required": false,
+      "tsType": {
+        "name": "Partial",
+        "elements": [
+          {
+            "name": "signature",
+            "type": "object",
+            "raw": "{\n  months: Array<string>\n  weekdays: Array<string>\n  totalCount: string\n  legend: Partial<{\n    less: string\n    more: string\n  }>\n}",
+            "signature": {
+              "properties": [
+                {
+                  "key": "months",
+                  "value": {
+                    "name": "Array",
+                    "elements": [
+                      {
+                        "name": "string"
+                      }
+                    ],
+                    "raw": "Array<string>",
+                    "required": true
+                  }
+                },
+                {
+                  "key": "weekdays",
+                  "value": {
+                    "name": "Array",
+                    "elements": [
+                      {
+                        "name": "string"
+                      }
+                    ],
+                    "raw": "Array<string>",
+                    "required": true
+                  }
+                },
+                {
+                  "key": "totalCount",
+                  "value": {
+                    "name": "string",
+                    "required": true
+                  }
+                },
+                {
+                  "key": "legend",
+                  "value": {
+                    "name": "Partial",
+                    "elements": [
+                      {
+                        "name": "signature",
+                        "type": "object",
+                        "raw": "{\n  less: string\n  more: string\n}",
+                        "signature": {
+                          "properties": [
+                            {
+                              "key": "less",
+                              "value": {
+                                "name": "string",
+                                "required": true
+                              }
+                            },
+                            {
+                              "key": "more",
+                              "value": {
+                                "name": "string",
+                                "required": true
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    ],
+                    "raw": "Partial<{\n  less: string\n  more: string\n}>",
+                    "required": true
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "raw": "Partial<{\n  months: Array<string>\n  weekdays: Array<string>\n  totalCount: string\n  legend: Partial<{\n    less: string\n    more: string\n  }>\n}>"
+      },
+      "description": "Localization strings for all calendar labels.\n\n`totalCount` supports the placeholders `{{count}}` and `{{year}}`.",
+      "defaultValue": {
+        "value": "undefined",
+        "computed": true
+      }
+    },
+    "maxLevel": {
+      "required": false,
+      "tsType": {
+        "name": "number"
+      },
+      "description": "Maximum activity level (zero-indexed). 4 by default, 0 means \"no activity\".",
+      "defaultValue": {
+        "value": "4",
+        "computed": false
+      }
+    },
+    "loading": {
+      "required": false,
+      "tsType": {
+        "name": "boolean"
+      },
+      "description": "Toggle to display the calendar loading state. The `data` property is\nignored if set.",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      }
+    },
+    "ref": {
+      "required": false,
+      "tsType": {
+        "name": "ForwardedRef",
+        "elements": [
+          {
+            "name": "HTMLElement"
+          }
+        ],
+        "raw": "ForwardedRef<HTMLElement>"
+      },
+      "description": "Ref to access the calendar DOM node."
+    },
+    "renderBlock": {
+      "required": false,
+      "tsType": {
+        "name": "signature",
+        "type": "function",
+        "raw": "(block: BlockElement, activity: Activity) => ReactElement",
+        "signature": {
+          "arguments": [
+            {
+              "type": {
+                "name": "ReactElement",
+                "elements": [
+                  {
+                    "name": "intersection",
+                    "raw": "SVGAttributes<SVGRectElement> & HTMLAttributes<SVGRectElement>",
+                    "elements": [
+                      {
+                        "name": "SVGAttributes",
+                        "elements": [
+                          {
+                            "name": "SVGRectElement"
+                          }
+                        ],
+                        "raw": "SVGAttributes<SVGRectElement>"
+                      },
+                      {
+                        "name": "HTMLAttributes",
+                        "elements": [
+                          {
+                            "name": "SVGRectElement"
+                          }
+                        ],
+                        "raw": "HTMLAttributes<SVGRectElement>"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "JSXElementConstructor",
+                    "elements": [
+                      {
+                        "name": "SVGRectElement"
+                      }
+                    ],
+                    "raw": "JSXElementConstructor<SVGRectElement>"
+                  }
+                ],
+                "raw": "ReactElement<\n  SVGAttributes<SVGRectElement> & HTMLAttributes<SVGRectElement>,\n  JSXElementConstructor<SVGRectElement>\n>"
+              },
+              "name": "block"
+            },
+            {
+              "type": {
+                "name": "signature",
+                "type": "object",
+                "raw": "{\n  date: string\n  count: number\n  level: number\n}",
+                "signature": {
+                  "properties": [
+                    {
+                      "key": "date",
+                      "value": {
+                        "name": "string",
+                        "required": true
+                      }
+                    },
+                    {
+                      "key": "count",
+                      "value": {
+                        "name": "number",
+                        "required": true
+                      }
+                    },
+                    {
+                      "key": "level",
+                      "value": {
+                        "name": "number",
+                        "required": true
+                      }
+                    }
+                  ]
+                }
+              },
+              "name": "activity"
+            }
+          ],
+          "return": {
+            "name": "ReactElement"
+          }
+        }
+      },
+      "description": "Render prop for calendar blocks (activities). For example, useful to\nattach event handlers or to wrap the element with a link. Use\n`React.cloneElement` to pass additional props to the element if necessary.",
+      "defaultValue": {
+        "value": "undefined",
+        "computed": true
+      }
+    },
+    "renderColorLegend": {
+      "required": false,
+      "tsType": {
+        "name": "signature",
+        "type": "function",
+        "raw": "(block: BlockElement, level: number) => ReactElement",
+        "signature": {
+          "arguments": [
+            {
+              "type": {
+                "name": "ReactElement",
+                "elements": [
+                  {
+                    "name": "intersection",
+                    "raw": "SVGAttributes<SVGRectElement> & HTMLAttributes<SVGRectElement>",
+                    "elements": [
+                      {
+                        "name": "SVGAttributes",
+                        "elements": [
+                          {
+                            "name": "SVGRectElement"
+                          }
+                        ],
+                        "raw": "SVGAttributes<SVGRectElement>"
+                      },
+                      {
+                        "name": "HTMLAttributes",
+                        "elements": [
+                          {
+                            "name": "SVGRectElement"
+                          }
+                        ],
+                        "raw": "HTMLAttributes<SVGRectElement>"
+                      }
+                    ]
+                  },
+                  {
+                    "name": "JSXElementConstructor",
+                    "elements": [
+                      {
+                        "name": "SVGRectElement"
+                      }
+                    ],
+                    "raw": "JSXElementConstructor<SVGRectElement>"
+                  }
+                ],
+                "raw": "ReactElement<\n  SVGAttributes<SVGRectElement> & HTMLAttributes<SVGRectElement>,\n  JSXElementConstructor<SVGRectElement>\n>"
+              },
+              "name": "block"
+            },
+            {
+              "type": {
+                "name": "number"
+              },
+              "name": "level"
+            }
+          ],
+          "return": {
+            "name": "ReactElement"
+          }
+        }
+      },
+      "description": "Render prop for color legend blocks. Use `React.cloneElement` to pass\nadditional props to the element if necessary.",
+      "defaultValue": {
+        "value": "undefined",
+        "computed": true
+      }
+    },
+    "showColorLegend": {
+      "required": false,
+      "tsType": {
+        "name": "boolean"
+      },
+      "description": "Toggle to hide the color legend below the calendar.",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      }
+    },
+    "showMonthLabels": {
+      "required": false,
+      "tsType": {
+        "name": "boolean"
+      },
+      "description": "Toggle to hide the month labels above the calendar.",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      }
+    },
+    "showTotalCount": {
+      "required": false,
+      "tsType": {
+        "name": "boolean"
+      },
+      "description": "Toggle to hide the total count below the calendar.",
+      "defaultValue": {
+        "value": "true",
+        "computed": false
+      }
+    },
+    "showWeekdayLabels": {
+      "required": false,
+      "tsType": {
+        "name": "union",
+        "raw": "boolean | Array<DayName>",
+        "elements": [
+          {
+            "name": "boolean"
+          },
+          {
+            "name": "Array",
+            "elements": [
+              {
+                "name": "union",
+                "raw": "'sun' | 'mon' | 'tue' | 'wed' | 'thu' | 'fri' | 'sat'",
+                "elements": [
+                  {
+                    "name": "literal",
+                    "value": "'sun'"
+                  },
+                  {
+                    "name": "literal",
+                    "value": "'mon'"
+                  },
+                  {
+                    "name": "literal",
+                    "value": "'tue'"
+                  },
+                  {
+                    "name": "literal",
+                    "value": "'wed'"
+                  },
+                  {
+                    "name": "literal",
+                    "value": "'thu'"
+                  },
+                  {
+                    "name": "literal",
+                    "value": "'fri'"
+                  },
+                  {
+                    "name": "literal",
+                    "value": "'sat'"
+                  }
+                ]
+              }
+            ],
+            "raw": "Array<DayName>"
+          }
+        ]
+      },
+      "description": "Toggle to show weekday labels left to the calendar.\nAlternatively, provide an array of ISO 8601 weekday names to display.\nExample: `['mon', 'wed', 'fri']`.",
+      "defaultValue": {
+        "value": "false",
+        "computed": false
+      }
+    },
+    "style": {
+      "required": false,
+      "tsType": {
+        "name": "CSSProperties"
+      },
+      "description": "Style object to pass to the component container.",
+      "defaultValue": {
+        "value": "{}",
+        "computed": false
+      }
+    },
+    "theme": {
+      "required": false,
+      "tsType": {
+        "name": "union",
+        "raw": "| {\n    light: ColorScale\n    dark?: ColorScale\n  }\n| {\n    light?: ColorScale\n    dark: ColorScale\n  }",
+        "elements": [
+          {
+            "name": "signature",
+            "type": "object",
+            "raw": "{\n  light: ColorScale\n  dark?: ColorScale\n}",
+            "signature": {
+              "properties": [
+                {
+                  "key": "light",
+                  "value": {
+                    "name": "Array",
+                    "elements": [
+                      {
+                        "name": "string"
+                      }
+                    ],
+                    "raw": "Array<Color>",
+                    "required": true
+                  }
+                },
+                {
+                  "key": "dark",
+                  "value": {
+                    "name": "Array",
+                    "elements": [
+                      {
+                        "name": "string"
+                      }
+                    ],
+                    "raw": "Array<Color>",
+                    "required": true
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "name": "signature",
+            "type": "object",
+            "raw": "{\n  light?: ColorScale\n  dark: ColorScale\n}",
+            "signature": {
+              "properties": [
+                {
+                  "key": "light",
+                  "value": {
+                    "name": "Array",
+                    "elements": [
+                      {
+                        "name": "string"
+                      }
+                    ],
+                    "raw": "Array<Color>",
+                    "required": true
+                  }
+                },
+                {
+                  "key": "dark",
+                  "value": {
+                    "name": "Array",
+                    "elements": [
+                      {
+                        "name": "string"
+                      }
+                    ],
+                    "raw": "Array<Color>",
+                    "required": true
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "description": "Set the calendar colors for the light and dark color schemes. Provide\nall colors per scheme explicitly (5 by default) or specify exactly two colors\n(the lowest and highest intensity) to calculate a single-hue scale. The\nnumber of colors is controlled by the `maxLevel` property. Colors can be\nspecified in any valid CSS format.\n\nAt least one scheme's colors must be set. If undefined, the default\ntheme is used. By default, the calendar selects the current system color\nscheme, but you can enforce a specific scheme with the `colorScheme` prop.\n\nExample:\n\n```tsx\n<ActivityCalendar\n  data={data}\n  theme={{\n    light: ['hsl(0, 0%, 92%)', 'firebrick'],\n    dark: ['#333', 'rgb(214, 16, 174)'],\n  }}\n/>\n```",
+      "defaultValue": {
+        "value": "undefined",
+        "computed": true
+      }
+    },
+    "tooltips": {
+      "required": false,
+      "tsType": {
+        "name": "signature",
+        "type": "object",
+        "raw": "{\n  activity?: TooltipConfig & {\n    text: (activity: Activity) => string\n  }\n  colorLegend?: TooltipConfig & {\n    text: (level: number) => string\n  }\n}",
+        "signature": {
+          "properties": [
+            {
+              "key": "activity",
+              "value": {
+                "name": "intersection",
+                "raw": "TooltipConfig & {\n  text: (activity: Activity) => string\n}",
+                "elements": [
+                  {
+                    "name": "signature",
+                    "type": "object",
+                    "raw": "{\n  placement?: Placement\n  offset?: OffsetOptions\n  transitionStyles?: UseTransitionStylesProps\n  hoverRestMs?: UseHoverProps['restMs']\n  withArrow?: boolean\n}",
+                    "signature": {
+                      "properties": [
+                        {
+                          "key": "placement",
+                          "value": {
+                            "name": "Placement",
+                            "required": false
+                          }
+                        },
+                        {
+                          "key": "offset",
+                          "value": {
+                            "name": "OffsetOptions",
+                            "required": false
+                          }
+                        },
+                        {
+                          "key": "transitionStyles",
+                          "value": {
+                            "name": "UseTransitionStylesProps",
+                            "required": false
+                          }
+                        },
+                        {
+                          "key": "hoverRestMs",
+                          "value": {
+                            "name": "UseHoverProps['restMs']",
+                            "raw": "UseHoverProps['restMs']",
+                            "required": false
+                          }
+                        },
+                        {
+                          "key": "withArrow",
+                          "value": {
+                            "name": "boolean",
+                            "required": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": "signature",
+                    "type": "object",
+                    "raw": "{\n  text: (activity: Activity) => string\n}",
+                    "signature": {
+                      "properties": [
+                        {
+                          "key": "text",
+                          "value": {
+                            "name": "signature",
+                            "type": "function",
+                            "raw": "(activity: Activity) => string",
+                            "signature": {
+                              "arguments": [
+                                {
+                                  "type": {
+                                    "name": "signature",
+                                    "type": "object",
+                                    "raw": "{\n  date: string\n  count: number\n  level: number\n}",
+                                    "signature": {
+                                      "properties": [
+                                        {
+                                          "key": "date",
+                                          "value": {
+                                            "name": "string",
+                                            "required": true
+                                          }
+                                        },
+                                        {
+                                          "key": "count",
+                                          "value": {
+                                            "name": "number",
+                                            "required": true
+                                          }
+                                        },
+                                        {
+                                          "key": "level",
+                                          "value": {
+                                            "name": "number",
+                                            "required": true
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "name": "activity"
+                                }
+                              ],
+                              "return": {
+                                "name": "string"
+                              }
+                            },
+                            "required": true
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "required": false
+              }
+            },
+            {
+              "key": "colorLegend",
+              "value": {
+                "name": "intersection",
+                "raw": "TooltipConfig & {\n  text: (level: number) => string\n}",
+                "elements": [
+                  {
+                    "name": "signature",
+                    "type": "object",
+                    "raw": "{\n  placement?: Placement\n  offset?: OffsetOptions\n  transitionStyles?: UseTransitionStylesProps\n  hoverRestMs?: UseHoverProps['restMs']\n  withArrow?: boolean\n}",
+                    "signature": {
+                      "properties": [
+                        {
+                          "key": "placement",
+                          "value": {
+                            "name": "Placement",
+                            "required": false
+                          }
+                        },
+                        {
+                          "key": "offset",
+                          "value": {
+                            "name": "OffsetOptions",
+                            "required": false
+                          }
+                        },
+                        {
+                          "key": "transitionStyles",
+                          "value": {
+                            "name": "UseTransitionStylesProps",
+                            "required": false
+                          }
+                        },
+                        {
+                          "key": "hoverRestMs",
+                          "value": {
+                            "name": "UseHoverProps['restMs']",
+                            "raw": "UseHoverProps['restMs']",
+                            "required": false
+                          }
+                        },
+                        {
+                          "key": "withArrow",
+                          "value": {
+                            "name": "boolean",
+                            "required": false
+                          }
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": "signature",
+                    "type": "object",
+                    "raw": "{\n  text: (level: number) => string\n}",
+                    "signature": {
+                      "properties": [
+                        {
+                          "key": "text",
+                          "value": {
+                            "name": "signature",
+                            "type": "function",
+                            "raw": "(level: number) => string",
+                            "signature": {
+                              "arguments": [
+                                {
+                                  "type": {
+                                    "name": "number"
+                                  },
+                                  "name": "level"
+                                }
+                              ],
+                              "return": {
+                                "name": "string"
+                              }
+                            },
+                            "required": true
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "required": false
+              }
+            }
+          ]
+        }
+      },
+      "description": "Tooltips to display when hovering over activity blocks or the color legend\nbelow the calendar. See the story for details about tooltip configuration.",
+      "defaultValue": {
+        "value": "{}",
+        "computed": false
+      }
+    },
+    "weekStart": {
+      "required": false,
+      "tsType": {
+        "name": "union",
+        "raw": "0 | 1 | 2 | 3 | 4 | 5 | 6",
+        "elements": [
+          {
+            "name": "literal",
+            "value": "0"
+          },
+          {
+            "name": "literal",
+            "value": "1"
+          },
+          {
+            "name": "literal",
+            "value": "2"
+          },
+          {
+            "name": "literal",
+            "value": "3"
+          },
+          {
+            "name": "literal",
+            "value": "4"
+          },
+          {
+            "name": "literal",
+            "value": "5"
+          },
+          {
+            "name": "literal",
+            "value": "6"
+          }
+        ]
+      },
+      "description": "Index of day to be used as start of week. 0 represents Sunday.",
+      "defaultValue": {
+        "value": "0",
+        "computed": false
+      }
+    }
+  }
+}

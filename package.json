@@ -1,6 +1,6 @@
 {
   "name": "react-github-calendar",
-  "version": "4.5.11",
+  "version": "5.0.0",
   "description": " React component to display a GitHub contributions calendar",
   "author": "Jonathan Gruber <gruberjonathan@gmail.com>",
   "license": "MIT",
@@ -9,11 +9,15 @@
     "type": "git",
     "url": "git+https://github.com/grubersjoe/react-github-calendar.git"
   },
-  "main": "build/index.js",
+  "exports": {
+    ".": "./build/index.js",
+    "./tooltips.css": "./build/tooltips.css"
+  },
+  "type": "module",
   "types": "build/index.d.ts",
   "scripts": {
     "build": "rollup -c",
-    "check": "pnpx prettier -c . && pnpm exec tsc && pnpm lint",
+    "check": "pnpm install --frozen-lockfile && pnpx prettier -c . && pnpm exec tsc && pnpm lint",
     "deploy": "gh-pages -d example/build",
     "dev": "rollup -c -w",
     "format": "prettier --write .",
@@ -24,7 +28,7 @@
     "prepublishOnly": "pnpm check && pnpm build"
   },
   "dependencies": {
-    "react-activity-calendar": "^2.7.15"
+    "react-activity-calendar": "^3.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",
@@ -44,13 +48,11 @@
     "gh-pages": "^6.3.0",
     "globals": "^16.4.0",
     "husky": "^9.1.7",
-    "postcss": "^8.5.3",
     "prettier": "^3.6.2",
     "react": "^19.2.0",
     "rollup": "^4.52.4",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-filesize": "^10.0.0",
-    "rollup-plugin-peer-deps-external": "^2.2.2",
-    "rollup-plugin-postcss": "^4.0.2",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.0"
   },
