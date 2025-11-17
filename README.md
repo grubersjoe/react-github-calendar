@@ -8,7 +8,7 @@ A React component to display a GitHub contributions calendar based on
 [`github-contributions-api`](https://github.com/grubersjoe/github-contributions-api).
 
 **Version 5** has been released 🎉<br>See the list of
-[breaking changes](https://github.com/grubersjoe/react-activity-calendar/releases/tag/v5.0).
+[breaking changes](https://github.com/grubersjoe/react-github-calendar/releases/tag/v5.0).
 
 ![Screenshot](preview.png)
 

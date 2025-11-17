@@ -145,6 +145,16 @@ const Docs = () => {
               Star
             </GitHubButton>
           </div>
+
+          <p style={{ marginTop: '2rem' }}>
+            <b>Version 5 has been released</b> 🎉
+            <br />
+            See the list of{' '}
+            <a href="https://github.com/grubersjoe/react-github-calendar/releases/tag/v5.0">
+              breaking changes
+            </a>
+            .
+          </p>
         </section>
 
         <section>
