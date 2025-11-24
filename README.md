@@ -28,7 +28,7 @@ npm install react-github-calendar
 
 <!-- prettier-ignore -->
 ```tsx
-import GitHubCalendar from 'react-github-calendar';
+import { GitHubCalendar } from 'react-github-calendar';
 
 <GitHubCalendar username="grubersjoe" />
 ```
