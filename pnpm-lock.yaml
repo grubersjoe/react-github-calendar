@@ -29,7 +29,7 @@ importers:
         version: 9.39.1
       '@ianvs/prettier-plugin-sort-imports':
         specifier: ^4.3.1
-        version: 4.7.0(prettier@3.6.2)
+        version: 4.7.0(prettier@3.7.3)
       '@rollup/plugin-babel':
         specifier: ^6.1.0
         version: 6.1.0(@babel/core@7.28.5)(@types/babel__core@7.20.5)(rollup@4.53.3)
@@ -65,7 +65,7 @@ importers:
         version: 9.1.7
       prettier:
         specifier: ^3.6.2
-        version: 3.6.2
+        version: 3.7.3
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -123,7 +123,7 @@ importers:
         version: 2.0.6
       '@vitejs/plugin-react':
         specifier: ^5.1.0
-        version: 5.1.1(vite@7.2.4(@types/node@24.10.1)(sass@1.94.2)(terser@5.43.1))
+        version: 5.1.1(vite@7.2.6(@types/node@24.10.1)(sass@1.94.2)(terser@5.43.1))
       react:
         specifier: ^19.2.0
         version: 19.2.0
@@ -138,7 +138,7 @@ importers:
         version: 5.9.3
       vite:
         specifier: ^7.1.12
-        version: 7.2.4(@types/node@24.10.1)(sass@1.94.2)(terser@5.43.1)
+        version: 7.2.6(@types/node@24.10.1)(sass@1.94.2)(terser@5.43.1)
 
 packages:
 
@@ -2749,8 +2749,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.6.2:
-    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
+  prettier@3.7.3:
+    resolution: {integrity: sha512-QgODejq9K3OzoBbuyobZlUhznP5SKwPqp+6Q6xw6o8gnhr4O85L2U915iM2IDcfF2NPXVaM9zlo9tdwipnYwzg==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -3276,8 +3276,8 @@ packages:
     resolution: {integrity: sha512-OljLrQ9SQdOUqTaQxqL5dEfZWrXExyyWsozYlAWFawPVNuD83igl7uJD2RTkNMbniIYgt8l81eCJGIdQF7avLQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
-  vite@7.2.4:
-    resolution: {integrity: sha512-NL8jTlbo0Tn4dUEXEsUg8KeyG/Lkmc4Fnzb8JXN/Ykm9G4HNImjtABMJgkQoVjOBN/j2WAwDTRytdqJbZsah7w==}
+  vite@7.2.6:
+    resolution: {integrity: sha512-tI2l/nFHC5rLh7+5+o7QjKjSR04ivXDF4jcgV0f/bTQ+OJiITy5S6gaynVsEM+7RqzufMnVbIon6Sr5x1SDYaQ==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
     peerDependencies:
@@ -4329,13 +4329,13 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@ianvs/prettier-plugin-sort-imports@4.7.0(prettier@3.6.2)':
+  '@ianvs/prettier-plugin-sort-imports@4.7.0(prettier@3.7.3)':
     dependencies:
       '@babel/generator': 7.28.3
       '@babel/parser': 7.28.3
       '@babel/traverse': 7.28.3
       '@babel/types': 7.28.2
-      prettier: 3.6.2
+      prettier: 3.7.3
       semver: 7.7.2
     transitivePeerDependencies:
       - supports-color
@@ -4796,7 +4796,7 @@ snapshots:
       '@typescript-eslint/types': 8.48.0
       eslint-visitor-keys: 4.2.1
 
-  '@vitejs/plugin-react@5.1.1(vite@7.2.4(@types/node@24.10.1)(sass@1.94.2)(terser@5.43.1))':
+  '@vitejs/plugin-react@5.1.1(vite@7.2.6(@types/node@24.10.1)(sass@1.94.2)(terser@5.43.1))':
     dependencies:
       '@babel/core': 7.28.5
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.28.5)
@@ -4804,7 +4804,7 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-beta.47
       '@types/babel__core': 7.20.5
       react-refresh: 0.18.0
-      vite: 7.2.4(@types/node@24.10.1)(sass@1.94.2)(terser@5.43.1)
+      vite: 7.2.6(@types/node@24.10.1)(sass@1.94.2)(terser@5.43.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -6396,7 +6396,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.6.2: {}
+  prettier@3.7.3: {}
 
   prismjs@1.30.0: {}
 
@@ -7029,7 +7029,7 @@ snapshots:
 
   validate-npm-package-name@5.0.1: {}
 
-  vite@7.2.4(@types/node@24.10.1)(sass@1.94.2)(terser@5.43.1):
+  vite@7.2.6(@types/node@24.10.1)(sass@1.94.2)(terser@5.43.1):
     dependencies:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.3)
