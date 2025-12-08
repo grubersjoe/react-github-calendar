@@ -17,7 +17,7 @@
   "types": "build/index.d.ts",
   "scripts": {
     "build": "rollup -c",
-    "check": "pnpm install --frozen-lockfile && pnpx prettier -c . && pnpm exec tsc && pnpm lint",
+    "check": "pnpm install --frozen-lockfile && pnpm exec prettier -c . && pnpm exec tsc && pnpm lint",
     "deploy": "gh-pages -d example/build",
     "dev": "rollup -c -w",
     "format": "prettier --write .",
