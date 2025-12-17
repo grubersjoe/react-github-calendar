@@ -28,7 +28,7 @@
     "prepublishOnly": "pnpm check && pnpm build"
   },
   "dependencies": {
-    "react-activity-calendar": "^3.0.1"
+    "react-activity-calendar": "^3.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",
