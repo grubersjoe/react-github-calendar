@@ -71,7 +71,7 @@ export const GitHubCalendar = forwardRef<HTMLElement, Props>(
     }
 
     if (loading || !data) {
-      return <ActivityCalendar data={[]} loading />
+      return <ActivityCalendar {...props} data={[]} loading />
     }
 
     const theme = props.theme ?? gitHubTheme
