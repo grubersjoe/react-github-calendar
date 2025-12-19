@@ -25,7 +25,8 @@
     "postbuild": "dts-bundle-generator src/index.tsx -o build/index.d.ts --no-check --no-banner",
     "predeploy": "pnpm build && cd example && pnpm install && pnpm build",
     "prepare": "husky",
-    "prepublishOnly": "pnpm check && pnpm build"
+    "prepublishOnly": "pnpm check && pnpm build",
+    "publish": "npm publish  --access=public"
   },
   "dependencies": {
     "react-activity-calendar": "^3.0.4"
