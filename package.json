@@ -41,7 +41,6 @@
     "@rollup/plugin-babel": "^6.1.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@types/react": "^19.2.2",
-    "@types/tinycolor2": "^1.4.6",
     "dts-bundle-generator": "^9.5.1",
     "eslint": "^9.37.0",
     "eslint-plugin-react": "^7.37.3",

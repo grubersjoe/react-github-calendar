@@ -39,9 +39,6 @@ importers:
       '@types/react':
         specifier: ^19.2.2
         version: 19.2.7
-      '@types/tinycolor2':
-        specifier: ^1.4.6
-        version: 1.4.6
       dts-bundle-generator:
         specifier: ^9.5.1
         version: 9.5.1
@@ -1374,9 +1371,6 @@ packages:
 
   '@types/showdown@2.0.6':
     resolution: {integrity: sha512-pTvD/0CIeqe4x23+YJWlX2gArHa8G0J0Oh6GKaVXV7TAeickpkkZiNOgFcFcmLQ5lB/K0qBJL1FtRYltBfbGCQ==}
-
-  '@types/tinycolor2@1.4.6':
-    resolution: {integrity: sha512-iEN8J0BoMnsWBqjVbWH/c0G0Hh7O21lpR2/+PrvAVgWdzL7eexIFm4JN/Wn10PTcmNdtS6U67r499mlWMXOxNw==}
 
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
@@ -4703,8 +4697,6 @@ snapshots:
   '@types/resolve@1.20.2': {}
 
   '@types/showdown@2.0.6': {}
-
-  '@types/tinycolor2@1.4.6': {}
 
   '@types/unist@2.0.11': {}
 
