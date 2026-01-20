@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@types/node": "^24.10.9",
-    "@types/react": "^19.2.2",
+    "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.2",
     "@types/react-syntax-highlighter": "^15.5.13",
     "@types/showdown": "^2.0.6",
