@@ -29,7 +29,7 @@
     "publish": "npm publish  --access=public"
   },
   "dependencies": {
-    "react-activity-calendar": "^3.0.5"
+    "react-activity-calendar": "^3.0.6"
   },
   "devDependencies": {
     "@babel/core": "^7.28.6",
