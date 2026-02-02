@@ -15,6 +15,8 @@ updates:
     ignore:
       - dependency-name: '@types/node'
         update-types: ['version-update:semver-major']
+    assignees:
+      - 'grubersjoe'
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
@@ -23,3 +25,5 @@ updates:
       dependencies:
         - patterns:
             - '*'
+    assignees:
+      - 'grubersjoe'
