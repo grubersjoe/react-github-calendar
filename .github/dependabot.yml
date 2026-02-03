@@ -23,7 +23,7 @@ updates:
       interval: 'weekly'
     groups:
       dependencies:
-        - patterns:
-            - '*'
+        patterns:
+          - '*'
     assignees:
       - 'grubersjoe'
