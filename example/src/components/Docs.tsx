@@ -1,4 +1,4 @@
-import { useEffect, useState, type FormEventHandler } from 'react'
+import { useEffect, useState, type SubmitEventHandler } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import GitHubButton from 'react-github-btn'
 import { GitHubCalendar, type Props } from 'react-github-calendar'
@@ -79,7 +79,7 @@ const Docs = () => {
     setInput(username)
   }, [username])
 
-  const onUsernameSubmit: FormEventHandler = event => {
+  const onUsernameSubmit: SubmitEventHandler = event => {
     event.preventDefault()
     if (input && input !== username) {
       setSearchParams({ user: input })
