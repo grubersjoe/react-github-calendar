@@ -38,7 +38,7 @@
     "@babel/preset-typescript": "^7.27.1",
     "@eslint/js": "^9.37.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
-    "@rollup/plugin-babel": "^6.1.0",
+    "@rollup/plugin-babel": "^7.0.0",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@types/react": "^19.2.9",
     "dts-bundle-generator": "^9.5.1",
