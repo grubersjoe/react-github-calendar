@@ -20,7 +20,7 @@
     "@types/react-dom": "^19.2.2",
     "@types/react-syntax-highlighter": "^15.5.13",
     "@types/showdown": "^2.0.6",
-    "@vitejs/plugin-react": "^5.1.0",
+    "@vitejs/plugin-react": "^6.0.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "sass": "^1.97.0",
