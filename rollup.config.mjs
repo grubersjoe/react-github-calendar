@@ -12,7 +12,6 @@ export default {
     format: 'es',
     chunkFileNames: 'chunks/[name]-[hash].js',
     sourcemap: true,
-    exports: 'named',
     // Use 'auto' instead of 'default' to support more environments.
     // https://rollupjs.org/guide/en/#outputinterop
     interop: 'auto',
@@ -22,13 +21,12 @@ export default {
   },
   external: ['react', 'react/jsx-runtime', 'react-activity-calendar'],
   plugins: [
-    babel({
-      extensions,
-      exclude: 'node_modules/**',
-      babelHelpers: 'bundled',
-    }),
     resolve({
       extensions,
+    }),
+    babel({
+      extensions,
+      babelHelpers: 'bundled',
     }),
     copy({
       targets: [{ src: 'src/styles/tooltips.css', dest: 'build/' }],
