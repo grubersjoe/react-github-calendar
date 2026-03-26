@@ -1,21 +1,8 @@
 {
-  "include": ["src/**/*", "example/**/*", "./*"],
-  "exclude": ["**/build/"],
+  "extends": ["@tsconfig/bases/strictest", "@tsconfig/bases/vite-react"],
   "compilerOptions": {
     "allowJs": true,
-    "esModuleInterop": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": ["es2022", "dom", "dom.iterable"],
-    "module": "preserve",
-    "moduleDetection": "force",
-    "noEmit": true,
-    "noImplicitOverride": true,
-    "noUncheckedIndexedAccess": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "es2022",
-    "verbatimModuleSyntax": true
+    "exactOptionalPropertyTypes": false,
+    "noPropertyAccessFromIndexSignature": false
   }
 }
