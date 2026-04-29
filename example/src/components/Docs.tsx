@@ -1,4 +1,4 @@
-import { useEffect, useState, type SubmitEventHandler } from 'react'
+import { useRef, type SubmitEventHandler } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import GitHubButton from 'react-github-btn'
 import { GitHubCalendar, type Props } from 'react-github-calendar'
@@ -73,14 +73,12 @@ const propsList: Array<[string, DocgenProp]> = [
 const Docs = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   const username = searchParams.get('user') ?? defaultUsername
-  const [input, setInput] = useState(username)
-
-  useEffect(() => {
-    setInput(username)
-  }, [username])
+  const inputRef = useRef<HTMLInputElement>(null)
 
   const onUsernameSubmit: SubmitEventHandler = event => {
     event.preventDefault()
+    const input = inputRef.current?.value.trim().toLowerCase()
+
     if (input && input !== username) {
       setSearchParams({ user: input })
     }
@@ -95,12 +93,11 @@ const Docs = () => {
           <div>A React component to display a GitHub contributions calendar </div>
           <form onSubmit={onUsernameSubmit}>
             <input
+              ref={inputRef}
+              key={username} // recreate on changes
               type="text"
               placeholder="Enter your GitHub username"
-              value={input}
-              onChange={event => {
-                setInput(event.target.value.trim().toLowerCase())
-              }}
+              defaultValue={username}
               autoComplete="on"
               required
             />
