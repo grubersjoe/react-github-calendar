@@ -26,7 +26,7 @@
     "predeploy": "pnpm build && cd example && pnpm install && pnpm build",
     "prepare": "husky",
     "prepublishOnly": "pnpm check && pnpm build",
-    "publish": "npm publish  --access=public"
+    "publish": "pnpm publish --access=public"
   },
   "dependencies": {
     "react-activity-calendar": "^3.1.2"
