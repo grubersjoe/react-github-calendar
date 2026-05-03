@@ -41,7 +41,7 @@
         ],
         "raw": "Array<Activity>"
       },
-      "description": "List of calendar entries. Each `Activity` object requires an ISO 8601\n`date` string in the format `yyyy-MM-dd`, a `count` property with the\namount of tracked data, and a `level` property in the range `0-maxLevel`\nto specify activity intensity. The `maxLevel` prop defaults to 4.\n\nDates without corresponding entries are assumed to have no activity. This\nallows you to set arbitrary start and end dates for the calendar by passing\nempty entries as the first and last items.\n\nExample object:\n\n```\n{\n  date: \"2021-02-20\",\n  count: 16,\n  level: 3\n}\n```"
+      "description": "List of calendar entries. Each Activity object requires an ISO 8601 date\nstring in the `yyyy-MM-dd` format, a `count` property indicating the amount\nof tracked data, and a `level` property in the range `[minLevel, maxLevel]`\nrepresenting activity intensity. By default, `minLevel` is 0 and `maxLevel`\nis 4, resulting in five activity levels.\n\nDates without corresponding entries are assumed to have no activity. This\nallows you to set arbitrary start and end dates for the calendar by passing\nempty entries as the first and last items.\n\n@example\n{\n  date: \"2021-02-20\",\n  count: 16,\n  level: 3\n}"
     },
     "blockMargin": {
       "required": false,
@@ -76,6 +76,13 @@
         "computed": false
       }
     },
+    "className": {
+      "required": false,
+      "tsType": {
+        "name": "string"
+      },
+      "description": "Class name to add to the component container."
+    },
     "colorScheme": {
       "required": false,
       "tsType": {
@@ -92,11 +99,7 @@
           }
         ]
       },
-      "description": "Use the `'light'` or `'dark'` color scheme instead of the system one.",
-      "defaultValue": {
-        "value": "undefined",
-        "computed": true
-      }
+      "description": "Use the `'light'` or `'dark'` color scheme instead of the system one."
     },
     "fontSize": {
       "required": false,
@@ -192,20 +195,27 @@
         ],
         "raw": "Partial<{\n  months: Array<string>\n  weekdays: Array<string>\n  totalCount: string\n  legend: Partial<{\n    less: string\n    more: string\n  }>\n}>"
       },
-      "description": "Localization strings for all calendar labels.\n\n`totalCount` supports the placeholders `{{count}}` and `{{year}}`.",
-      "defaultValue": {
-        "value": "undefined",
-        "computed": true
-      }
+      "description": "Localization strings for all calendar labels.\n`totalCount` supports the placeholders `{{count}}` and `{{year}}`."
     },
     "maxLevel": {
       "required": false,
       "tsType": {
         "name": "number"
       },
-      "description": "Maximum activity level (zero-indexed). 4 by default, 0 means \"no activity\".",
+      "description": "Maximum activity level, 4 by default.\n@see minLevel",
       "defaultValue": {
         "value": "4",
+        "computed": false
+      }
+    },
+    "minLevel": {
+      "required": false,
+      "tsType": {
+        "name": "number"
+      },
+      "description": "Minimum activity level, 0 by default.\n@see maxLevel",
+      "defaultValue": {
+        "value": "0",
         "computed": false
       }
     },
@@ -322,11 +332,7 @@
           }
         }
       },
-      "description": "Render prop for calendar blocks (activities). For example, useful to\nattach event handlers or to wrap the element with a link. Use\n`React.cloneElement` to pass additional props to the element if necessary.",
-      "defaultValue": {
-        "value": "undefined",
-        "computed": true
-      }
+      "description": "Render prop for calendar blocks (activities). Useful to attach event\nhandlers or to wrap the element with a link. Use `React.cloneElement` to\npass additional props to the element if necessary."
     },
     "renderColorLegend": {
       "required": false,
@@ -390,11 +396,7 @@
           }
         }
       },
-      "description": "Render prop for color legend blocks. Use `React.cloneElement` to pass\nadditional props to the element if necessary.",
-      "defaultValue": {
-        "value": "undefined",
-        "computed": true
-      }
+      "description": "Render prop for color legend blocks. Use `React.cloneElement` to pass\nadditional props to the element if necessary."
     },
     "showColorLegend": {
       "required": false,
@@ -480,7 +482,7 @@
           }
         ]
       },
-      "description": "Toggle to show weekday labels left to the calendar.\nAlternatively, provide an array of ISO 8601 weekday names to display.\nExample: `['mon', 'wed', 'fri']`.",
+      "description": "Toggle to show weekday labels left to the calendar.\nAlternatively, provide an array of ISO 8601 weekday names to display.\n\n@example ['mon', 'wed', 'fri']",
       "defaultValue": {
         "value": "false",
         "computed": false
@@ -501,12 +503,12 @@
       "required": false,
       "tsType": {
         "name": "union",
-        "raw": "| {\n    light: ColorScale\n    dark?: ColorScale\n  }\n| {\n    light?: ColorScale\n    dark: ColorScale\n  }",
+        "raw": "| {\n    light: Array<Color>\n    dark?: Array<Color>\n  }\n| {\n    light?: Array<Color>\n    dark: Array<Color>\n  }",
         "elements": [
           {
             "name": "signature",
             "type": "object",
-            "raw": "{\n  light: ColorScale\n  dark?: ColorScale\n}",
+            "raw": "{\n  light: Array<Color>\n  dark?: Array<Color>\n}",
             "signature": {
               "properties": [
                 {
@@ -532,7 +534,7 @@
                       }
                     ],
                     "raw": "Array<Color>",
-                    "required": true
+                    "required": false
                   }
                 }
               ]
@@ -541,7 +543,7 @@
           {
             "name": "signature",
             "type": "object",
-            "raw": "{\n  light?: ColorScale\n  dark: ColorScale\n}",
+            "raw": "{\n  light?: Array<Color>\n  dark: Array<Color>\n}",
             "signature": {
               "properties": [
                 {
@@ -554,7 +556,7 @@
                       }
                     ],
                     "raw": "Array<Color>",
-                    "required": true
+                    "required": false
                   }
                 },
                 {
@@ -575,11 +577,7 @@
           }
         ]
       },
-      "description": "Set the calendar colors for the light and dark color schemes. Provide\nall colors per scheme explicitly (5 by default) or specify exactly two colors\n(the lowest and highest intensity) to calculate a single-hue scale. The\nnumber of colors is controlled by the `maxLevel` property. Colors can be\nspecified in any valid CSS format.\n\nAt least one scheme's colors must be set. If undefined, the default\ntheme is used. By default, the calendar selects the current system color\nscheme, but you can enforce a specific scheme with the `colorScheme` prop.\n\nExample:\n\n```tsx\n<ActivityCalendar\n  data={data}\n  theme={{\n    light: ['hsl(0, 0%, 92%)', 'firebrick'],\n    dark: ['#333', 'rgb(214, 16, 174)'],\n  }}\n/>\n```",
-      "defaultValue": {
-        "value": "undefined",
-        "computed": true
-      }
+      "description": "Set the calendar colors for the light and dark color schemes. Provide\nthe colors for all activity levels per scheme explicitly or specify two\ncolors (the zero and maximum intensity) to calculate a scale automatically.\nThe number of activity levels is controlled by the `minLevel` and\n`maxLevel` properties.\nIf you have negative activity levels, you can also pass three colors,\nrepresenting the negative, zero, and positive levels, to calculate a\ncorresponding scale. For explicit themes the color count must match the\nnumber of activity levels. Colors can be specified in any valid CSS format.\n\nFor undefined color schemes the default theme is used. By default, the\ncurrent system color scheme is applied, but you can enforce a specific\nscheme with the `colorScheme` prop.\n\nExample:\n\n```tsx\n<ActivityCalendar\n  data={data}\n  theme={{\n    light: ['hsl(0, 0%, 92%)', 'firebrick'],\n    dark: ['#333', 'rgb(214, 16, 174)'],\n  }}\n/>\n```\n\n@see colorScheme\n@see minLevel\n@see maxLevel"
     },
     "tooltips": {
       "required": false,
@@ -791,7 +789,7 @@
           ]
         }
       },
-      "description": "Tooltips to display when hovering over activity blocks or the color legend\nbelow the calendar. See the story for details about tooltip configuration.",
+      "description": "Tooltips to display when hovering over activity blocks or the color legend\nbelow the calendar.\n\n@see [Documentation](https://grubersjoe.github.io/react-activity-calendar/?path=/story/react-activity-calendar--tooltips)",
       "defaultValue": {
         "value": "{}",
         "computed": false
@@ -833,7 +831,7 @@
           }
         ]
       },
-      "description": "Index of day to be used as start of week. 0 represents Sunday.",
+      "description": "Index of day to be used as the week start. 0 represents Sunday.",
       "defaultValue": {
         "value": "0",
         "computed": false
