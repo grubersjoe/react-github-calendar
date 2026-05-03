@@ -1,6 +1,5 @@
 packages:
   - example
-
-onlyBuiltDependencies:
-  - '@parcel/watcher'
-  - esbuild
+allowBuilds:
+  '@parcel/watcher': true
+minimumReleaseAge: 4320 # 3 days
