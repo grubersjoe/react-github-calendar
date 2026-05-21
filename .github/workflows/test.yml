@@ -36,7 +36,7 @@ jobs:
         run: pnpm postbuild
 
       - name: Run type checks (TypeScript)
-        run: pnpm tsc
+        run: pnpm typecheck
 
       - name: Run linter (ESLint)
         run: pnpm lint
