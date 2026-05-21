@@ -1,8 +1,11 @@
 {
-  "extends": ["@tsconfig/bases/strictest", "@tsconfig/bases/vite-react"],
+  "extends": ["@tsconfig/bases/strictest"],
   "compilerOptions": {
     "allowJs": true,
     "exactOptionalPropertyTypes": false,
-    "noPropertyAccessFromIndexSignature": false
+    "jsx": "react-jsx",
+    "noEmit": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "verbatimModuleSyntax": true
   }
 }
