@@ -3,7 +3,7 @@
   "scripts": {
     "build": "tsc && vite build",
     "dev": "vite",
-    "prebuild": "./scripts/docgen.sh",
+    "prebuild": "./docgen.sh",
     "preview": "vite preview"
   },
   "dependencies": {
