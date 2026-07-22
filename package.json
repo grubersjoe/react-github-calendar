@@ -26,7 +26,6 @@
     "predeploy": "pnpm build && cd example && pnpm install && pnpm build",
     "prepare": "husky",
     "prepublishOnly": "pnpm check && pnpm build",
-    "publish": "pnpm publish --access=public",
     "typecheck": "tsc -p tsconfig.json && tsc -p example/tsconfig.json",
     "typegen": "dts-bundle-generator src/index.tsx -o build/index.d.ts --no-check --no-banner"
   },
