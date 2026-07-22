@@ -1,6 +1,6 @@
 'use client'
 
-import { forwardRef, useCallback, useEffect, useState } from 'react'
+import { forwardRef, useEffect, useState } from 'react'
 import { ActivityCalendar, type Props as ActivityCalendarProps } from 'react-activity-calendar'
 import { gitHubTheme, transformData } from './lib'
 import type { Activity, ApiErrorResponse, ApiResponse, Year } from './types'
@@ -13,9 +13,13 @@ export type Props = {
   year?: Year
 } & Omit<ActivityCalendarProps, 'data'>
 
-async function fetchCalendarData(username: string, year: Year): Promise<ApiResponse> {
+async function fetchContributions(
+  username: string,
+  year: Year,
+  signal: AbortSignal,
+): Promise<ApiResponse> {
   const apiUrl = 'https://github-contributions-api.jogruber.de/v4/'
-  const response = await fetch(`${apiUrl}${username}?y=${String(year)}`)
+  const response = await fetch(`${apiUrl}${username}?y=${String(year)}`, { signal })
   const data = (await response.json()) as ApiResponse | ApiErrorResponse
 
   if (!response.ok) {
@@ -44,22 +48,28 @@ export const GitHubCalendar = forwardRef<HTMLElement, Props>(
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState<Error | null>(null)
 
-    const fetchData = useCallback(() => {
+    useEffect(() => {
       setLoading(true)
       setError(null)
-      fetchCalendarData(username, year)
+
+      const controller = new AbortController()
+      fetchContributions(username, year, controller.signal)
         .then(setData)
         .catch((err: unknown) => {
-          if (err instanceof Error) {
+          if (err instanceof Error && err.name !== 'AbortError') {
             setError(err)
           }
         })
         .finally(() => {
-          setLoading(false)
+          if (!controller.signal.aborted) {
+            setLoading(false)
+          }
         })
-    }, [username, year])
 
-    useEffect(fetchData, [fetchData])
+      return () => {
+        controller.abort()
+      }
+    }, [username, year])
 
     // React error boundaries can't handle asynchronous code, so rethrow.
     if (error) {
