@@ -16,5 +16,6 @@ export default defineConfig({
     commonjsOptions: {
       include: [/react-github-calendar/],
     },
+    chunkSizeWarningLimit: 1024,
   },
 })
