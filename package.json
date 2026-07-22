@@ -19,15 +19,16 @@
     "build": "rollup -c",
     "check": "pnpm install --frozen-lockfile && pnpm exec prettier -c . && pnpm typecheck && pnpm lint",
     "deploy": "gh-pages -d example/build",
-    "dev": "rollup -c -w",
+    "dev": "pnpm run typegen && concurrently --prefix none 'rollup -c -w' 'cd example && pnpm run dev --open'",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "postbuild": "dts-bundle-generator src/index.tsx -o build/index.d.ts --no-check --no-banner",
+    "postbuild": "pnpm run typegen",
     "predeploy": "pnpm build && cd example && pnpm install && pnpm build",
     "prepare": "husky",
     "prepublishOnly": "pnpm check && pnpm build",
     "publish": "pnpm publish --access=public",
-    "typecheck": "tsc -p tsconfig.json && tsc -p example/tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json && tsc -p example/tsconfig.json",
+    "typegen": "dts-bundle-generator src/index.tsx -o build/index.d.ts --no-check --no-banner"
   },
   "dependencies": {
     "react-activity-calendar": "^3.1.2"
@@ -43,6 +44,7 @@
     "@rollup/plugin-node-resolve": "^16.0.3",
     "@tsconfig/bases": "^1.0.24",
     "@types/react": "^19.2.9",
+    "concurrently": "^10.0.3",
     "dts-bundle-generator": "^9.5.1",
     "eslint": "^10.4.0",
     "eslint-plugin-react": "^7.37.3",

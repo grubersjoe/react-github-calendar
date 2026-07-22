@@ -14,10 +14,6 @@ A React component to display a GitHub contributions calendar based on
 
 [Demo and documentation](https://grubersjoe.github.io/react-github-calendar/)
 
-<a href="https://www.buymeacoffee.com/grubersjoe">
-  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 32px;" >
-</a>
-
 ## Installation
 
 ```shell
@@ -59,19 +55,9 @@ need to fix those yourself given the maintenance state of CRA. Personally, I wou
 
 ## Development
 
-Start watch mode for the library first:
-
 ```shell
-npm install
-npm dev
-```
-
-Then start watch mode of example page:
-
-```shell
-cd example
-npm install
-npm dev
+pnpm install
+pnpm dev
 ```
 
 Open http://localhost:3000.
@@ -79,14 +65,13 @@ Open http://localhost:3000.
 ### Publish a new release
 
 ```shell
-npm publish --dry-run
-
-# When you're happy
-npm publish --access=public
+pnpm publish --dry-run
+# then
+pnpm publish --access=public
 ```
 
 ### Update demo page
 
 ```shell
-npm run deploy
+pnpm run deploy
 ```
