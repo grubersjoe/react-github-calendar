@@ -17,6 +17,7 @@ export default defineConfig(
       'no-console': 'error',
       '@typescript-eslint/array-type': ['error', { default: 'generic' }],
       '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
+      '@typescript-eslint/restrict-template-expressions': 'off',
       'react/no-unescaped-entities': 'off',
     },
     languageOptions: {

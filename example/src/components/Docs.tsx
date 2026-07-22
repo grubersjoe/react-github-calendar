@@ -2,6 +2,7 @@ import { useRef, type SubmitEventHandler } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import GitHubButton from 'react-github-btn'
 import { GitHubCalendar, type Props } from 'react-github-calendar'
+import 'react-activity-calendar/tooltips.css'
 import { useSearchParams } from 'react-router'
 import tooltipsCSS from '../../../src/styles/tooltips.css?raw'
 import CodeBlock from './CodeBlock'
@@ -98,8 +99,11 @@ const Docs = () => {
               type="text"
               placeholder="Enter your GitHub username"
               defaultValue={username}
-              autoComplete="on"
+              onFocus={event => {
+                event.target.select()
+              }}
               required
+              data-1p-ignore // ignore 1password extension
             />
             <button type="submit">Show calendar</button>
           </form>
@@ -116,7 +120,18 @@ const Docs = () => {
           </h4>
 
           <ErrorBoundary fallbackRender={errorRenderer} key={username}>
-            <GitHubCalendar username={username} fontSize={16} throwOnError />
+            <GitHubCalendar
+              username={username}
+              fontSize={16}
+              tooltips={{
+                activity: {
+                  text: ({ level, date }) =>
+                    `${level} contributions on ${new Date(date).toLocaleDateString('en-US')}`,
+                  withArrow: true,
+                },
+              }}
+              throwOnError
+            />
           </ErrorBoundary>
 
           <p style={{ marginTop: '2rem', marginBottom: '0.75rem' }}>
@@ -169,9 +184,11 @@ const Docs = () => {
           <h2>Component properties</h2>
           <p>
             The component uses{' '}
-            <a href="https://github.com/grubersjoe/react-activity-calendar">
-              <code>react-activity-calendar</code>
-            </a>{' '}
+            <code>
+              <a href="https://github.com/grubersjoe/react-activity-calendar">
+                react-activity-calendar
+              </a>
+            </code>{' '}
             internally, so all its properties are supported. See the React Activity Calendar{' '}
             <a href="https://grubersjoe.github.io/react-activity-calendar/?path=/docs/react-activity-calendar--docs">
               documentation
