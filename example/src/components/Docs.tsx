@@ -91,7 +91,7 @@ const Docs = () => {
         <ForkMe />
         <div className="container">
           <h1>GitHub Contributions Calendar</h1>
-          <div>A React component to display a GitHub contributions calendar </div>
+          <div>A React component to display your GitHub contributions calendar </div>
           <form onSubmit={onUsernameSubmit}>
             <input
               ref={inputRef}

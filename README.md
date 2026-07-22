@@ -3,7 +3,7 @@
 [![CI](https://github.com/grubersjoe/react-github-calendar/actions/workflows/test.yml/badge.svg)](https://github.com/grubersjoe/react-github-calendar/actions/workflows/test.yml)
 [![npm version](https://badge.fury.io/js/react-github-calendar.svg)](https://www.npmjs.com/package/react-github-calendar)
 
-A React component to display a GitHub contributions calendar based on
+A React component to display your GitHub contributions calendar based on
 [`react-activity-calendar`](https://github.com/grubersjoe/react-activity-calendar) and
 [`github-contributions-api`](https://github.com/grubersjoe/github-contributions-api).
 
