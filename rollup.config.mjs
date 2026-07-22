@@ -29,7 +29,7 @@ export default {
       babelHelpers: 'bundled',
     }),
     copy({
-      targets: [{ src: 'src/styles/tooltips.css', dest: 'build/' }],
+      targets: [{ src: 'node_modules/react-activity-calendar/build/tooltips.css', dest: 'build/' }],
     }),
     filesize(),
   ],

@@ -2,9 +2,9 @@ import { useRef, type SubmitEventHandler } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import GitHubButton from 'react-github-btn'
 import { GitHubCalendar, type Props } from 'react-github-calendar'
-import 'react-activity-calendar/tooltips.css'
+import 'react-github-calendar/tooltips.css'
+import tooltipsCSS from 'react-github-calendar/tooltips.css?raw'
 import { useSearchParams } from 'react-router'
-import tooltipsCSS from '../../../src/styles/tooltips.css?raw'
 import CodeBlock from './CodeBlock'
 import { errorRenderer } from './Error'
 import '../styles.scss'
@@ -250,7 +250,7 @@ const Docs = () => {
             <li>Add your own custom CSS like below.</li>
           </ul>
 
-          <CodeBlock>import 'react-github-calendar/styles.css';</CodeBlock>
+          <CodeBlock>import 'react-github-calendar/tooltips.css';</CodeBlock>
           <CodeBlock>
             {'/* The class name must match the internal calendar component. */\n'.concat(
               tooltipsCSS,
