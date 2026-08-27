@@ -13,13 +13,17 @@ export type Props = {
   year?: Year
 } & Omit<ActivityCalendarProps, 'data'>
 
-async function fetchContributions(
+async function fetchGitHubData(
   username: string,
   year: Year,
   signal: AbortSignal,
 ): Promise<ApiResponse> {
   const apiUrl = 'https://github-contributions-api.jogruber.de/v4/'
-  const response = await fetch(`${apiUrl}${username}?y=${String(year)}`, { signal })
+  const response = await fetch(
+    `${apiUrl}${username}?y=${String(year)}&client=react-github-calendar`,
+    { signal },
+  )
+
   const data = (await response.json()) as ApiResponse | ApiErrorResponse
 
   if (!response.ok) {
@@ -53,7 +57,7 @@ export const GitHubCalendar = forwardRef<HTMLElement, Props>(
       setError(null)
 
       const controller = new AbortController()
-      fetchContributions(username, year, controller.signal)
+      fetchGitHubData(username, year, controller.signal)
         .then(setData)
         .catch((err: unknown) => {
           if (err instanceof Error && err.name !== 'AbortError') {
